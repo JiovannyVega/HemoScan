@@ -22,6 +22,9 @@ function Header() {
               Acceder
             </Link>
           </li>
+          <li>
+            <Link to="/dashboard">Dashboard</Link>
+          </li>
         </ul>
       </nav>
     </header>

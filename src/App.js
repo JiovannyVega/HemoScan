@@ -4,6 +4,7 @@ import Header from "./components/Header.js";
 import LoginPage from "./pages/LoginPage.js";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage.js";
+import Dashboard from "./pages/Dashboard.js";
 import "./App.css"; // Import the CSS file
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </div>
       </div>
