@@ -5,14 +5,14 @@ import LoginPage from "./pages/LoginPage.js";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage.js";
 import Dashboard from "./pages/Dashboard.js";
-import "./App.css"; // Import the CSS file
+import style from "./App.module.css"; // Import the CSS file
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Header />
-        <div className="content">
+        <div className={style.content}>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
