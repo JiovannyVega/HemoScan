@@ -1,3 +1,5 @@
+@import "../styles/colors.css";
+
 /* Reset básico */
 * {
   margin: 0;
@@ -25,7 +27,7 @@ main {
   flex-direction: column;
   gap: 10px;
   max-width: 350px;
-  background-color: #fff;
+  background-color: var(--color-background);
   padding: 0px;
   border-radius: 20px;
   position: relative;
@@ -33,7 +35,7 @@ main {
 
 .title {
   font-size: 30px;
-  color: royalblue;
+  color: var(--color-primary);
   font-weight: 600;
   letter-spacing: -1px;
   position: relative;
@@ -50,13 +52,13 @@ main {
   width: 16px;
   border-radius: 50%;
   left: 0px;
-  background-color: royalblue;
+  background-color: var(--color-primary);
 }
 
 .title::before {
   width: 18px;
   height: 18px;
-  background-color: royalblue;
+  background-color: var(--color-primary);
 }
 
 .title::after {
@@ -76,11 +78,11 @@ main {
 }
 
 .signin a {
-  color: royalblue;
+  color: var(--color-primary);
 }
 
 .signin a:hover {
-  text-decoration: underline royalblue;
+  text-decoration: underline var(--color-primary);
 }
 
 .flex {
@@ -131,10 +133,10 @@ main {
 .submit {
   border: none;
   outline: none;
-  background-color: royalblue;
+  background-color: var(--color-primary);
   padding: 10px;
   border-radius: 10px;
-  color: #fff;
+  color: var(--color-background);
   font-size: 16px;
   transform: 0.3s ease;
 }
@@ -158,7 +160,7 @@ main {
 
 .loginContainer {
   display: flex;
-  background-color: white;
+  background-color: var(--color-secondarybckgrnd);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   overflow: hidden;
@@ -187,11 +189,11 @@ p {
   align-items: center;
   justify-content: center;
   padding: 10px;
-  background-color: #f0f0f0;
+  background-color: var(--color-background);
   border: 1px solid #ccc;
   border-radius: 5px;
   cursor: pointer;
-  color: #617597;
+  color: var(--color-secondary);
 }
 
 .googleLogin img {
@@ -200,8 +202,8 @@ p {
 }
 
 .googleLogin:hover {
-  background-color: #e0e0e0;
-  color: #4a4a4a;
+  background-color: var(--color-background);
+  color: var(--color-text);
 }
 
 @media (min-width: 768px) {
