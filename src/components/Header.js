@@ -1,16 +1,16 @@
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import React from "react";
-import "./Header.css";
+import styles from "./Header.module.css";
 
 function Header() {
   return (
-    <header>
-      <nav>
-        <div className="logo">
+    <header className={styles.header}>
+      <nav className={styles.nav}>
+        <div className={styles.logo}>
           <img src={require("../assets/logo.png")} alt="HemoScan AI" />
           <h1>HemoScan AI</h1>
         </div>
-        <ul className="nav-links">
+        <ul className={styles.navLinks}>
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -18,7 +18,7 @@ function Header() {
             <Link to="/about">Acerca de</Link>
           </li>
           <li>
-            <Link to="/login" className="active">
+            <Link to="/login" className={styles.active}>
               Acceder
             </Link>
           </li>

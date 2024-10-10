@@ -1,39 +1,39 @@
 import React from "react";
-import "./HomePage.css";
+import styles from "./HomePage.module.css";
 
 function HomePage() {
   return (
-    <main>
-      <div className="login-container">
-        <div className="form-container">
+    <main className={styles.main}>
+      <div className={styles.loginContainer}>
+        <div className={styles.formContainer}>
           <img
             src={require("../assets/perfil-icono.png")}
             alt="Profile Icon"
-            className="profile-icon"
+            className={styles.profileIcon}
           />
           <form>
             <label htmlFor="email">Correo electrónico</label>
             <input type="email" id="email" placeholder="Correo electrónico" />
             <label htmlFor="password">Contraseña</label>
             <input type="password" id="password" placeholder="Contraseña" />
-            <a href="#" className="forgot-password">
+            <a href="#" className={styles.forgotPassword}>
               ¿Olvidaste tu contraseña?
             </a>
             <button type="submit">Ingresar</button>
           </form>
           <p>O</p>
-          <button className="google-login">
+          <button className={styles.googleLogin}>
             <img src={require("../assets/google.png")} alt="Google" /> Continuar
             con Google
           </button>
           <p>
             ¿No tienes una cuenta?
-            <a href="#" className="register-link">
+            <a href="#" className={styles.registerLink}>
               Regístrate
             </a>
           </p>
         </div>
-        <div className="image-container">
+        <div className={styles.imageContainer}>
           <img src={require("../assets/medicos.png")} alt="People Working" />
         </div>
       </div>

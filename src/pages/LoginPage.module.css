@@ -1,60 +1,12 @@
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-header {
-  width: 100%;
-  padding: 20px;
-  background-color: white;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
 body {
   font-family: "Poppins", sans-serif;
-}
-
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-}
-
-.logo img {
-  width: 40px;
-  margin-right: 10px;
-}
-
-.logo h1 {
-  font-size: 24px;
-  color: #003399;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-}
-
-.nav-links li {
-  margin-right: 20px;
-}
-
-.nav-links li a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 600;
-}
-
-.nav-links li a.active {
-  color: #003399;
 }
 
 main {
@@ -204,7 +156,7 @@ main {
 }
 /* form***************************************************** */
 
-.login-container {
+.loginContainer {
   display: flex;
   background-color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -212,14 +164,14 @@ main {
   overflow: hidden;
 }
 
-.form-container {
+.formContainer {
   padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.profile-icon {
+.profileIcon {
   width: 80px;
   margin: 0 auto 20px;
 }
@@ -230,7 +182,7 @@ p {
   font-weight: 600;
 }
 
-.google-login {
+.googleLogin {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -242,12 +194,12 @@ p {
   color: #617597;
 }
 
-.google-login img {
+.googleLogin img {
   width: 20px;
   margin-right: 10px;
 }
 
-.google-login:hover {
+.googleLogin:hover {
   background-color: #e0e0e0;
   color: #4a4a4a;
 }
@@ -256,11 +208,11 @@ p {
   .form label .input {
     width: 100%;
   }
-  .image-container {
+  .imageContainer {
     display: block;
   }
 
-  .image-container img {
+  .imageContainer img {
     width: 100%;
     height: 100%;
     object-fit: cover;

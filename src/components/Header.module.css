@@ -1,19 +1,23 @@
-header {
+.header {
   width: 100%;
-  background: #34495e;
-  padding: 10px 0;
+  padding: 20px;
+  background-color: white;
   position: fixed; /* Fix the header at the top */
   top: 0;
   left: 0;
   z-index: 1000; /* Ensure it stays on top */
 }
 
+body {
+  font-family: "Poppins", sans-serif;
+}
+
 nav {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  width: 100%;
-  padding: 0 20px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .logo {
@@ -23,17 +27,15 @@ nav {
 
 .logo img {
   width: 40px;
-  height: 40px;
   margin-right: 10px;
 }
 
 .logo h1 {
-  color: white;
   font-size: 24px;
-  margin: 0;
+  color: #003399;
 }
 
-.nav-links {
+.navLinks {
   list-style: none;
   display: flex;
   align-items: center;
@@ -41,16 +43,16 @@ nav {
   padding: 0;
 }
 
-.nav-links li {
-  margin-left: 20px;
+.navLinks li {
+  margin-right: 20px;
 }
 
-.nav-links a {
-  color: white;
+.navLinks a {
   text-decoration: none;
-  font-size: 16px;
+  color: #333;
+  font-weight: 600;
 }
 
-.nav-links a.active {
-  font-weight: bold;
+.navLinks a.active {
+  color: #003399;
 }

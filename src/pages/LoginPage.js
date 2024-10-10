@@ -2,31 +2,31 @@ import React from "react";
 import perfilIcono from "../assets/registro-icono.png";
 import googleIcon from "../assets/google.png";
 import medicosImage from "../assets/698.png";
-import "./LoginPage.css";
+import styles from "./LoginPage.module.css";
 
 function LoginPage() {
   return (
-    <main>
-      <div className="login-container">
-        <div className="form-container">
-          <img src={perfilIcono} alt="Profile Icon" className="profile-icon" />
-          <form className="form">
-            <p className="title">Registro</p>
-            <p className="message">
+    <main className={styles.main}>
+      <div className={styles.loginContainer}>
+        <div className={styles.formContainer}>
+          <img src={perfilIcono} alt="Profile Icon" className={styles.profileIcon} />
+          <form className={styles.form}>
+            <p className={styles.title}>Registro</p>
+            <p className={styles.message}>
               Regístrate ahora y obtén acceso completo a nuestra aplicación.
             </p>
-            <div className="flex">
+            <div className={styles.flex}>
               <label>
-                <input required placeholder="" type="text" className="input" />
+                <input required placeholder="" type="text" className={styles.input} />
                 <span>Nombres</span>
               </label>
               <label>
-                <input required placeholder="" type="text" className="input" />
+                <input required placeholder="" type="text" className={styles.input} />
                 <span>Apellidos</span>
               </label>
             </div>
             <label>
-              <input required placeholder="" type="text" className="input" />
+              <input required placeholder="" type="text" className={styles.input} />
               <span>Correo</span>
             </label>
             <label>
@@ -34,7 +34,7 @@ function LoginPage() {
                 required
                 placeholder=""
                 type="password"
-                className="input"
+                className={styles.input}
               />
               <span>Contraseña</span>
             </label>
@@ -43,21 +43,21 @@ function LoginPage() {
                 required
                 placeholder=""
                 type="password"
-                className="input"
+                className={styles.input}
               />
               <span>Confirma tu contraseña</span>
             </label>
-            <button className="submit">Continuar</button>
-            <p className="signin">
+            <button className={styles.submit}>Continuar</button>
+            <p className={styles.signin}>
               ¿Ya tienes una cuenta? <a href="#">Inicia sesión</a>
             </p>
           </form>
           <p>O</p>
-          <button className="google-login">
+          <button className={styles.googleLogin}>
             <img src={googleIcon} alt="Google" /> Continuar con Google
           </button>
         </div>
-        <div className="image-container">
+        <div className={styles.imageContainer}>
           <img src={medicosImage} alt="People Working" />
         </div>
       </div>

@@ -5,7 +5,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%; /* Asegura que el body ocupe el 100% de la altura */
   width: 100%; /* Asegura que el body ocupe el 100% del ancho */
 }
@@ -34,7 +35,7 @@ body {
   border-bottom-left-radius: 15px;
 }
 
-.main-content {
+.mainContent {
   flex: 1;
   padding: 40px;
   height: 100%; /* Asegura que el contenido principal ocupe toda la altura */
@@ -70,7 +71,7 @@ body {
   border-radius: 10px 0 0 10px;
 }
 
-.main-content h1 {
+.mainContent h1 {
   font-size: 32px;
   margin-bottom: 20px;
 }
@@ -82,7 +83,8 @@ body {
   flex-wrap: wrap; /* Permite que las tarjetas se ajusten en pantallas pequeñas */
 }
 
-.recent-orders, .todos {
+.recentOrders,
+.todos {
   background-color: white;
   border-radius: 10px;
   padding: 20px;
@@ -90,28 +92,30 @@ body {
   width: 48%; /* Ocupa un porcentaje del contenedor */
 }
 
-.recent-orders h2, .todos h2 {
+.recentOrders h2,
+.todos h2 {
   margin-bottom: 20px;
   font-size: 20px;
 }
 
-.recent-orders table {
+.recentOrders table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.recent-orders table img {
+.recentOrders table img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
 }
 
-.recent-orders table th, .recent-orders table td {
+.recentOrders table th,
+.recentOrders table td {
   padding: 10px;
   text-align: left;
 }
 
-.recent-orders table thead {
+.recentOrders table thead {
   background-color: #f2f2f2;
   border-bottom: 2px solid #eaeaea;
 }
@@ -179,7 +183,8 @@ body {
     width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
   }
 
-  .recent-orders, .todos {
+  .recentOrders,
+  .todos {
     width: 100%; /* Asegúrate de que las cards ocupen todo el ancho */
   }
 }
@@ -196,7 +201,7 @@ body {
     height: auto; /* Permite que el contenedor ajuste la altura */
   }
 
-  .main-content {
+  .mainContent {
     padding: 10px; /* Reduce el padding en pantallas muy pequeñas */
   }
 }

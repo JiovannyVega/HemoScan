@@ -1,133 +1,102 @@
 import React from "react";
-import "./Dashboard.css";
+import styles from "./Dashboard.module.css";
 
 const Dashboard = () => {
-  return (
-    <div>
-      <div class="container">
-        <div class="sidebar">
-          <ul>
-            <li className="active">
-              <a href="#">Dashboard</a>
-            </li>
-            <li classname>
-              <a href="#">Analytics</a>
-            </li>
-            <li>
-              <a href="#">Settings</a>
-            </li>
-            <li>
-              <a href="#">Logout</a>
-            </li>
-          </ul>
-        </div>
-        <div class="main-content">
-          <h1>Dashboard</h1>
-          <div class="cards">
-            <div class="recent-orders">
-              <h2>Recent Orders</h2>
-              <table>
-                <thead>
-                  <tr>
-                    <th>User</th>
-                    <th>Date Order</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <img
-                        src={require("../assets/people.png")}
-                        alt="People Working"
-                      />{" "}
-                      John Doe
-                    </td>
-                    <td>01-10-2021</td>
-                    <td>
-                      <span class="status completed">Completed</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <img
-                        src={require("../assets/people.png")}
-                        alt="People Working"
-                      />{" "}
-                      John Doe
-                    </td>
-                    <td>01-10-2021</td>
-                    <td>
-                      <span class="status pending">Pending</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <img
-                        src={require("../assets/people.png")}
-                        alt="People Working"
-                      />
-                      John Doe
-                    </td>
-                    <td>01-10-2021</td>
-                    <td>
-                      <span class="status process">Process</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <img
-                        src={require("../assets/people.png")}
-                        alt="People Working"
-                      />{" "}
-                      John Doe
-                    </td>
-                    <td>01-10-2021</td>
-                    <td>
-                      <span class="status pending">Pending</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <img
-                        src={require("../assets/people.png")}
-                        alt="People Working"
-                      />{" "}
-                      John Doe
-                    </td>
-                    <td>01-10-2021</td>
-                    <td>
-                      <span class="status completed">Completed</span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+    return (
+        <div className={styles.container}>
+            <div className={styles.sidebar}>
+                <ul>
+                    <li className={`${styles.active}`}>
+                        <a href="#">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="#">Analytics</a>
+                    </li>
+                    <li>
+                        <a href="#">Settings</a>
+                    </li>
+                    <li>
+                        <a href="#">Logout</a>
+                    </li>
+                </ul>
             </div>
-            <div class="todos">
-              <h2>Todos</h2>
-              <ul>
-                <li>
-                  <span>Todo List</span> <span class="options">⋮</span>
-                </li>
-                <li class="pending">
-                  <span>Todo List</span> <span class="options">⋮</span>
-                </li>
-                <li>
-                  <span>Todo List</span> <span class="options">⋮</span>
-                </li>
-                <li class="process">
-                  <span>Todo List</span> <span class="options">⋮</span>
-                </li>
-                <li>
-                  <span>Todo List</span> <span class="options">⋮</span>
-                </li>
-              </ul>
+            <div className={styles.mainContent}>
+                <h1>Dashboard</h1>
+                <div className={styles.cards}>
+                    <div className={styles.recentOrders}>
+                        <h2>Recent Orders</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Date Order</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <img
+                                            src={require("../assets/people.png")}
+                                            alt="People Working"
+                                        />{" "}
+                                        John Doe
+                                    </td>
+                                    <td>01-10-2021</td>
+                                    <td>
+                                        <span className={`${styles.status} ${styles.completed}`}>Completed</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img
+                                            src={require("../assets/people.png")}
+                                            alt="People Working"
+                                        />{" "}
+                                        John Doe
+                                    </td>
+                                    <td>01-10-2021</td>
+                                    <td>
+                                        <span className={`${styles.status} ${styles.pending}`}>Pending</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img
+                                            src={require("../assets/people.png")}
+                                            alt="People Working"
+                                        />{" "}
+                                        John Doe
+                                    </td>
+                                    <td>01-10-2021</td>
+                                    <td>
+                                        <span className={`${styles.status} ${styles.process}`}>In Process</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className={styles.todos}>
+                        <h2>To-Do List</h2>
+                        <ul>
+                            <li className={styles.pending}>
+                                <span>Task 1</span>
+                                <span className={styles.options}>...</span>
+                            </li>
+                            <li className={styles.process}>
+                                <span>Task 2</span>
+                                <span className={styles.options}>...</span>
+                            </li>
+                            <li>
+                                <span>Task 3</span>
+                                <span className={styles.options}>...</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default Dashboard;
