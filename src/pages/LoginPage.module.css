@@ -1,15 +1,6 @@
 @import "../styles/colors.css";
 
 /* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "Poppins", sans-serif;
-}
 
 main {
   display: flex;
@@ -160,7 +151,7 @@ main {
 
 .loginContainer {
   display: flex;
-  background-color: var(--color-secondarybckgrnd);
+  background-color: var(--color-background);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   overflow: hidden;

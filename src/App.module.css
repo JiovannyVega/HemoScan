@@ -2,3 +2,8 @@
 .content {
   margin-top: 100px; /* Adjust this value based on the height of your header */
 }
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--color-secondarybckgrnd);
+}
