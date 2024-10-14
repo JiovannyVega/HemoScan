@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.toggle-checkbox:checked {
+    @apply right-0 border-blue-500;
+  }
+  
+  .toggle-checkbox:checked + .toggle-label {
+    @apply bg-toggle-on;
+  }
+  
+  .toggle-checkbox {
+    @apply right-4;
+  }
+  
+  .toggle-label {
+    @apply bg-toggle-off;
+  }
