@@ -1,8 +1,18 @@
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Header.module.css";
 
 function Header() {
+    const [theme, setTheme] = useState("light");
+
+    useEffect(() => {
+        document.documentElement.setAttribute("data-theme", theme);
+    }, [theme]);
+
+    const toggleTheme = () => {
+        setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+    };
+
     return (
         <header className={styles.header}>
             <nav className={styles.nav}>
@@ -26,6 +36,9 @@ function Header() {
                         <Link to="/dashboard">Dashboard</Link>
                     </li>
                 </ul>
+                <button onClick={toggleTheme} className={styles.themeToggle}>
+                    {theme === "light" ? "🌙" : "☀️"}
+                </button>
             </nav>
         </header>
     );
