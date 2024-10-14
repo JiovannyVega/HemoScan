@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/hemoscan/static/css/main.3f6d1b82.css",
-    "main.js": "/hemoscan/static/js/main.60ceba92.js",
-    "static/media/698.png": "/hemoscan/static/media/698.521764303e54f7253220.png",
-    "static/media/medicos.png": "/hemoscan/static/media/medicos.5f8d1c529aec887ba9dd.png",
-    "index.html": "/hemoscan/index.html",
-    "main.3f6d1b82.css.map": "/hemoscan/static/css/main.3f6d1b82.css.map",
-    "main.60ceba92.js.map": "/hemoscan/static/js/main.60ceba92.js.map"
+    "main.css": "/HemoScan/static/css/main.3f6d1b82.css",
+    "main.js": "/HemoScan/static/js/main.6366a362.js",
+    "static/media/698.png": "/HemoScan/static/media/698.521764303e54f7253220.png",
+    "static/media/medicos.png": "/HemoScan/static/media/medicos.5f8d1c529aec887ba9dd.png",
+    "index.html": "/HemoScan/index.html",
+    "main.3f6d1b82.css.map": "/HemoScan/static/css/main.3f6d1b82.css.map",
+    "main.6366a362.js.map": "/HemoScan/static/js/main.6366a362.js.map"
   },
   "entrypoints": [
     "static/css/main.3f6d1b82.css",
-    "static/js/main.60ceba92.js"
+    "static/js/main.6366a362.js"
   ]
 }
