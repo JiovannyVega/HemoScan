@@ -9,7 +9,7 @@ import style from "./App.module.css"; // Import the CSS file
 
 function App() {
   return (
-    <Router>
+    <Router basename="/HemoScan">
       <div className="App">
         <Header />
         <div className={style.content}>
@@ -18,6 +18,7 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path='/*' element={<HomePage />}></Route>
           </Routes>
         </div>
       </div>
