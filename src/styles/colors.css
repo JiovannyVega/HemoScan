@@ -15,6 +15,7 @@
     --color-text-dark: #FFFFFF;
     --color-border-dark: #444;
     --color-hover-dark: #333;
+    --color-secondarybckgrnd-dark: #222;
   }
   
   [data-theme="dark"] {
@@ -24,4 +25,5 @@
     --color-text: var(--color-text-dark);
     --color-border: var(--color-border-dark);
     --color-hover: var(--color-hover-dark);
+    --color-secondarybckgrnd: var(--color-secondarybckgrnd-dark);
   }

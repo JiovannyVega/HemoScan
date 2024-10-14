@@ -54,3 +54,11 @@
 .navLinks a.active {
   color: var(--color-primary);
 }
+
+.themeToggle {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--color-primary);
+}
