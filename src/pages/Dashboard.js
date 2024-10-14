@@ -7,16 +7,16 @@ const Dashboard = () => {
             <div className={styles.sidebar}>
                 <ul>
                     <li className={`${styles.active}`}>
-                        <a href="#">Dashboard</a>
+                        <a href="/">Dashboard</a>
                     </li>
                     <li>
-                        <a href="#">Analytics</a>
+                        <a href="/">Analytics</a>
                     </li>
                     <li>
-                        <a href="#">Settings</a>
+                        <a href="/">Settings</a>
                     </li>
                     <li>
-                        <a href="#">Logout</a>
+                        <a href="/">Logout</a>
                     </li>
                 </ul>
             </div>
