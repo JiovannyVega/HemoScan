@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage.js";
 import Dashboard from "./pages/Dashboard.js";
 import Footer from "./components/Footer.js";
+import ErrorPage from "./pages/ErrorPage.js";
 import style from "./App.module.css"; // Import the CSS file
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path='/*' element={<HomePage />}></Route>
+            <Route path='/*' element={<ErrorPage />}></Route>
           </Routes>
         </div>
         <Footer />
