@@ -35,6 +35,9 @@ function Header() {
                     <li>
                         <Link to="/dashboard">Dashboard</Link>
                     </li>
+                    <li>
+                        <Link to="/profile">Perfil</Link>
+                    </li>
                 </ul>
                 <button onClick={toggleTheme} className={styles.themeToggle}>
                     {theme === "light" ? "🌙" : "☀️"}

@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage.js";
 import Dashboard from "./pages/Dashboard.js";
 import NewHomePage from "./pages/NewHomePage.js"
+import ProfilePage from "./pages/ProfilePage.js"
 import style from "./App.module.css"; // Import the CSS file
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/login" element={<HomePage />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/Profile" element={<ProfilePage />} />
           </Routes>
         </div>
       </div>
