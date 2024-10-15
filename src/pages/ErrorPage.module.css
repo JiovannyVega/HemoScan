@@ -11,6 +11,7 @@
     text-align: center;
     background-color: var(--color-background);
     color: var(--color-text);
+    border-radius: 10px;
 }
 
 .errorContainer {
