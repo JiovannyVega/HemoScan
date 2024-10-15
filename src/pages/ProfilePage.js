@@ -3,9 +3,9 @@ import styles from "./ProfilePage.module.css"; // Asegúrate de que este import 
 
 const ProfilePage = () => {
   const [user, setUser] = useState({
-    name: "Jenna Stones",
-    email: "jenna@example.com",
-    birthDate: "1990-01-01",
+    name: "Kim Da-hyun",
+    email: "kimdahyun@gmail.com",
+    birthDate: "1998-05-28",
     gender: "Femenino",
     language: "Español",
     notifications: true,
@@ -29,12 +29,6 @@ const ProfilePage = () => {
             <section className={styles.banner}>
             </section>
       <div className={styles.profileContainer}>
-            <input
-            type="file"
-            onChange={handleImageChange}
-            className={styles.fileInput}
-            accept="image/*"
-            />
             <img
             src={require("../assets/Perfil.jpg")} // Cambia esta ruta a tu imagen de perfil
             alt="Profile"
@@ -77,7 +71,7 @@ const ProfilePage = () => {
           </div>
           <div className={styles.inputGroup}>
             <label>Género</label>
-            <select name="gender" value={user.gender} onChange={handleChange}>
+            <select name="gender" value={user.gender} onChange={handleChange} className="Slct">
               <option value="Femenino">Femenino</option>
               <option value="Masculino">Masculino</option>
               <option value="Otro">Otro</option>
