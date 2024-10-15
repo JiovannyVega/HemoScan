@@ -5,12 +5,13 @@ import LoginPage from "./pages/LoginPage.js";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage.js";
 import Dashboard from "./pages/Dashboard.js";
+import Footer from "./components/Footer.js";
 import style from "./App.module.css"; // Import the CSS file
 
 function App() {
   return (
     <Router basename="/HemoScan">
-      <div className="App">
+      <div className={style.App}>
         <Header />
         <div className={style.content}>
           <Routes>
@@ -21,6 +22,7 @@ function App() {
             <Route path='/*' element={<HomePage />}></Route>
           </Routes>
         </div>
+        <Footer />
       </div>
     </Router>
   );

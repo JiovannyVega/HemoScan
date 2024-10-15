@@ -35,10 +35,10 @@ function Header() {
                     <li>
                         <Link to="/dashboard">Dashboard</Link>
                     </li>
+                    <button onClick={toggleTheme} className={styles.themeToggle}>
+                        {theme === "light" ? "🌙" : "☀️"}
+                    </button>
                 </ul>
-                <button onClick={toggleTheme} className={styles.themeToggle}>
-                    {theme === "light" ? "🌙" : "☀️"}
-                </button>
             </nav>
         </header>
     );
