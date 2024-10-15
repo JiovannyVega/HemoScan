@@ -1,0 +1,109 @@
+@import "../styles/colors.css";
+/* Reset básico */
+
+.app-container {
+    max-width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    background-color: var(--color-background);
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    color: var(--color-secondary);
+  }
+  
+  .card-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    padding-top: 40px;
+    align-items: center;
+  }
+  
+  .card {
+    background-color: var(--color-background);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 70%;
+    text-align: center;
+  }
+
+  .card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    opacity: 0.95;
+  }
+  
+  h3 {
+    color: var(--color-primary);
+    margin-bottom: 10px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  ul li {
+    margin-bottom: 5px;
+    color: var(--color-text);
+  }
+  
+  .team-members {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .member {
+    text-align: center;
+  }
+  
+  .member img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+  }
+  
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 20px;
+    max-width: 100%;
+  }
+  
+  .contact-form input, .contact-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+  }
+  
+  .contact-form button {
+    background-color: var(--color-primary);
+    color: var(--color-background);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .contact-form button:hover {
+    background-color: var(--color-secondary);
+  }
+  p{
+    
+  }
+  
