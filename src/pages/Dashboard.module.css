@@ -81,6 +81,7 @@
   padding: 20px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   width: 48%; /* Ocupa un porcentaje del contenedor */
+  color: var(--color-text);
 }
 
 .recentOrders h2,

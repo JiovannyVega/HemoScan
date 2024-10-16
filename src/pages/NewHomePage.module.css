@@ -1,0 +1,170 @@
+@import "../styles/colors.css";
+
+/* Reset básico */
+
+.container {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    display: flex;                     /* Habilita flexbox */
+    flex-direction: column;           /* Orienta los elementos en columna */
+    align-items: center;              /* Centra horizontalmente */
+    justify-content: flex-start;
+}
+
+.Maincontainer {
+    max-width: 80%;
+    background-color: var(--color-background); 
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    display: flex;                     /* Habilita flexbox */
+    flex-direction: column;           /* Orienta los elementos en columna */
+    align-items: center;              /* Centra horizontalmente */
+    justify-content: flex-start;
+}
+/* Banner con imagen de fondo */
+.banner {
+    background-image: url("../assets/NHP.png"); /* Cambia 'path_to_your_image' por la ruta real de tu imagen */
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+
+.bannerContent {
+    padding: 20px;
+    border-radius: 8px;
+    align-items: baseline;
+}
+
+/* Estilos de los títulos centrados y en blanco */
+.mainTitle {
+    font-size: 5rem;
+    margin: 0;
+    color: white; /* Asegura que el texto sea blanco */
+    text-align: center; /* Centra el texto */
+}
+
+.subTitle {
+    font-size: 2rem;
+    margin: 10px 0;
+    color: white; /* Asegura que el texto sea blanco */
+    text-align: center; /* Centra el texto */
+}
+
+.tagline {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: white;
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.mainButton, .secondaryButton {
+    margin: 10px;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.mainButton {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.secondaryButton {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+/* Beneficios */
+.benefits {
+    padding: 40px 20px;
+    background-color: var(--color-background);
+    max-width: 70%;
+}
+
+.benefits h2 {
+    font-size: 2em;
+    color: var(--color-text);
+}
+
+.benefits ul {
+    list-style: none;
+    padding: 0;
+}
+
+.benefits li {
+    font-size: 1.2em;
+    margin: 15px 0;
+}
+
+/* Mensaje de Bienvenida */
+.welcomeMessage {
+    padding: 40px 20px;
+    background-color: var(--color-background);
+    max-width: 70%;
+}
+
+.welcomeMessage h2 {
+    font-size: 2.5em;
+    color: var(--color-text);
+}
+
+.welcomeMessage p {
+    font-size: 1.2em;
+    margin: 20px 0;
+    color: var(--color-text);
+}
+
+/* Descripción del Servicio */
+.serviceDescription {
+    padding: 40px 20px;
+    background-color: var(--color-background);
+    max-width: 70%;
+    
+}
+
+.serviceDescription h2 {
+    font-size: 2em;
+    color: var(--color-text);
+}
+
+.serviceDescription p {
+    font-size: 1.2em;
+    margin: 20px 0;
+    color: var(--color-text);
+}
+
+.authButtons {
+    display: flex;
+    justify-content: center;
+}
+
+.authButton {
+    margin: 10px;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.authButton:hover {
+    background-color: var(--color-secondary);
+}

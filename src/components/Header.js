@@ -12,7 +12,7 @@ function Header() {
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
-
+  
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
