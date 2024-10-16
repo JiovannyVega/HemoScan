@@ -4,10 +4,10 @@
   width: 100%;
   padding: 20px;
   background-color: var(--color-background);
-  position: sticky; /* Cambiar de fixed a sticky */
+  position: sticky;
   top: 0;
   left: 0;
-  z-index: 1000; /* Asegúrate de que se mantenga en la parte superior */
+  z-index: 1000;
 }
 
 .nav {
@@ -55,10 +55,42 @@
   color: var(--color-primary);
 }
 
-.themeToggle {
-  background: none;
-  border: none;
-  font-size: 24px;
+.toggleContainer {
+  position: relative;
+}
+
+.toggleCheckbox {
+  appearance: none;
+  width: 40px;
+  height: 20px;
+  background: #ccc;
+  border-radius: 20px;
+  position: relative;
+  outline: none;
   cursor: pointer;
-  color: var(--color-primary);
+  transition: background 0.3s;
+}
+
+.toggleCheckbox:checked {
+  background: #4caf50;
+}
+
+.toggleCheckbox:checked::before {
+  left: 20px;
+}
+
+.toggleCheckbox::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  top: 1px;
+  left: 1px;
+  background: white;
+  transition: left 0.3s;
+}
+
+.toggleLabel {
+  display: none;
 }
