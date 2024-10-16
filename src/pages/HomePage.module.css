@@ -8,7 +8,7 @@
   align-items: center;
   width: 100%;
   max-width: 1200px;
-  margin: 40px auto;
+  margin: auto;
 }
 
 .loginContainer {
@@ -118,7 +118,8 @@ p {
 }
 
 .registerLink {
-  color: var(--color-secundary); /* Color del texto */
+  color: var(--color-secundary);
+  /* Color del texto */
   text-decoration: none;
 }
 
