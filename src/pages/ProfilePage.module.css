@@ -11,7 +11,10 @@
     position: relative; /* Mantiene la posición relativa para el contenedor de perfil */
     width: 100%;
   }
-  
+  .title{
+    font-size: 5rem;
+    margin: -300px;
+  }
   .profileImageContainer {
     position: absolute; /* Posición absoluta para colocar la imagen de perfil */
     top: 30%; /* Ajusta la distancia desde la parte superior de la imagen de fondo según sea necesario */
