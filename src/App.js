@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header.js";
+import SignupPage from "./pages/SignupPage.js";
 import LoginPage from "./pages/LoginPage.js";
-import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage.js";
 import Dashboard from "./pages/Dashboard.js";
 import Footer from "./components/Footer.js";
@@ -21,7 +21,8 @@ function App() {
           <Routes>
             <Route path="/" element={<NewHomePage />} />
             <Route path="/about" element={<AboutPage />} />
-            <Route path="/login" element={<HomePage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignupPage />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/hfaqpage" element={<HFAQPage />} />

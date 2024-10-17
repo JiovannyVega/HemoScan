@@ -12,7 +12,7 @@ function Header() {
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
-  
+
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
@@ -34,6 +34,12 @@ function Header() {
           </li>
           <li>
             <Link to="/dashboard">Dashboard</Link>
+          </li>
+          <li>
+            <Link to="/profile">Perfil</Link>
+          </li>
+          <li>
+            <Link to="/hfaqpage">Preguntas Frecuentes</Link>
           </li>
           <li>
             <div className={styles.toggleContainer}>

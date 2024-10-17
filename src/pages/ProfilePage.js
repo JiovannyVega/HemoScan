@@ -26,14 +26,14 @@ const ProfilePage = () => {
 
   return (
     <div>
-            <section className={styles.banner}>
-            </section>
+      <section className={styles.banner}>
+      </section>
       <div className={styles.profileContainer}>
-            <img
-            src={require("../assets/Perfil.jpg")} // Cambia esta ruta a tu imagen de perfil
-            alt="Profile"
-            className={styles.profileImage}
-            />
+        <img
+          src={require("../assets/Perfil.jpg")} // Cambia esta ruta a tu imagen de perfil
+          alt="Profile"
+          className={styles.profileImage}
+        />
 
         <div className={styles.profileHeader}>
           <h1>{user.name}</h1>
@@ -124,7 +124,7 @@ const ProfilePage = () => {
           <button onClick={() => console.log("Cerrar sesión")}>Cerrar sesión</button>
           <button onClick={() => console.log("Eliminar cuenta")}>Eliminar cuenta</button>
         </div>
-    </div>
+      </div>
     </div>
 
   );

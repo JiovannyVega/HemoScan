@@ -1,116 +1,138 @@
 .banner {
-    background-image: url("../assets/NHP.png"); /* Cambia 'path_to_your_image' por la ruta real de tu imagen */
-    background-size: cover;
-    background-position: center;
-    height: 60vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: relative; /* Mantiene la posición relativa para el contenedor de perfil */
-    width: 100%;
-  }
-  .title{
-    font-size: 5rem;
-    margin: -300px;
-  }
-  .profileImageContainer {
-    position: absolute; /* Posición absoluta para colocar la imagen de perfil */
-    top: 30%; /* Ajusta la distancia desde la parte superior de la imagen de fondo según sea necesario */
-    left: 50%; /* Centra horizontalmente */
-    transform: translate(-50%, -50%); /* Aplica la transformación para centrar verticalmente y horizontalmente */
-  }
-  
-  .profileImage {
-    width: 240px; /* Ajusta el tamaño según lo necesites */
-    height: 240px;
-    border-radius: 50%; /* Asegura que la imagen sea redonda */
-    object-fit: cover; /* Mantiene la proporción de la imagen */
-    border: 4px solid var(--color-hover); /* Color de borde */
-  }
-  
-  .profileContainer {
-    max-width: 800px;
-    margin: -500px auto; /* Mueve el contenedor hacia arriba, superponiéndolo sobre el banner */
-    padding: 20px;
-    background-color: var(--color-background); /* Color de fondo del contenedor */
-    border-radius: 10px;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-    position: relative; /* Mantiene la relación de los elementos */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 1; /* Asegúrate de que el contenedor esté por encima del banner */
-  }
+  background-image: url("../assets/NHP.png");
+  /* Cambia 'path_to_your_image' por la ruta real de tu imagen */
+  background-size: cover;
+  background-position: center;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  /* Mantiene la posición relativa para el contenedor de perfil */
+  width: 100%;
+}
 
-  .fileInput {
-    margin-bottom: 10px;
-    align-items: center;
-  }
-  
-  .profileHeader {
-    text-align: center;
-    margin-top: 50px; /* Espacio para la imagen de perfil */
-  }
-  
-  .profileInfo,
-  .profilePreferences,
-  .activityHistory {
-    margin-bottom: 20px;
-    width: 90%;
-    color: var(--color-text);
-    margin-top: 20px;
-  }
+.title {
+  font-size: 5rem;
+  margin: -300px;
+}
 
-  .activityHistory button {
-    background-color: var(--color-primary);
-    color: white;
-    margin-left: 560px;
-  }
+.profileImageContainer {
+  position: absolute;
+  /* Posición absoluta para colocar la imagen de perfil */
+  top: 30%;
+  /* Ajusta la distancia desde la parte superior de la imagen de fondo según sea necesario */
+  left: 50%;
+  /* Centra horizontalmente */
+  transform: translate(-50%, -50%);
+  /* Aplica la transformación para centrar verticalmente y horizontalmente */
+}
 
-  h2 {
-    font-size: 1.5rem;
-    color: var(--color-text); /* Color del título */
-    margin-bottom: 10px;
-  }
-  
-  .inputGroup {
-    margin-bottom: 15px;
-  }
-  
-  .inputGroup label {
-    display: block;
-    font-weight: bold;
-  }
-  
-  .inputGroup input,
-  .inputGroup select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #d1d5db; /* Color de borde */
-    border-radius: 5px;
-    background-color: var(--color-background);
-    color: var(--color-text);
-  }
-  
-  .accountOptions {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .accountOptions button {
-    padding: 10px 15px;
-    background-color: var(--color-primary); /* Color del botón */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin: 10px;
-  }
-  
-  .accountOptions button:hover {
-    background-color: white; /* Color del botón al pasar el ratón */
-  }
+.profileImage {
+  width: 240px;
+  /* Ajusta el tamaño según lo necesites */
+  height: 240px;
+  border-radius: 50%;
+  /* Asegura que la imagen sea redonda */
+  object-fit: cover;
+  /* Mantiene la proporción de la imagen */
+  border: 4px solid var(--color-hover);
+  /* Color de borde */
+}
+
+.profileContainer {
+  max-width: 800px;
+  margin: -500px auto;
+  /* Mueve el contenedor hacia arriba, superponiéndolo sobre el banner */
+  margin-bottom: 0;
+  padding: 20px;
+  background-color: var(--color-background);
+  /* Color de fondo del contenedor */
+  border-radius: 10px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  /* Mantiene la relación de los elementos */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+  /* Asegúrate de que el contenedor esté por encima del banner */
+}
+
+.fileInput {
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.profileHeader {
+  text-align: center;
+  margin-top: 50px;
+  /* Espacio para la imagen de perfil */
+}
+
+.profileInfo,
+.profilePreferences,
+.activityHistory {
+  margin-bottom: 20px;
+  width: 90%;
+  color: var(--color-text);
+  margin-top: 20px;
+}
+
+.activityHistory button {
+  background-color: var(--color-primary);
+  color: white;
+  margin-left: 560px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: var(--color-text);
+  /* Color del título */
+  margin-bottom: 10px;
+}
+
+.inputGroup {
+  margin-bottom: 15px;
+}
+
+.inputGroup label {
+  display: block;
+  font-weight: bold;
+}
+
+.inputGroup input,
+.inputGroup select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #d1d5db;
+  /* Color de borde */
+  border-radius: 5px;
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+.accountOptions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.accountOptions button {
+  padding: 10px 15px;
+  background-color: var(--color-primary);
+  /* Color del botón */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+}
+
+.accountOptions button:hover {
+  background-color: white;
+  /* Color del botón al pasar el ratón */
+}
