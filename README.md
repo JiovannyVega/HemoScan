@@ -1,70 +1,124 @@
-# Getting Started with Create React App
+# HemoScan
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+HemoScan es una aplicación web innovadora que utiliza inteligencia artificial para analizar fotos médicas, como exámenes de hemoglobina, y proporcionar información sobre si los niveles están dentro del rango normal. También ofrece recomendaciones de salud basadas en los resultados. La aplicación está desarrollada con React y utiliza Tailwind CSS para el diseño.
 
-## Available Scripts
+## Tabla de Contenidos
 
-In the project directory, you can run:
+- [Descripción del Proyecto](#descripción-del-proyecto)
+- [Características](#características)
+- [Tecnologías Utilizadas](#tecnologías-utilizadas)
+- [Instalación y Configuración](#instalación-y-configuración)
+- [Cómo Usar](#cómo-usar)
+- [Pantallas](#pantallas)
+- [Contribuir](#contribuir)
+- [Licencia](#licencia)
 
-### `npm start`
+## Descripción del Proyecto
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+HemoScan tiene como objetivo ayudar a los usuarios a analizar sus niveles de hemoglobina mediante una simple carga de fotos. Usando algoritmos avanzados de inteligencia artificial, el sistema evalúa la imagen y devuelve los resultados indicando si los niveles de hemoglobina son normales, altos o bajos, además de ofrecer recomendaciones de salud personalizadas.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Características
 
-### `npm test`
+- **Autenticación de Usuarios:** Funcionalidad de inicio de sesión y registro con gestión de cuentas.
+- **Análisis de Hemoglobina basado en IA:** Carga y análisis de fotos de exámenes de hemoglobina con retroalimentación en tiempo real.
+- **Recomendaciones de Salud:** Consejos personalizados según los resultados del análisis.
+- **Diseño Responsivo:** Optimizado para dispositivos móviles y de escritorio.
+- **Sección de Ayuda/FAQ:** Centro de ayuda para que los usuarios obtengan más información y soluciones a problemas.
+- **Soporte para Modo Oscuro y Claro:** Posibilidad de cambiar entre temas oscuro y claro.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tecnologías Utilizadas
 
-### `npm run build`
+- **Frontend:**
+  - React.js
+  - React Router para la navegación
+  - Tailwind CSS para el diseño
+- **Backend (Opcional, dependiendo del alcance del proyecto):**
+  - Node.js/Express.js (Si aplica)
+  - MongoDB o Firebase para la gestión de datos de usuarios
+- **Integración de IA:** 
+  - Modelo de IA para análisis de hemoglobina
+- **APIs:**
+  - Google API para identificación de usuarios (planificado)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Instalación y Configuración
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Requisitos Previos
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Asegúrate de tener instalado lo siguiente:
 
-### `npm run eject`
+- **Node.js** (v14 o superior)
+- **npm** o **yarn**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Pasos de Instalación
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Clona el repositorio:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    ```bash
+    git clone https://github.com/JiovannyVega/HemoScan.git
+    ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. Navega al directorio del proyecto:
 
-## Learn More
+    ```bash
+    cd HemoScan
+    ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. Instala las dependencias:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    ```bash
+    npm install
+    ```
 
-### Code Splitting
+4. Inicia el servidor de desarrollo:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    ```bash
+    npm run dev
+    ```
 
-### Analyzing the Bundle Size
+5. Abre la aplicación en tu navegador:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    ```bash
+    http://localhost:3000
+    ```
 
-### Making a Progressive Web App
+## Cómo Usar
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. **Regístrate** para crear una nueva cuenta o **inicia sesión** si ya tienes una cuenta.
+2. Una vez autenticado, sube una foto de tu examen de hemoglobina para su análisis.
+3. La IA analizará la imagen y mostrará los resultados, indicando si tus niveles de hemoglobina son normales, altos o bajos.
+4. Revisa las recomendaciones de salud personalizadas basadas en tus resultados.
+5. Utiliza la página de **Ayuda/FAQ** para resolver dudas o problemas.
 
-### Advanced Configuration
+## Pantallas
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **NewHomePage:** Página principal visible para todos los usuarios, tanto autenticados como no autenticados.
+- **LoginPage:** Página para que los usuarios inicien sesión en su cuenta.
+- **SignupPage:** Página para que nuevos usuarios se registren.
+- **Dashboard:** Área principal donde se muestran los resultados y las recomendaciones.
+- **ProfilePage:** Permite a los usuarios actualizar sus datos de perfil.
+- **Help/FAQ Page:** Proporciona respuestas a preguntas comunes e información de soporte.
+- **AboutPage:** Información sobre el proyecto HemoScan.
+- **ErrorPage:** Página de error personalizada para rutas incorrectas o excepciones no controladas.
 
-### Deployment
+## Contribuir
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+¡Las contribuciones son bienvenidas! Por favor, sigue estos pasos:
 
-### `npm run build` fails to minify
+1. Haz un fork del repositorio.
+2. Crea una nueva rama para tu característica o corrección de errores:
+    ```bash
+    git checkout -b feature/nueva-caracteristica
+    ```
+3. Haz commit de tus cambios:
+    ```bash
+    git commit -m 'Agregar una nueva característica'
+    ```
+4. Sube los cambios a la rama:
+    ```bash
+    git push origin feature/nueva-caracteristica
+    ```
+5. Abre un Pull Request y describe tus cambios.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Licencia
+
+Este proyecto está licenciado bajo la Licencia MIT - consulta el archivo [LICENSE](LICENSE) para más detalles.
