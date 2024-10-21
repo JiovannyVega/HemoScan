@@ -35,9 +35,9 @@ const LoginPage = () => {
             </p>
           </div>
         )}
-        <div className="flex items-end justify-end w-full h-64 cursor-pointer lg:w-3/4 lg:h-full">
+        < div className="items-end justify-end hidden w-full h-64 cursor-pointer lg:flex lg:w-3/4 lg:h-full" >
           <img src="./src/assets/medicosImage.png" className="w-full h-full rounded-b-2xl lg:rounded-r-2xl lg:rounded-b-none" alt="Medicos" />
-        </div>
+        </div >
       </div>
     </div>
   );
