@@ -15,15 +15,27 @@ const ProfilePage = () => {
   });
 
   useEffect(() => {
-    setUser({
-      name: profile.name,
-      email: profile.email,
-      picture: profile.picture || "",
-      birthDate: profile.birthDate || "",
-      gender: profile.gender || "",
-      language: profile.language || "",
-      notifications: profile.notifications || true,
-    });
+    if (profile) {
+      setUser({
+        name: profile.name,
+        email: profile.email,
+        picture: profile.picture || "./src/assets/Perfil.jpg",
+        birthDate: profile.birthDate || "",
+        gender: profile.gender || "",
+        language: profile.language || "",
+        notifications: profile.notifications || true,
+      });
+    } else {
+      setUser({
+        name: "Kim Dahyun",
+        email: "kimdahyun@gmail.com",
+        picture: "./src/assets/Perfil.jpg",
+        birthDate: "1998-05-28",
+        gender: "femenino",
+        language: "Espanol",
+        notifications: true,
+      });
+    }
   }, [profile]);
 
   const handleChange = (e) => {
