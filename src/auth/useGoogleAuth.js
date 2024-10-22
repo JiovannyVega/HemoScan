@@ -3,11 +3,21 @@ import { googleLogout, useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 
 const useGoogleAuth = () => {
-  const [user, setUser] = useState(null);
-  const [profile, setProfile] = useState(null);
+  const [user, setUser] = useState(() => {
+    const savedUser = localStorage.getItem("user");
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
+
+  const [profile, setProfile] = useState(() => {
+    const savedProfile = localStorage.getItem("profile");
+    return savedProfile ? JSON.parse(savedProfile) : null;
+  });
 
   const login = useGoogleLogin({
-    onSuccess: (codeResponse) => setUser(codeResponse),
+    onSuccess: (codeResponse) => {
+      setUser(codeResponse);
+      localStorage.setItem("user", JSON.stringify(codeResponse));
+    },
     onError: (error) => console.log("Login Failed:", error),
   });
 
@@ -22,6 +32,8 @@ const useGoogleAuth = () => {
         })
         .then((res) => {
           setProfile(res.data);
+          localStorage.setItem("profile", JSON.stringify(res.data));
+          console.log(res.data);
         })
         .catch((err) => console.log(err));
     }
@@ -29,7 +41,10 @@ const useGoogleAuth = () => {
 
   const logOut = () => {
     googleLogout();
+    setUser(null);
     setProfile(null);
+    localStorage.removeItem("user");
+    localStorage.removeItem("profile");
   };
 
   return { profile, login, logOut };

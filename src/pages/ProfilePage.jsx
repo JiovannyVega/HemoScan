@@ -1,15 +1,30 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import useGoogleAuth from '../auth/useGoogleAuth';
 
 const ProfilePage = () => {
+  const { profile } = useGoogleAuth();
 
   const [user, setUser] = useState({
     name: "Kim Dahyun",
     email: "kimdahyun@gmail.com",
+    picture: "./src/assets/Perfil.jpg",
     birthDate: "1998-05-28",
     gender: "femenino",
     language: "Espanol",
     notifications: true,
   });
+
+  useEffect(() => {
+    setUser({
+      name: profile.name,
+      email: profile.email,
+      picture: profile.picture || "",
+      birthDate: profile.birthDate || "",
+      gender: profile.gender || "",
+      language: profile.language || "",
+      notifications: profile.notifications || true,
+    });
+  }, [profile]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,7 +39,7 @@ const ProfilePage = () => {
       <div className="flex flex-col items-center p-0 m-0">
         <section className="bg-[url('./src/assets/NHP.png')] bg-center bg-cover w-full h-96 "></section>
         <div className="flex flex-col items-center w-1/2 p-5 mb-0 rounded-lg -m-80 bg-background">
-          <img src={("./src/assets/Perfil.jpg")} alt="Profile" className="mt-5 mb-5 bg-cover border-4 rounded-full w-60 h-60 border-hover" />
+          <img src={user.picture} alt="Profile" className="mt-5 mb-5 bg-cover border-4 rounded-full w-60 h-60 border-hover" />
           <div className="w-4/5 mt-5 mb-5 text-center text-text">
             <p className="text-4xl">{user.name}</p>
             <p className="text-xl">{user.email}</p>
