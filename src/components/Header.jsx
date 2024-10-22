@@ -34,6 +34,9 @@ const Header = () => {
                     <li className="font-semibold text-gray-800 hover:text-blue-500 active:text-blue-500 dark:text-gray-200">
                         <Link to="/Login">Login</Link>
                     </li>
+                    <li className="font-semibold text-gray-800 hover:text-blue-500 active:text-blue-500 dark:text-gray-200">
+                        <Link to="/profile">Profile</Link>
+                    </li>
                     <li className="mr-5">
                         <div className="relative inline-block w-10 mr-2 align-middle transition duration-200 ease-in select-none">
                             <input
