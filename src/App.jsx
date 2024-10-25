@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import ErrorPage from "./pages/ErrorPage";
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
+import HFAQPage from "./pages/HFAQPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/about/" element={<About />} />
             <Route path="/*" element={<ErrorPage />} />
             <Route path="/profile/" element={<ProfilePage />} />
+            <Route path="/hfaq/" element={<HFAQPage />} />
           </Routes>
           <Footer />
         </Router>
