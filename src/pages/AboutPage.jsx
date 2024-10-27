@@ -8,7 +8,7 @@ const AboutPage = () => {
                     <p className="mt-24 text-6xl text-center text-white">Acerca de HemoScan AI</p>
                     <p className="mt-2 text-2xl text-center text-white">Análisis inteligente de hemoglobina para mejorar la salud</p>
                 </section>
-                <div className="flex flex-col items-center w-4/5 p-5 mb-0 -mt-24 text-center rounded-lg -24 bg-background dark:bg-background-dark">
+                <div className="flex flex-col items-center w-4/5 p-5 mb-0 -mt-24 text-center rounded-lg bg-background dark:bg-background-dark">
                     <div className="w-3/4 p-10 my-5 text-xl border-2 rounded-lg border-hover dark:border-hover-dark">
                         <h className="text-2xl">Breve resumen</h>
                         <ul className="my-5 text-left">

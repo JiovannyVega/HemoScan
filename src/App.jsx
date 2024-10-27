@@ -7,6 +7,9 @@ import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
 import HFAQPage from "./pages/HFAQPage";
 import AboutPage from "./pages/AboutPage";
+import Dashboard from "./pages/Dashboard";
+import SignupPage from "./pages/RegisterPage";
+
 
 function App() {
   return (
@@ -21,6 +24,8 @@ function App() {
             <Route path="/*" element={<ErrorPage />} />
             <Route path="/profile/" element={<ProfilePage />} />
             <Route path="/hfaq/" element={<HFAQPage />} />
+            <Route path="/dashboard/" element={<Dashboard />} />
+            <Route path="/signup/" element={<SignupPage />} />
           </Routes>
           <Footer />
         </Router>
