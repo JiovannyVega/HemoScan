@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import { motion } from 'framer-motion'; // Importa framer-motion
+import Switch from "react-switch"; // Importa react-switch
 
 const Header = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -47,26 +47,22 @@ const Header = () => {
             </Link>
           ))}
           <div className="relative inline-block w-10 align-middle transition duration-200 ease-in select-none">
-            <input
-              type="checkbox"
-              name="toggle"
-              id="toggle"
-              className="hidden toggle-checkbox"
-              onClick={toggleTheme}
+            <Switch
+              checked={isDarkMode}
+              onChange={toggleTheme}
+              onColor="#4B5563"
+              offColor="#D1D5DB"
+              onHandleColor="#FFFFFF"
+              offHandleColor="#FFFFFF"
+              handleDiameter={20}
+              uncheckedIcon={false}
+              checkedIcon={false}
+              boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+              activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+              height={20}
+              width={40}
+              className="react-switch"
             />
-            <motion.label
-              htmlFor="toggle"
-              className="block h-6 bg-gray-300 rounded-full cursor-pointer toggle-label"
-              layout
-            >
-              <motion.div
-                className="absolute w-6 h-6 bg-white border-4 rounded-full"
-                layout
-                initial={{ x: 0 }}
-                animate={{ x: isDarkMode ? 24 : 0 }}
-                transition={{ type: "spring", stiffness: 500, damping: 30 }}
-              />
-            </motion.label>
           </div>
         </nav>
 
