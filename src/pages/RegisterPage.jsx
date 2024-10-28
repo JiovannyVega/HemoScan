@@ -4,10 +4,10 @@ function SignupPage() {
     return (
         <>
             <div className="flex flex-row h-auto bg-gradient-to-b from-primary to-secondary">
-                <div className="flex items-center w-1/2">
+                <div className="items-center hidden w-1/2 sm:flex">
                     <img src="./src/assets/Intro.png" alt="Intro" className="h-250" />
                 </div>
-                <div className="flex flex-col items-center w-1/2 h-full ml-auto bg-background dark:bg-background-dark text-text dark:text-text-dark">
+                <div className="flex flex-col items-center w-full h-full ml-auto sm:w-1/2 bg-background dark:bg-background-dark text-text dark:text-text-dark">
                     <div className="flex flex-row w-11/12 text-center border-b">
                         <div className="w-1/2 mt-5">
                             <Link to="/login" className="no-underline p-7">Iniciar sesión</Link>
