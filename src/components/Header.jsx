@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/16/solid";
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { motion } from 'framer-motion'; // Importa framer-motion
 
 const Header = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -50,13 +51,22 @@ const Header = () => {
               type="checkbox"
               name="toggle"
               id="toggle"
-              className="absolute block w-6 h-6 bg-white border-4 rounded-full appearance-none cursor-pointer toggle-checkbox"
+              className="hidden toggle-checkbox"
               onClick={toggleTheme}
             />
-            <label
+            <motion.label
               htmlFor="toggle"
-              className="block h-6 overflow-hidden bg-gray-300 rounded-full cursor-pointer toggle-label"
-            ></label>
+              className="block h-6 bg-gray-300 rounded-full cursor-pointer toggle-label"
+              layout
+            >
+              <motion.div
+                className="absolute w-6 h-6 bg-white border-4 rounded-full"
+                layout
+                initial={{ x: 0 }}
+                animate={{ x: isDarkMode ? 24 : 0 }}
+                transition={{ type: "spring", stiffness: 500, damping: 30 }}
+              />
+            </motion.label>
           </div>
         </nav>
 
