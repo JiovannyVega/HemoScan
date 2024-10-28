@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function SignupPage() {
     return (
         <>
-            <div className="flex flex-row h-auto bg-gradient-to-b from-primary to-secondary">
+            <div className="flex flex-row h-full bg-gradient-to-b from-primary to-secondary">
                 <div className="flex items-center w-1/2">
                     <img src="./src/assets/Intro.png" alt="Intro" className="h-250" />
                 </div>
@@ -22,7 +22,7 @@ function SignupPage() {
                     <p className="">
                         Regístrate ahora y obtén acceso completo a nuestra aplicación.
                     </p>
-                    <form className="flex flex-col w-11/12 h-full p-7">
+                    <form className="flex flex-col justify-center w-11/12 h-full p-7">
                         <div className="flex flex-row justify-center w-auto">
                             <input required placeholder="Nombre(s)" type="text" className="w-1/2 p-3 mb-4 mr-1 border rounded-md bg-background dark:bg-background-dark" />
                             <input required placeholder="Apellido" type="text" className="w-1/2 p-3 mb-4 border rounded-md bg-background dark:bg-background-dark" />
