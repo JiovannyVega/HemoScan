@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/16/solid";
 
 const Header = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -61,7 +62,7 @@ const Header = () => {
 
         <div className="relative sm:hidden">
           <button onClick={toggleMenu} className="p-2 text-gray-800 bg-gray-200 rounded-md dark:text-gray-200 dark:bg-gray-700">
-            Menu
+            {isMenuOpen ? <XMarkIcon className="w-6 h-6" /> : <Bars3Icon className="w-6 h-6" />}
           </button>
           {isMenuOpen && (
             <nav className="absolute right-0 z-10 flex flex-col p-4 mt-2 space-y-2 bg-white border rounded-md shadow-lg dark:bg-gray-800">

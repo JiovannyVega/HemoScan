@@ -50,7 +50,7 @@ const ProfilePage = () => {
     <>
       <div className="flex flex-col items-center p-0 m-0 text-text dark:text-text-dark">
         <section className="bg-[url('./src/assets/NHP.png')] bg-center bg-cover w-full h-96 "></section>
-        <div className="flex flex-col items-center w-1/2 p-5 mb-0 rounded-lg -m-80 bg-background dark:bg-background-dark">
+        <div className="flex flex-col items-center w-full p-5 mb-0 rounded-lg md:w-1/2 -m-80 bg-background dark:bg-background-dark">
           <img src={user.picture} alt="Profile" className="mt-5 mb-5 bg-cover border-4 rounded-full w-60 h-60 border-hover dark:border-hover-dark" />
           <div className="w-4/5 mt-5 mb-5 text-center">
             <p className="text-4xl">{user.name}</p>
