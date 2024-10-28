@@ -17,7 +17,7 @@ const HFAQPage = () => {
             </div>
           </form>
         </section>
-        <div className="flex flex-col items-center w-full p-5 mb-0 text-center rounded-lg sm:-m-24 sm:w-4/5 bg-background dark:bg-background-dark">
+        <div className="flex flex-col items-center w-full p-5 mb-0 text-center rounded-lg sm:-mt-24 sm:w-4/5 bg-background dark:bg-background-dark">
           <p className="my-5 text-4xl">Centro de ayuda y preguntas frecuentes</p>
           <p className="w-3/4 my-5 text-lg">Aqui encontraras respuestas a las preguntas mas comunes sobre HemoScan y como utilizarlo. Si no encuentras lo que buscas, no dudes en contactarnos</p>
           <div className="w-3/4 p-10 my-5 text-xl border-2 rounded-lg border-hover dark:border-hover-dark">
