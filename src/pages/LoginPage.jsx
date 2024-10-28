@@ -6,39 +6,45 @@ const LoginPage = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center h-full m-4">
-        <div className="flex flex-col w-full h-auto bg-white lg:flex-row lg:w-3/5 rounded-2xl lg:h-5/6">
+      <div className="flex flex-row h-full bg-gradient-to-b from-primary to-secondary">
+        <div className="flex items-center w-1/2">
+          <img src="./src/assets/Intro.png" alt="Intro" className="h-250" />
+        </div>
+        <div className="flex flex-col items-center w-1/2 h-full ml-auto bg-background dark:bg-background-dark text-text dark:text-text-dark">
+          <div className="flex flex-row w-11/12 text-center border-b">
+            <div className="w-1/2 mt-5">
+              <Link to="/login" className="font-bold no-underline p-7">Iniciar sesión</Link>
+            </div>
+            <div className="w-1/2 mt-5">
+              <Link to="/signup" className="ml-auto no-underline p-7">Registrate</Link>
+            </div>
+          </div>
+          <p className="mt-4 text-2xl">Iniciar sesión</p>
           {profile ? (
-            <div className="flex flex-col justify-center w-full h-full lg:w-auto p-7">
-              <img src={profile.picture} alt="Profile" className="w-20 m-5" />
-              <h2 className="text-2xl font-bold">{profile.name}</h2>
+            <div className="flex flex-col h-full p-7">
+              <img src={profile.picture} alt="Profile" className="w-40 h-40 mb-5 bg-cover border-4 rounded-full border-hover dark:border-hover-dark" />
+              <h2 className="m-5 text-2xl font-bold">{profile.name}</h2>
               <p className="m-0 overflow-hidden font-bold">{profile.email}</p>
-              <button className="border-2 bg-[#284B63] text-white rounded-md p-1" onClick={logOut}>Cerrar sesión</button>
+              <button className="p-2 m-5 text-white rounded-md bg-primary hover:bg-secondary" onClick={logOut}>Cerrar sesión</button>
             </div>
           ) : (
-            <div className="flex flex-col justify-center w-full h-full lg:w-1/4 p-7">
+            <div className="flex flex-col justify-center w-11/12 h-full p-7">
               <form action="" className="flex flex-col justify-center h-auto">
                 <img src="./src/assets/perfil-icono.png" className="self-center w-20 h-20 mb-4" alt="perfil" />
-                <label htmlFor="correo" className="font-bold">Correo Electronico</label>
-                <input type="text" className="p-1 mb-4 border rounded-md" placeholder="Correo electronico" name="correo" id="correo" />
-                <label htmlFor="contrasena" className="mt-4 font-bold">Contraseña</label>
-                <input type="password" className="p-1 mb-4 border-2 rounded-md" placeholder="Contraseña" name="contrasena" id="contrasena" />
-                <p className="my-4 text-end">¿Olvidaste tu contraseña?</p>
-                <button className="border-2 bg-[#284B63] text-white rounded-md p-1 mb-4" type="submit">Ingresar</button>
+                <input type="text" className="p-3 my-5 mb-4 border rounded-md bg-background dark:bg-background-dark" placeholder="Correo electronico" name="correo" id="correo" />
+                <input type="password" className="p-3 my-5 mb-4 border-2 rounded-md bg-background dark:bg-background-dark" placeholder="Contraseña" name="contrasena" id="contrasena" />
+                <div className="flex flex-row">
+                  <p className="my-4 text-left">¿Olvidaste tu contraseña?</p>
+                  <button className="w-1/2 p-3 mb-4 ml-auto text-white border-2 rounded-md bg-primary" type="submit">Ingresar</button>
+                </div>
                 <p className="mb-4 text-center">O</p>
               </form>
               <button className="flex items-center justify-center p-2 mb-4 space-x-2 border-2 rounded-md" onClick={login}>
                 <img src="./src/assets/google.png" alt="Google Login" className="w-5 h-5" />
                 <span>Continuar con Google</span>
               </button>
-              <p className="mt-5 text-center">¿No tienes una cuenta?
-                <Link to="/SignUp" className="font-bold no-underline"> Registrate</Link>
-              </p>
             </div>
           )}
-          < div className="items-end justify-end hidden w-full h-64 cursor-pointer lg:flex lg:w-3/4 lg:h-full" >
-            <img src="./src/assets/medicosImage.png" className="w-full h-full rounded-b-2xl lg:rounded-r-2xl lg:rounded-b-none" alt="Medicos" />
-          </div >
         </div>
       </div>
     </>
