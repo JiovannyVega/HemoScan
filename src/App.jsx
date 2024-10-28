@@ -11,7 +11,7 @@ import HFAQPage from "./pages/HFAQPage";
 function App() {
   return (
     <>
-      <div className="h-screen ">
+      <div className="grid grid-rows-[auto_1fr_auto] min-h-screen">
         <Router basename="/HemoScan">
           <Header />
           <Routes className="">
