@@ -2,7 +2,7 @@ const AboutPage = () => {
     return (
         <>
             <div className="flex flex-col items-center p-0 m-0 text-text dark:text-text-dark">
-                <section className="bg-[url('./src/assets/NHP.png')] bg-center bg-cover w-full h-96 ">
+                <section className="bg-[url('/assets/NHP.png')] bg-center bg-cover w-full h-96 ">
                     <p className="mt-24 text-6xl text-center text-white">Acerca de HemoScan AI</p>
                     <p className="mt-2 text-2xl text-center text-white">Análisis inteligente de hemoglobina para mejorar la salud</p>
                 </section>
@@ -40,12 +40,12 @@ const AboutPage = () => {
                         </ul>
                         <div className="flex justify-center gap-3">
                             <div className="mt-2 text-center">
-                                <img src={("./src/assets/Perfil.jpg")} alt="Erick" className="object-cover w-20 h-20 mx-auto border-2 rounded-full item-center border-hover dark:border-hover-dark" />
+                                <img src={("/assets/Perfil.jpg")} alt="Erick" className="object-cover w-20 h-20 mx-auto border-2 rounded-full item-center border-hover dark:border-hover-dark" />
                                 <p>Erick</p>
                                 <p>Desarrollador FullStack</p>
                             </div>
                             <div className="mt-2 text-center">
-                                <img src={("./src/assets/Perfil.jpg")} alt="Nestor" className="object-cover w-20 h-20 mx-auto border-2 rounded-full border-hover dark:border-hover-dark" />
+                                <img src={("/assets/Perfil.jpg")} alt="Nestor" className="object-cover w-20 h-20 mx-auto border-2 rounded-full border-hover dark:border-hover-dark" />
                                 <p>Nestor</p>
                                 <p>Desarrollador Frontend</p>
                             </div>

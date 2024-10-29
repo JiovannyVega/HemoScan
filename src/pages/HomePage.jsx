@@ -4,7 +4,7 @@ const HomePage = () => {
   return (
     <>
       <div className="flex flex-col items-center p-0 m-0 text-text dark:text-text-dark">
-        <section className="bg-[url('./src/assets/NHP.png')] bg-center bg-cover w-full h-auto justify-center">
+        <section className="bg-[url('/assets/NHP.png')] bg-center bg-cover w-full h-auto justify-center">
           <p className="text-center text-white text-8xl mt-11">Analiza tu salud</p>
           <p className="mt-2 text-4xl text-center text-white">Con tecnologia de inteligencia artificial</p>
           <div className="justify-center w-1/2 mx-auto">

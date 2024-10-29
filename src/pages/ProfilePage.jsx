@@ -7,7 +7,7 @@ const ProfilePage = () => {
   const [user, setUser] = useState({
     name: "Kim Dahyun",
     email: "kimdahyun@gmail.com",
-    picture: "./src/assets/Perfil.jpg",
+    picture: "/assets/Perfil.jpg",
     birthDate: "1998-05-28",
     gender: "femenino",
     language: "Espanol",
@@ -19,7 +19,7 @@ const ProfilePage = () => {
       setUser({
         name: profile.name,
         email: profile.email,
-        picture: profile.picture || "./src/assets/Perfil.jpg",
+        picture: profile.picture || "/assets/Perfil.jpg",
         birthDate: profile.birthDate || "",
         gender: profile.gender || "",
         language: profile.language || "",
@@ -29,7 +29,7 @@ const ProfilePage = () => {
       setUser({
         name: "Kim Dahyun",
         email: "kimdahyun@gmail.com",
-        picture: "./src/assets/Perfil.jpg",
+        picture: "/assets/Perfil.jpg",
         birthDate: "1998-05-28",
         gender: "femenino",
         language: "Espanol",
@@ -49,7 +49,7 @@ const ProfilePage = () => {
   return (
     <>
       <div className="flex flex-col items-center p-0 m-0 text-text dark:text-text-dark">
-        <section className="bg-[url('./src/assets/NHP.png')] bg-center bg-cover w-full h-96 "></section>
+        <section className="bg-[url('/assets/NHP.png')] bg-center bg-cover w-full h-96 "></section>
         <div className="flex flex-col items-center w-full p-5 mb-0 rounded-lg md:w-1/2 -m-80 bg-background dark:bg-background-dark">
           <img src={user.picture} alt="Profile" className="mt-5 mb-5 bg-cover border-4 rounded-full w-60 h-60 border-hover dark:border-hover-dark" />
           <div className="w-4/5 mt-5 mb-5 text-center">

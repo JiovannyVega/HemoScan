@@ -2,7 +2,7 @@ const HFAQPage = () => {
   return (
     <>
       <div className="flex flex-col items-center p-0 m-0 text-text dark:text-text-dark">
-        <section className="bg-[url('./src/assets/NHP2.png')] bg-cover w-full h-96">
+        <section className="bg-[url('/assets/NHP2.png')] bg-cover w-full h-96">
           <p className="mt-20 mb-5 text-6xl text-center text-white">¿Como podemos ayudarte?</p>
           <form className="max-w-md mx-auto">
             <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
