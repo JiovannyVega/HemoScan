@@ -16,10 +16,10 @@ const LoginPage = () => {
               <Link to="/login" className="font-bold no-underline p-7">Iniciar sesión</Link>
             </div>
             <div className="w-1/2 mt-5">
-              <Link to="/signup" className="ml-auto no-underline p-7">Registrate</Link>
+              <Link to="/signup" className="ml-auto no-underline p-7">Regístrate</Link>
             </div>
           </div>
-          <p className="mt-4 text-2xl">Iniciar sesión</p>
+          <h1 className="mt-4 text-2xl">Iniciar sesión</h1>
           {profile ? (
             <div className="flex flex-col h-full p-7">
               <img src={profile.picture} alt="Profile" className="w-40 h-40 mb-5 bg-cover border-4 rounded-full border-hover dark:border-hover-dark" />
@@ -30,11 +30,13 @@ const LoginPage = () => {
           ) : (
             <div className="flex flex-col justify-center w-11/12 h-full p-7">
               <form action="" className="flex flex-col justify-center h-auto">
-                <img src="/assets/perfil-icono.png" className="self-center w-20 h-20 mb-4" alt="perfil" />
-                <input type="text" className="p-3 my-5 mb-4 border rounded-md bg-background dark:bg-background-dark" placeholder="Correo electronico" name="correo" id="correo" />
-                <input type="password" className="p-3 my-5 mb-4 border-2 rounded-md bg-background dark:bg-background-dark" placeholder="Contraseña" name="contrasena" id="contrasena" />
+                <img src="/assets/perfil-icono.png" className="self-center w-20 h-20 mb-4" alt="Perfil" />
+                <label htmlFor="correo" className="sr-only">Correo electrónico</label>
+                <input type="email" className="p-3 my-5 mb-4 border rounded-md bg-background dark:bg-background-dark" placeholder="Correo electrónico" name="correo" id="correo" required />
+                <label htmlFor="contrasena" className="sr-only">Contraseña</label>
+                <input type="password" className="p-3 my-5 mb-4 border-2 rounded-md bg-background dark:bg-background-dark" placeholder="Contraseña" name="contrasena" id="contrasena" required />
                 <div className="flex flex-row">
-                  <p className="my-4 text-left">¿Olvidaste tu contraseña?</p>
+                  <Link to="/forgot-password" className="my-4 text-left">¿Olvidaste tu contraseña?</Link>
                   <button className="w-1/2 p-3 mb-4 ml-auto text-white border-2 rounded-md bg-primary" type="submit">Ingresar</button>
                 </div>
                 <p className="mb-4 text-center">O</p>
