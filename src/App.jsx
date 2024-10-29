@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <div className="grid grid-rows-[auto_1fr_auto] min-h-screen">
-        <Router basename="/">
+        <Router>
           <Header />
           <Routes className="">
             <Route path="/" element={<HomePage />} />
