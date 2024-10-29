@@ -33,7 +33,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="p-5 m-0 bg-white dark:bg-gray-800">
+    <header className="p-5 m-0 bg-gray-200 dark:bg-gray-800">
       <div className="flex flex-row items-center justify-between max-w-6xl mx-auto shrink">
         <div className="flex items-center mb-4 shrink-1 md:mb-0">
           <img src="/assets/logo.png" alt="logo" className="w-10 mr-2" />
