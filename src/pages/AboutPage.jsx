@@ -4,7 +4,7 @@ const AboutPage = () => {
     return (
         <>
             <div className="flex flex-col items-center p-0 m-0 text-text dark:text-text-dark">
-                <section className="bg-[url('./src/assets/NHP.png')] bg-center bg-cover w-full h-96 ">
+                <section className="bg-[url('./src/assets/NHP.png')] bg-center bg-cover w-full h-96">
                     <p className="mt-24 text-6xl text-center text-white">Acerca de HemoScan AI</p>
                     <p className="mt-2 text-2xl text-center text-white">Análisis inteligente de hemoglobina para mejorar la salud</p>
                 </section>
