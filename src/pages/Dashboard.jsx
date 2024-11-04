@@ -9,9 +9,9 @@ const Dashboard = () => {
       case 'section1':
         return (
           <>
-            <div className='h-screen p-8 border-t-2 bg-background dark:bg-background-dark'>
-              <div className='flex flex-row h-screen'>
-                <div className='flex flex-col w-3/5 mx-5 border shadow-xl rounded-xl h-1/2'>
+            <div className='h-full p-8 border-t-2 bg-background dark:bg-background-dark'>
+              <div className='flex flex-col h-auto gap-4 md:gap-0 md:flex-row'>
+                <div className='flex flex-col w-auto mx-5 border shadow-xl md:w-3/5 rounded-xl h-1/2'>
                   <h2 className='m-5 text-xl font-bold'>Recent analysis</h2>
                   <div className='p-5 overflow-x-auto'>
                     <table className='min-w-full text-center'>
@@ -42,7 +42,7 @@ const Dashboard = () => {
                     </table>
                   </div>
                 </div>
-                <div className='flex-col w-2/5 mx-5 border shadow-xl rounded-xl h-1/2'>
+                <div className='flex-col w-auto mx-5 border shadow-xl md:w-2/5 rounded-xl h-1/2'>
                   <p className='m-5 text-xl font-bold'>Preview</p>
                 </div>
               </div>
