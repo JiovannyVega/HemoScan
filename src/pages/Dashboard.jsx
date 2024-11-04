@@ -1,82 +1,136 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Dashboard = () => {
+  const [activeSection, setActiveSection] = useState('section1')
+
+  const renderSection = () => {
+    switch (activeSection) {
+      case 'section1':
+        return (
+          <>
+            <div className='h-screen p-8 border-t-2 bg-background dark:bg-background-dark'>
+              <div className='flex flex-row h-screen'>
+                <div className='flex flex-col w-3/5 mx-5 border shadow-xl rounded-xl h-1/2'>
+                  <h2 className='m-5 text-xl font-bold'>Recent analysis</h2>
+                  <div className='p-5 overflow-x-auto'>
+                    <table className='min-w-full text-center'>
+                      <thead>
+                        <tr>
+                          <th className='px-4 py-2 border-b'>File name</th>
+                          <th className='px-4 py-2 border-b'>Date order</th>
+                          <th className='px-4 py-2 border-b'>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td className='px-4 py-2 border-b'>Hemo.pdf</td>
+                          <td className='px-4 py-2 border-b'>01/10/2021</td>
+                          <td className='px-4 py-2 bg-green-600 border-b'>Completed</td>
+                        </tr>
+                        <tr>
+                          <td className='px-4 py-2 border-b'>Hemo.pdf</td>
+                          <td className='px-4 py-2 border-b'>01/02/22</td>
+                          <td className='px-4 py-2 bg-red-600 border-b'>Pending</td>
+                        </tr>
+                        <tr>
+                          <td className='px-4 py-2 border-b'>Hemo.pdf</td>
+                          <td className='px-4 py-2 border-b'>01/02/22</td>
+                          <td className='px-4 py-2 bg-orange-600 border-b'>In process</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div className='flex-col w-2/5 mx-5 border shadow-xl rounded-xl h-1/2'>
+                  <p className='m-5 text-xl font-bold'>Preview</p>
+                </div>
+              </div>
+            </div>
+          </>
+        )
+      case 'section2':
+        return (
+          <div className='h-screen p-8 border-t-2 bg-background dark:bg-background-dark'>
+            <div className='flex flex-row h-full'>
+              <div className='flex-col w-1/2 mx-5 border shadow-xl rounded-xl h-1/2' />
+              <div className='flex-col w-1/2 mx-5 border shadow-xl rounded-xl h-1/2'>
+                <h2 className='m-5 text-xl font-bold'>Actual levels</h2>
+                <div className='p-5 overflow-x-auto'>
+                  <table className='min-w-full text-center'>
+                    <tbody>
+                      <tr>
+                        <td className='px-4 py-2 border-y'>Linfocitos</td>
+                        <td className='px-4 py-2 bg-green-600 border-b'>Normal</td>
+                      </tr>
+                      <tr>
+                        <td className='px-4 py-2 border-b'>Hemocrocitos</td>
+                        <td className='px-4 py-2 bg-red-600 border-b'>High</td>
+                      </tr>
+                      <tr>
+                        <td className='px-4 py-2 border-b'>Hemoglobina</td>
+                        <td className='px-4 py-2 bg-orange-600 border-b'>Low</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+      case 'section3':
+        return (
+          <div className='h-screen p-8 border-t-2 bg-background dark:bg-background-dark'>
+            <div className='flex-col w-1/2 h-auto p-5 mx-auto border shadow-xl rounded-xl'>
+              <div className='flex flex-col items-center h-full text-center p-7'>
+                <img src='./src/assets/Perfil.jpg' alt='Profile' className='w-40 h-40 mb-5 bg-cover border-4 rounded-full border-hover dark:border-hover-dark' />
+                <h2 className='m-2 text-2xl font-bold'>Nombre</h2>
+                <p className='m-0 overflow-hidden font-bold'>51</p>
+                <p className='my-1'>Femenino</p>
+                <p className='my-1'>Ninguna alergia detectada</p>
+                <div className='flex-row w-full'>
+                  <button className='w-1/3 p-2 m-3 text-white rounded-md bg-primary hover:bg-secondary'>Editar</button>
+                  <button className='w-1/3 p-2 m-3 text-white rounded-md bg-primary hover:bg-secondary'>Guardar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+      default:
+        return null
+    }
+  }
+
   return (
-    <div className='flex flex-row h-screen bg-background text-text'>
-      {/* Sidebar */}
-      <div className='flex flex-col w-64 p-6 space-y-4 text-white bg-secondary'>
-        <h2 className='text-2xl font-bold text-center'>HemoScan</h2>
-        <ul className='mt-6 space-y-2'>
-          <li className='p-3 rounded-lg bg-primary'>
-            <Link to='/' className='block text-lg'>Dashboard</Link>
+    <div className='flex text-text dark:text-text-dark'>
+      <nav className='w-1/5 h-screen border-t-2 border-r-2 bg-background dark:bg-background-dark'>
+        <h2 className='p-8 text-xl font-bold'>HemoScan</h2>
+        <ul>
+          <li>
+            <button onClick={() => setActiveSection('section1')} className='block w-full py-2 text-left hover:bg-hover dark:hover:bg-hover-dark'>
+              <p className='mx-8'>Dashboard</p>
+            </button>
           </li>
-          <li className='p-3 rounded-lg hover:bg-hover'>
-            <Link to='/analytics' className='block text-lg'>Analytics</Link>
+          <li>
+            <button onClick={() => setActiveSection('section2')} className='block w-full py-2 text-left hover:bg-hover dark:hover:bg-hover-dark'>
+              <p className='mx-8'>Analitycs</p>
+            </button>
           </li>
-          <li className='p-3 rounded-lg hover:bg-hover'>
-            <Link to='/settings' className='block text-lg'>Settings</Link>
+          <li>
+            <button onClick={() => setActiveSection('section3')} className='block w-full py-2 text-left hover:bg-hover dark:hover:bg-hover-dark'>
+              <p className='mx-8'>Settings</p>
+            </button>
           </li>
-          <li className='p-3 rounded-lg hover:bg-hover'>
-            <Link to='/logout' className='block text-lg'>Logout</Link>
+          <li>
+            <button className='block w-full py-2 text-left hover:bg-hover dark:hover:bg-hover-dark'>
+              <Link to='/login' className='mx-8'>Logout</Link>
+            </button>
           </li>
         </ul>
-      </div>
+      </nav>
 
-      {/* Main Content */}
-      <div className='flex-1 p-8 overflow-y-auto bg-background-light'>
-        <h1 className='mb-8 text-3xl font-bold'>Dashboard</h1>
-
-        {/* Card Container */}
-        <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
-          {/* Recent Orders Card */}
-          <div className='p-6 text-white rounded-lg shadow-md bg-primary'>
-            <h2 className='mb-4 text-xl font-semibold'>Recent Orders</h2>
-            <table className='w-full'>
-              <thead>
-                <tr className='text-left'>
-                  <th className='pb-2'>User</th>
-                  <th className='pb-2'>Date</th>
-                  <th className='pb-2'>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className='border-t border-secondary'>
-                  <td className='pt-2'>
-                    <img src='./assets/user1.png' alt='user' className='inline-block w-8 h-8 mr-2 rounded-full' /> John Doe
-                  </td>
-                  <td className='pt-2'>01-10-2021</td>
-                  <td className='pt-2'><span className='px-2 py-1 bg-green-500 rounded'>Completed</span></td>
-                </tr>
-                <tr className='border-t border-secondary'>
-                  <td className='pt-2'>
-                    <img src='./assets/user2.png' alt='user' className='inline-block w-8 h-8 mr-2 rounded-full' /> Jane Smith
-                  </td>
-                  <td className='pt-2'>02-10-2021</td>
-                  <td className='pt-2'><span className='px-2 py-1 bg-yellow-500 rounded'>Pending</span></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          {/* To-Do List Card */}
-          <div className='p-6 text-white rounded-lg shadow-md bg-primary'>
-            <h2 className='mb-4 text-xl font-semibold'>To-Do List</h2>
-            <ul className='space-y-2'>
-              <li className='flex justify-between p-3 rounded-md bg-secondary'>
-                <span>Review Results</span>
-                <span className='text-gray-400'>...</span>
-              </li>
-              <li className='flex justify-between p-3 rounded-md bg-secondary'>
-                <span>Upload New Data</span>
-                <span className='text-gray-400'>...</span>
-              </li>
-              <li className='flex justify-between p-3 rounded-md bg-secondary'>
-                <span>Run Analysis</span>
-                <span className='text-gray-400'>...</span>
-              </li>
-            </ul>
-          </div>
-        </div>
+      <div className='flex-1'>
+        {renderSection()}
       </div>
     </div>
   )

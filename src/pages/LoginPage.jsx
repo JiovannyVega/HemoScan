@@ -1,8 +1,30 @@
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import axios from 'axios'
 import useGoogleAuth from '../auth/useGoogleAuth'
 
 const LoginPage = () => {
   const { profile, login, logOut } = useGoogleAuth()
+  const [formData, setFormData] = useState({ email: '', contrasena: '' })
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      const response = await axios.post('http://localhost:3000/login', {
+        email: formData.email,
+        contrasena: formData.contrasena
+      })
+      alert('Inicio de sesión exitoso')
+      console.log(response.data)
+    } catch (error) {
+      console.error('Error al iniciar sesión:', error)
+      alert('Error al iniciar sesión')
+    }
+  }
 
   return (
     <>
@@ -22,7 +44,6 @@ const LoginPage = () => {
           <h1 className='mt-4 text-2xl'>Iniciar sesión</h1>
           {profile
             ? (
-
               <div className='flex flex-col h-full p-7'>
                 <img src={profile.picture} alt='Profile' className='w-40 h-40 mb-5 bg-cover border-4 rounded-full border-hover dark:border-hover-dark' />
                 <h2 className='m-5 text-2xl font-bold'>{profile.name}</h2>
@@ -32,12 +53,12 @@ const LoginPage = () => {
             )
             : (
               <div className='flex flex-col justify-center w-11/12 h-full p-7'>
-                <form action='' className='flex flex-col justify-center h-auto'>
+                <form action='' className='flex flex-col justify-center h-auto' onSubmit={handleSubmit}>
                   <img src='/assets/perfil-icono.png' className='self-center w-20 h-20 mb-4' alt='Perfil' />
                   <label htmlFor='correo' className='sr-only'>Correo electrónico</label>
-                  <input type='email' className='p-3 my-5 mb-4 border rounded-md bg-background dark:bg-background-dark' placeholder='Correo electrónico' name='correo' id='correo' required />
+                  <input type='email' className='p-3 my-5 mb-4 border rounded-md bg-background dark:bg-background-dark' placeholder='Correo electrónico' name='email' id='correo' value={formData.email} onChange={handleChange} required />
                   <label htmlFor='contrasena' className='sr-only'>Contraseña</label>
-                  <input type='password' className='p-3 my-5 mb-4 border-2 rounded-md bg-background dark:bg-background-dark' placeholder='Contraseña' name='contrasena' id='contrasena' required />
+                  <input type='password' className='p-3 my-5 mb-4 border-2 rounded-md bg-background dark:bg-background-dark' placeholder='Contraseña' name='contrasena' id='contrasena' value={formData.contrasena} onChange={handleChange} required />
                   <div className='flex flex-row'>
                     <Link to='/forgot-password' className='my-4 text-left'>¿Olvidaste tu contraseña?</Link>
                     <button className='w-1/2 p-3 mb-4 ml-auto text-white border-2 rounded-md bg-primary' type='submit'>Ingresar</button>
