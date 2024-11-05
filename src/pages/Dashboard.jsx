@@ -1,9 +1,33 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
+
 
 const Dashboard = () => {
   const [activeSection, setActiveSection] = useState('section1')
+  const [preview, setPreview] = useState(null);
+  const [fileName, setFileName] = useState(''); // Estado para el nombre del archivo
+  const fileInputRef = useRef(null);
 
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    setFileName(file.name);
+    if (file.type.startsWith("image/")) {
+      // Mostrar vista previa si es una imagen
+      const fileUrl = URL.createObjectURL(file);
+      setPreview(<img src={fileUrl} alt="Vista previa del archivo" className="h-20 rounded-l" />);
+    } else if (file.type === "application/pdf") {
+      // Mostrar un ícono o mensaje si es PDF
+      setPreview(<p className="h-20 text-text dark:text-text-dark">No vista previa</p>);
+    } else {
+      alert("Por favor, selecciona una imagen o un archivo PDF.");
+      setPreview(null);
+      setFileName('');
+    }
+  };
+
+  const handleLabelClick = () => {
+    fileInputRef.current.click(); // Forzar el clic en el input
+  };
   const renderSection = () => {
     switch (activeSection) {
       case 'section1':
@@ -43,7 +67,31 @@ const Dashboard = () => {
                   </div>
                 </div>
                 <div className='flex-col w-auto mx-5 border shadow-xl md:w-2/5 rounded-xl h-1/2'>
-                  <p className='m-5 text-xl font-bold'>Preview</p>
+                  <p className='mt-5 ml-5 text-xl font-bold'>Preview</p>
+                  <div className='p-10'>
+                  <div className="file-upload">
+                    {preview && (
+                      <div className="flex flex-row items-center w-full border rounded-md preview">
+                        <div className="w-1/5 border  rounded-l-md preview">
+                          {preview}
+                        </div>
+                        <p className="ml-2">{fileName}</p>
+                      </div>
+                    )}
+                      <button onClick={handleLabelClick} className="w-full p-2 my-2 border rounded-lg shadow-md cursor-pointer">
+                        Add file
+                      </button>
+                      <input
+                        type="file"
+                        ref={fileInputRef}
+                        onChange={handleFileUpload}
+                        className="hidden input-field"
+                        accept="image/*,application/pdf"
+                      />
+                    
+                  </div>
+                    <button className='w-full p-2 mb-2 text-lg text-white border rounded-lg bg-primary'>Upload File</button>
+                  </div>
                 </div>
               </div>
             </div>
