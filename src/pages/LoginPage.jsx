@@ -2,8 +2,11 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
 import { GoogleLogin } from '@react-oauth/google'
+import useGoogleAuth from '../auth/useGoogleAuth'
 
 const LoginPage = () => {
+  const { handleGoogleLoginSuccess } = useGoogleAuth()
+
   const [formData, setFormData] = useState({ email: '', contrasena: '' })
 
   const handleChange = (e) => {
@@ -22,19 +25,6 @@ const LoginPage = () => {
     } catch (error) {
       console.error('Error al iniciar sesión:', error)
       alert('Error al iniciar sesión')
-    }
-  }
-
-  const handleGoogleLoginSuccess = async (credentialResponse) => {
-    try {
-      const response = await axios.post('http://localhost:3000/login/google', {
-        token: credentialResponse.credential // Usa credential en lugar de clientId
-      })
-      alert('Inicio de sesión con Google exitoso')
-      console.log(response.data)
-    } catch (error) {
-      console.error('Error al iniciar sesión con Google:', error)
-      alert('Error al iniciar sesión con Google')
     }
   }
 
