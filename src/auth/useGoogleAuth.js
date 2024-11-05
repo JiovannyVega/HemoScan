@@ -17,7 +17,11 @@ const useGoogleAuth = () => {
       const userData = {
         nombre: response.data.user.nombre || '',
         apellido: response.data.user.apellido || '',
-        email: response.data.user.email || ''
+        email: response.data.user.email || '',
+        edad: response.data.user.edad || '',
+        sexo: response.data.user.sexo || '',
+        telefono: response.data.user.telefono || '',
+        picture: response.data.user.picture || '/assets/Perfil.jpg'
       }
       localStorage.setItem('user', JSON.stringify(userData))
       setUser(userData)

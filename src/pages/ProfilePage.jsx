@@ -35,9 +35,9 @@ const ProfilePage = () => {
         setUser({
           name: userData.nombre || '',
           email: userData.email || '',
-          picture: '/assets/Perfil.jpg',
-          birthDate: '',
-          gender: '',
+          picture: userData.picture || '/assets/Perfil.jpg',
+          birthDate: userData.birthDate || '',
+          gender: userData.sexo || '',
           language: '',
           notifications: true
         })
