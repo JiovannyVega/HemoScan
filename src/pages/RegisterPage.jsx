@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { GoogleLogin } from '@react-oauth/google'
 import axios from 'axios'
-import useGoogleAuth from '../auth/useGoogleAuth' // Importa el hook
 
 const SignupPage = () => {
   const [formData, setFormData] = useState({
@@ -12,8 +11,6 @@ const SignupPage = () => {
     contrasena: '',
     confirmaContrasena: ''
   })
-
-  const { login } = useGoogleAuth() // Usa el hook
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -94,10 +91,6 @@ const SignupPage = () => {
             <button className='p-3 mb-4 text-white border-2 rounded-md bg-primary' type='submit'>Ingresar</button>
           </form>
           <p className='mb-5'>O</p>
-          <button className='flex items-center justify-center p-2 mb-4 space-x-2 border-2 rounded-md' onClick={login}>
-            <img src='/assets/google.png' alt='Google Login' className='w-5 h-5' />
-            <span>Continuar con Google</span>
-          </button>
           <GoogleLogin
             onSuccess={credentialResponse => {
               console.log(credentialResponse)
