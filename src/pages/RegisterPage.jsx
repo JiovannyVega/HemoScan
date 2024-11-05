@@ -30,6 +30,12 @@ const SignupPage = () => {
         email: formData.email,
         contrasena: formData.contrasena
       })
+      const userData = {
+        nombre: formData.nombre,
+        apellido: formData.apellido,
+        email: formData.email
+      }
+      localStorage.setItem('user', JSON.stringify(userData))
       alert('Usuario registrado con éxito')
     } catch (error) {
       console.error('Error al registrar usuario:', error)

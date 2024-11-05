@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import useGoogleAuth from '../auth/useGoogleAuth'
 
 const ProfilePage = () => {
-  const { profile } = useGoogleAuth()
+  const { profile, logOut } = useGoogleAuth()
 
   const [user, setUser] = useState({
     name: 'Kim Dahyun',
@@ -16,9 +16,10 @@ const ProfilePage = () => {
 
   useEffect(() => {
     if (profile) {
+      console.log('Perfil:', profile)
       setUser({
-        name: profile.name,
-        email: profile.email,
+        name: profile.name || '',
+        email: profile.email || '',
         picture: profile.picture || '/assets/Perfil.jpg',
         birthDate: profile.birthDate || '',
         gender: profile.gender || '',
@@ -26,15 +27,31 @@ const ProfilePage = () => {
         notifications: profile.notifications || true
       })
     } else {
-      setUser({
-        name: 'Kim Dahyun',
-        email: 'kimdahyun@gmail.com',
-        picture: '/assets/Perfil.jpg',
-        birthDate: '1998-05-28',
-        gender: 'femenino',
-        language: 'Espanol',
-        notifications: true
-      })
+      const savedUser = localStorage.getItem('user')
+      console.log('Usuario guardado:', savedUser)
+      if (savedUser) {
+        const userData = JSON.parse(savedUser)
+        console.log('Usuario guardado:', userData)
+        setUser({
+          name: userData.nombre || '',
+          email: userData.email || '',
+          picture: '/assets/Perfil.jpg',
+          birthDate: '',
+          gender: '',
+          language: '',
+          notifications: true
+        })
+      } else {
+        setUser({
+          name: 'Kim Dahyun',
+          email: 'kimdahyun@gmail.com',
+          picture: '/assets/Perfil.jpg',
+          birthDate: '1998-05-28',
+          gender: 'femenino',
+          language: 'Espanol',
+          notifications: true
+        })
+      }
     }
   }, [profile])
 
@@ -157,7 +174,7 @@ const ProfilePage = () => {
           </div>
           <div>
             <button
-              onClick={() => console.log('Cerrar sesion')}
+              onClick={logOut}
               className='p-4 m-2 text-white rounded-md cursor-pointer bg-primary hover:bg-secondary'
             >
               Cerrar sesion

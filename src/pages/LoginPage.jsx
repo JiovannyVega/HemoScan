@@ -20,8 +20,14 @@ const LoginPage = () => {
         email: formData.email,
         contrasena: formData.contrasena
       })
+      const userData = {
+        email: formData.email,
+        nombre: response.data.user.nombre,
+        apellido: response.data.user.apellido
+      }
+      localStorage.setItem('user', JSON.stringify(userData))
       alert('Inicio de sesión exitoso')
-      console.log(response.data)
+      console.log('Datos del usuario:', response.data.user)
     } catch (error) {
       console.error('Error al iniciar sesión:', error)
       alert('Error al iniciar sesión')
