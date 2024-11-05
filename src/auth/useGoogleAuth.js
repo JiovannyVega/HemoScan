@@ -14,21 +14,13 @@ const useGoogleAuth = () => {
   })
 
   const login = useGoogleLogin({
-    onSuccess: async (codeResponse) => {
-      try {
-        const response = await axios.post('http://localhost:3000/login/google', {
-          token: codeResponse.access_token
-        })
-        setUser(response.data.user)
-        localStorage.setItem('user', JSON.stringify(response.data.user))
-        setProfile(response.data.user)
-        localStorage.setItem('profile', JSON.stringify(response.data.user))
-      } catch (error) {
-        console.error('Error al iniciar sesión con Google:', error)
-      }
+    onSuccess: (codeResponse) => {
+      setUser(codeResponse)
+      localStorage.setItem('user', JSON.stringify(codeResponse))
     },
     onError: (error) => console.log('Login Failed:', error),
   })
+
 
   useEffect(() => {
     if (user) {

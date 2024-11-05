@@ -2,9 +2,10 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
 import useGoogleAuth from '../auth/useGoogleAuth'
+import { GoogleLogin } from '@react-oauth/google'
 
 const LoginPage = () => {
-  const { profile, login, logOut } = useGoogleAuth()
+  const { profile, logOut } = useGoogleAuth()
   const [formData, setFormData] = useState({ email: '', contrasena: '' })
 
   const handleChange = (e) => {
@@ -23,6 +24,19 @@ const LoginPage = () => {
     } catch (error) {
       console.error('Error al iniciar sesión:', error)
       alert('Error al iniciar sesión')
+    }
+  }
+
+  const handleGoogleLoginSuccess = async (credentialResponse) => {
+    try {
+      const response = await axios.post('http://localhost:3000/login/google', {
+        token: credentialResponse.credential // Usa credential en lugar de clientId
+      })
+      alert('Inicio de sesión con Google exitoso')
+      console.log(response.data)
+    } catch (error) {
+      console.error('Error al iniciar sesión con Google:', error)
+      alert('Error al iniciar sesión con Google')
     }
   }
 
@@ -65,10 +79,12 @@ const LoginPage = () => {
                   </div>
                   <p className='mb-4 text-center'>O</p>
                 </form>
-                <button className='flex items-center justify-center p-2 mb-4 space-x-2 border-2 rounded-md' onClick={login}>
-                  <img src='/assets/google.png' alt='Google Login' className='w-5 h-5' />
-                  <span>Continuar con Google</span>
-                </button>
+                <GoogleLogin
+                  onSuccess={handleGoogleLoginSuccess}
+                  onError={() => {
+                    console.log('Login Failed')
+                  }}
+                />
               </div>
             )}
         </div>
