@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import useGoogleAuth from '../auth/useGoogleAuth'
 
 const ProfilePage = () => {
-  const { profile, logOut } = useGoogleAuth()
+  const { logOut } = useGoogleAuth()
 
   const [user, setUser] = useState({
     name: 'Kim Dahyun',
@@ -15,45 +15,32 @@ const ProfilePage = () => {
   })
 
   useEffect(() => {
-    if (profile) {
-      console.log('Perfil:', profile)
+    const savedUser = localStorage.getItem('user')
+    console.log('Usuario guardado:', savedUser)
+    if (savedUser) {
+      const userData = JSON.parse(savedUser)
+      console.log('Usuario guardado:', userData)
       setUser({
-        name: profile.name || '',
-        email: profile.email || '',
-        picture: profile.picture || '/assets/Perfil.jpg',
-        birthDate: profile.birthDate || '',
-        gender: profile.gender || '',
-        language: profile.language || '',
-        notifications: profile.notifications || true
+        name: userData.nombre || '',
+        email: userData.email || '',
+        picture: userData.picture || '/assets/Perfil.jpg',
+        birthDate: userData.birthDate || '',
+        gender: userData.sexo || '',
+        language: '',
+        notifications: true
       })
     } else {
-      const savedUser = localStorage.getItem('user')
-      console.log('Usuario guardado:', savedUser)
-      if (savedUser) {
-        const userData = JSON.parse(savedUser)
-        console.log('Usuario guardado:', userData)
-        setUser({
-          name: userData.nombre || '',
-          email: userData.email || '',
-          picture: userData.picture || '/assets/Perfil.jpg',
-          birthDate: userData.birthDate || '',
-          gender: userData.sexo || '',
-          language: '',
-          notifications: true
-        })
-      } else {
-        setUser({
-          name: 'Kim Dahyun',
-          email: 'kimdahyun@gmail.com',
-          picture: '/assets/Perfil.jpg',
-          birthDate: '1998-05-28',
-          gender: 'femenino',
-          language: 'Espanol',
-          notifications: true
-        })
-      }
+      setUser({
+        name: 'Kim Dahyun',
+        email: 'kimdahyun@gmail.com',
+        picture: '/assets/Perfil.jpg',
+        birthDate: '1998-05-28',
+        gender: 'femenino',
+        language: 'Espanol',
+        notifications: true
+      })
     }
-  }, [profile])
+  }, [])
 
   const handleChange = (e) => {
     const { name, value } = e.target
