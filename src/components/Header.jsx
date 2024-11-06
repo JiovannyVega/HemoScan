@@ -27,7 +27,6 @@ const Header = () => {
     ['Home', '/'],
     ['About us', '/about'],
     ['Login', '/Login'],
-    ['Profile', '/profile'],
     ['HFAQ', '/hfaq'],
     ['Dashboard', '/dashboard']
   ]
