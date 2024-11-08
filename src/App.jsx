@@ -7,7 +7,7 @@ import HomePage from './pages/HomePage'
 import ProfilePage from './pages/ProfilePage'
 import HFAQPage from './pages/HFAQPage'
 import AboutPage from './pages/AboutPage'
-import Dashboard from './pages/Dashboard'
+import Dashboard from './pages/dashboard/Dashboard'
 import SignupPage from './pages/RegisterPage'
 
 function App () {
