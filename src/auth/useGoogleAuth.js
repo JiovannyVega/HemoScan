@@ -10,7 +10,8 @@ const useGoogleAuth = () => {
 
   const handleGoogleLoginSuccess = async (credentialResponse) => {
     try {
-      const response = await axios.post('http://localhost:3000/login/google', {
+      console.log('Credenciales de Google:', credentialResponse)
+      const response = await axios.post('http://localhost:3000/api/login/google', {
         token: credentialResponse.credential // Usa credential en lugar de clientId
       })
       alert('Inicio de sesión con Google exitoso')

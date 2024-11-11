@@ -24,7 +24,7 @@ const SignupPage = () => {
     }
     console.log('Datos del formulario:', formData)
     try {
-      await axios.post('http://localhost:3000/usuarios', {
+      await axios.post('http://localhost:3000/api/usuarios', {
         nombre: formData.nombre,
         apellido: formData.apellido,
         email: formData.email,
