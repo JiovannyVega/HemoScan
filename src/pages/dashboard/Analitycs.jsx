@@ -1,7 +1,7 @@
 const Analitycs = () => {
   return (
     <>
-      <div className='h-screen p-8 border-t-2 bg-background dark:bg-background-dark'>
+      <div className='h-full p-8 border-t-2 bg-background dark:bg-background-dark'>
         <div className='flex flex-row h-full'>
           <div className='flex-col w-1/2 mx-5 border shadow-xl rounded-xl h-1/2' />
           <div className='flex-col w-1/2 mx-5 border shadow-xl rounded-xl h-1/2'>

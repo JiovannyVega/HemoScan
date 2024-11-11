@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import useGoogleAuth from '../auth/useGoogleAuth'
+import useGoogleAuth from '../../auth/useGoogleAuth'
 
 const ProfilePage = () => {
   const { logOut } = useGoogleAuth()

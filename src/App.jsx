@@ -4,13 +4,13 @@ import LoginPage from './pages/LoginPage'
 import Footer from './components/Footer'
 import ErrorPage from './pages/ErrorPage'
 import HomePage from './pages/HomePage'
-import ProfilePage from './pages/ProfilePage'
+import ProfilePage from './pages/dashboard/ProfilePage'
 import HFAQPage from './pages/HFAQPage'
 import AboutPage from './pages/AboutPage'
 import Dashboard from './pages/dashboard/Dashboard'
 import SignupPage from './pages/RegisterPage'
 
-function App () {
+function App() {
   return (
     <>
       <div className='grid grid-rows-[auto_1fr_auto] min-h-screen'>
