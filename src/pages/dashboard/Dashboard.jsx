@@ -109,7 +109,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div className='flex text-text dark:text-text-dark'>
+    <div className='flex h-screen text-text dark:text-text-dark'>
       <nav className='w-1/5 border-t-2 border-r-2 min-h-max bg-background dark:bg-background-dark'>
         <h2 className='p-8 text-xl font-bold'>HemoScan</h2>
         <ul>
@@ -135,7 +135,6 @@ const Dashboard = () => {
           </li>
         </ul>
       </nav>
-
       <div className='flex-1'>
         {renderSection()}
       </div>
