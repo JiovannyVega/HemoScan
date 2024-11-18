@@ -52,8 +52,8 @@ const ProfilePage = () => {
 
   return (
     <>
-      <div className='flex flex-col items-center p-0 m-0 border-t-2 text-text dark:text-text-dark'>
-        <div className='flex flex-col items-center w-full p-5 mb-0 rounded-lg md:w-1/2 bg-background dark:bg-background-dark'>
+      <div className='flex flex-col items-center h-screen p-0 m-0 border-t-2 text-text dark:text-text-dark bg-background dark:bg-background-dark'>
+        <div className='flex flex-col items-center w-full p-5 mb-0 overflow-auto border rounded-lg shadow-xl md:w-1/2 bg-background dark:bg-background-dark'>
           <img
             src={user.picture}
             alt='Profile'
