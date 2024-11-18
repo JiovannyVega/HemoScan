@@ -33,14 +33,14 @@ const Analitycs = () => {
         {
           label: 'Rango superior',
           data: [5.28, 5.28, 5.28, 5.28, 5.28, 5.28, 5.28],
-          borderColor: 'rgba(255, 159, 64, 0.6)',
+          borderColor: 'rgba(255, 99, 132, 0.6)',
           borderWidth: 1,
           borderDash: [5, 5],
         },
         {
           label: 'Rango inferior',
           data: [3.69, 3.69, 3.69, 3.69, 3.69, 3.69, 3.69],
-          borderColor: '',
+          borderColor: 'rgba(255, 159, 64, 0.6)',
           borderWidth: 1,
           borderDash: [5, 5],
         },
@@ -216,7 +216,7 @@ const Analitycs = () => {
       labels: ['Examen1', 'Examen2', 'Examen3', 'Examen4', 'Examen5', 'Examen6', 'Examen7'],
       data: [
         {
-          label: 'Monocitos',
+          label: 'VPM',
           data: [8.8, 11.5, 10.9, 11.8, 9.3, 11.9, 9.1],
           borderColor: 'red',
           borderWidth: 2,
