@@ -10,7 +10,7 @@ const ErrorPage = () => {
           <p className='mb-8 text-lg'>
             Lo sentimos, la página que estás buscando no existe o ha ocurrido un error inesperado.
           </p>
-          <Link to='//' className='text-lg font-semibold no-underline text-primary dark:text-text-dark hover:underline'>
+          <Link to='/' className='text-lg font-semibold no-underline text-primary dark:text-text-dark hover:underline'>
             Volver a la página principal
           </Link>
         </div>
