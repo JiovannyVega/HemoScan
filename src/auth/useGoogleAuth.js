@@ -14,7 +14,7 @@ const useGoogleAuth = () => {
       const response = await axios.post('http://localhost:3000/api/login/google', {
         token: credentialResponse.credential // Usa credential en lugar de clientId
       })
-      alert('Inicio de sesión con Google exitoso')
+      //alert('Inicio de sesión con Google exitoso')
       const userData = {
         nombre: response.data.user.nombre || '',
         apellido: response.data.user.apellido || '',
@@ -43,3 +43,4 @@ const useGoogleAuth = () => {
 }
 
 export default useGoogleAuth
+export { useGoogleAuth }

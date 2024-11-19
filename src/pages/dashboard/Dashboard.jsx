@@ -1,9 +1,13 @@
 import { useState, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import ProfilePage from './ProfilePage'
 import Analitycs from './Analitycs'
+import useGoogleAuth from '../../auth/useGoogleAuth'
 
 const Dashboard = () => {
+  const { logOut } = useGoogleAuth()
+  const navigate = useNavigate()
+
   const [activeSection, setActiveSection] = useState('section1')
   const [preview, setPreview] = useState(null)
   const [fileName, setFileName] = useState('') // Estado para el nombre del archivo
@@ -24,6 +28,11 @@ const Dashboard = () => {
       setPreview(null)
       setFileName('')
     }
+  }
+
+  const handleLogout = () => {
+    logOut()
+    navigate('/')
   }
 
   const handleLabelClick = () => {
@@ -129,8 +138,8 @@ const Dashboard = () => {
             </button>
           </li>
           <li>
-            <button className='block w-full py-2 text-left hover:bg-hover dark:hover:bg-hover-dark'>
-              <Link to='/login' className='mx-8'>Logout</Link>
+            <button onClick={handleLogout} className='block w-full py-2 mx-8 text-left hover:bg-hover dark:hover:bg-hover-dark'>
+              <p>Logout</p>
             </button>
           </li>
         </ul>

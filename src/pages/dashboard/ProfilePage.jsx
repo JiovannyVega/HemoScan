@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import useGoogleAuth from '../../auth/useGoogleAuth'
 
 const ProfilePage = () => {
   const { logOut } = useGoogleAuth()
+  const navigate = useNavigate()
 
   const [user, setUser] = useState({
     name: 'Kim Dahyun',
@@ -48,6 +50,11 @@ const ProfilePage = () => {
       ...prevUser,
       [name]: value
     }))
+  }
+
+  const handleLogout = () => {
+    logOut()
+    navigate('/')
   }
 
   return (
@@ -160,16 +167,10 @@ const ProfilePage = () => {
           </div>
           <div>
             <button
-              onClick={logOut}
+              onClick={handleLogout}
               className='p-4 m-2 text-white rounded-md cursor-pointer bg-primary hover:bg-secondary'
             >
               Cerrar sesion
-            </button>
-            <button
-              onClick={() => console.log('Eliminar cuenta')}
-              className='p-4 m-2 text-white rounded-md cursor-pointer bg-primary hover:bg-secondary'
-            >
-              Eliminar cuenta
             </button>
           </div>
         </div>
