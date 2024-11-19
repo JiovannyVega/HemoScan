@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Switch from 'react-switch'
 import { useGoogleAuth } from '../auth/useGoogleAuth'
@@ -7,7 +7,19 @@ import { useGoogleAuth } from '../auth/useGoogleAuth'
 const Header = () => {
   const { user } = useGoogleAuth()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isDarkMode, setIsDarkMode] = useState(document.documentElement.classList.contains('dark'))
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const savedTheme = localStorage.getItem('isDarkMode')
+    return savedTheme ? JSON.parse(savedTheme) : document.documentElement.classList.contains('dark')
+  })
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode))
+  }, [isDarkMode])
 
   const toggleTheme = () => {
     setIsDarkMode(document.documentElement.classList.toggle('dark'))
