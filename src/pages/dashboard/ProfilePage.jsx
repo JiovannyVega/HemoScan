@@ -1,20 +1,33 @@
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import useGoogleAuth from '../../auth/useGoogleAuth'
+import axios from 'axios'
 
 const ProfilePage = () => {
-  const { logOut } = useGoogleAuth()
-  const navigate = useNavigate()
 
   const [user, setUser] = useState({
     name: 'Kim Dahyun',
     email: 'kimdahyun@gmail.com',
     picture: '/assets/Perfil.jpg',
     birthDate: '1998-05-28',
-    gender: 'femenino',
+    sexo: 'femenino',
     language: 'Espanol',
     notifications: true
   })
+
+  const updateUser = async () => {
+    try {
+      alert(user.sexo)
+      const response = await axios.put('http://localhost:3000/api/users', {
+        email: user.email,
+        nombre: user.name,
+        picture: user.picture,
+        edad: new Date().getFullYear() - new Date(user.birthDate).getFullYear(),
+        sexo: user.sexo
+      })
+      console.log('Usuario actualizado:', response.data)
+    } catch (error) {
+      console.error('Error al actualizar el usuario:', error)
+    }
+  }
 
   useEffect(() => {
     const savedUser = localStorage.getItem('user')
@@ -27,7 +40,7 @@ const ProfilePage = () => {
         email: userData.email || '',
         picture: userData.picture || '/assets/Perfil.jpg',
         birthDate: userData.birthDate || '',
-        gender: userData.sexo || '',
+        sexo: userData.sexo || '',
         language: '',
         notifications: true
       })
@@ -37,7 +50,7 @@ const ProfilePage = () => {
         email: 'kimdahyun@gmail.com',
         picture: '/assets/Perfil.jpg',
         birthDate: '1998-05-28',
-        gender: 'femenino',
+        sexo: 'femenino',
         language: 'Espanol',
         notifications: true
       })
@@ -51,12 +64,7 @@ const ProfilePage = () => {
       [name]: value
     }))
   }
-
-  const handleLogout = () => {
-    logOut()
-    navigate('/')
-    window.location.reload()
-  }
+  console.log(user.id)
 
   return (
     <>
@@ -89,6 +97,7 @@ const ProfilePage = () => {
                 type='email'
                 name='email'
                 value={user.email}
+                disabled
                 onChange={handleChange}
                 className='w-full p-3 mt-1 border-2 rounded border-hover dark:border-hover-dark bg-background dark:bg-background-dark'
               />
@@ -106,8 +115,8 @@ const ProfilePage = () => {
             <div className='mb-3'>
               <label className='text-xl'>Género</label>
               <select
-                name='gender'
-                value={user.gender}
+                name='sexo'
+                value={user.sexo}
                 onChange={handleChange}
                 className='w-full p-3 mt-1 border-2 rounded border-hover dark:border-hover-dark bg-background dark:bg-background-dark'
               >
@@ -167,12 +176,7 @@ const ProfilePage = () => {
             </ul>
           </div>
           <div>
-            <button
-              onClick={handleLogout}
-              className='p-4 m-2 text-white rounded-md cursor-pointer bg-primary hover:bg-secondary'
-            >
-              Cerrar sesion
-            </button>
+            <button onClick={updateUser} className='p-4 m-2 text-white rounded-md cursor-pointer bg-primary hover:bg-secondary'>Guardar cambios</button>
           </div>
         </div>
       </div>
