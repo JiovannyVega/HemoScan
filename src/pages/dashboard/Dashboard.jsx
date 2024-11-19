@@ -120,8 +120,8 @@ const Dashboard = () => {
 
   return (
     <div className='flex h-screen text-text dark:text-text-dark'>
-      <nav className='w-1/5 border-t-2 border-r-2 min-h-max bg-background dark:bg-background-dark'>
-        <h2 className='p-8 text-xl font-bold'>HemoScan</h2>
+      <nav className='flex flex-col flex-shrink w-1/5 border-t-2 border-r-2 min-h-max bg-background dark:bg-background-dark'>
+        <h2 className='p-4 text-xl font-bold'>HemoScan</h2>
         <ul>
           <li className={activeSection === 'section1' ? 'bg-hover dark:bg-hover-dark' : ''}>
             <button onClick={() => setActiveSection('section1')} className='block w-full py-2 text-left hover:bg-hover dark:hover:bg-hover-dark'>
