@@ -1,22 +1,14 @@
 import { Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Switch from 'react-switch' // Importa react-switch
 
 const Header = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-  }, [isDarkMode])
+  const [isDarkMode, setIsDarkMode] = useState(document.documentElement.classList.contains('dark'))
 
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode)
+    setIsDarkMode(document.documentElement.classList.toggle('dark'))
   }
 
   const toggleMenu = () => {
@@ -54,13 +46,10 @@ const Header = () => {
               onHandleColor='#FFFFFF'
               offHandleColor='#FFFFFF'
               handleDiameter={20}
-              uncheckedIcon={false}
-              checkedIcon={false}
               boxShadow='0px 1px 5px rgba(0, 0, 0, 0.6)'
               activeBoxShadow='0px 0px 1px 10px rgba(0, 0, 0, 0.2)'
               height={20}
               width={40}
-              className='react-switch'
             />
           </div>
         </nav>
@@ -78,6 +67,21 @@ const Header = () => {
               ))}
             </nav>
           )}
+          <div className='inline-block w-10 ml-4 align-middle transition duration-200 ease-in select-none'>
+            <Switch
+              checked={isDarkMode}
+              onChange={toggleTheme}
+              onColor='#4B5563'
+              offColor='#D1D5DB'
+              onHandleColor='#FFFFFF'
+              offHandleColor='#FFFFFF'
+              handleDiameter={20}
+              boxShadow='0px 1px 5px rgba(0, 0, 0, 0.6)'
+              activeBoxShadow='0px 0px 1px 10px rgba(0, 0, 0, 0.2)'
+              height={20}
+              width={40}
+            />
+          </div>
         </div>
       </div>
     </header>

@@ -1,21 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { Line } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, LineElement, Title, Tooltip, Legend, PointElement } from 'chart.js';
-import { Link } from 'react-router-dom';  // Asegúrate de importar Link
+import { useEffect, useState } from 'react'
+import { Line } from 'react-chartjs-2'
+import { Chart as ChartJS, CategoryScale, LinearScale, LineElement, Title, Tooltip, Legend, PointElement } from 'chart.js'
 
-ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement, Title, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement, Title, Tooltip, Legend)
 
 const Analitycs = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false)
 
   useEffect(() => {
     const observer = new MutationObserver(() => {
-      setIsDarkMode(document.documentElement.classList.contains('dark'));
-    });
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+      setIsDarkMode(document.documentElement.classList.contains('dark'))
+    })
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
 
-    return () => observer.disconnect();
-  }, []);
+    return () => observer.disconnect()
+  }, [])
 
   const datasets = [
     // Formula roja chart
@@ -238,7 +237,7 @@ const Analitycs = () => {
         },
       ],
     },
-  ];
+  ]
 
   const generateOptions = (title) => ({
     responsive: true,
@@ -283,17 +282,17 @@ const Analitycs = () => {
         },
       },
     },
-  });
+  })
 
-  const [activeSection, setActiveSection] = useState('section1');
+  const [activeSection, setActiveSection] = useState('section1')
 
   const renderSection = () => {
     switch (activeSection) {
       case 'section1':
         return (
-          <div className="h-screen p-8 space-y-8 bg-background dark:bg-background-dark">
-            <div className="grid grid-cols-2 gap-8">
-              <div className="p-8 border shadow-xl rounded-xl">
+          <div className='h-screen p-8 space-y-8 bg-background dark:bg-background-dark'>
+            <div className='grid grid-cols-2 gap-8'>
+              <div className='p-8 border shadow-xl rounded-xl'>
                 <Line
                   data={{
                     labels: datasets[0].labels,
@@ -302,7 +301,7 @@ const Analitycs = () => {
                   options={generateOptions(datasets[0].title)}
                 />
               </div>
-              <div className="p-8 border shadow-xl rounded-xl">
+              <div className='p-8 border shadow-xl rounded-xl'>
                 <Line
                   data={{
                     labels: datasets[1].labels,
@@ -311,22 +310,22 @@ const Analitycs = () => {
                   options={generateOptions(datasets[1].title)}
                 />
               </div>
-              <div className="flex-col mt-8 border shadow-xl rounded-xl">
-                <h2 className="m-5 text-xl font-bold">Actual levels</h2>
-                <div className="p-5 overflow-x-auto">
-                  <table className="min-w-full text-center">
+              <div className='flex-col mt-8 border shadow-xl rounded-xl'>
+                <h2 className='m-5 text-xl font-bold'>Actual levels</h2>
+                <div className='p-5 overflow-x-auto'>
+                  <table className='min-w-full text-center'>
                     <tbody>
                       <tr>
-                        <td className="px-4 py-2 border-y">Linfocitos</td>
-                        <td className="px-4 py-2 bg-green-600 border-b">Normal</td>
+                        <td className='px-4 py-2 border-y'>Linfocitos</td>
+                        <td className='px-4 py-2 bg-green-600 border-b'>Normal</td>
                       </tr>
                       <tr>
-                        <td className="px-4 py-2 border-b">Hemocrocitos</td>
-                        <td className="px-4 py-2 bg-red-600 border-b">High</td>
+                        <td className='px-4 py-2 border-b'>Hemocrocitos</td>
+                        <td className='px-4 py-2 bg-red-600 border-b'>High</td>
                       </tr>
                       <tr>
-                        <td className="px-4 py-2 border-b">Hemoglobina</td>
-                        <td className="px-4 py-2 bg-orange-600 border-b">Low</td>
+                        <td className='px-4 py-2 border-b'>Hemoglobina</td>
+                        <td className='px-4 py-2 bg-orange-600 border-b'>Low</td>
                       </tr>
                     </tbody>
                   </table>
@@ -334,12 +333,12 @@ const Analitycs = () => {
               </div>
             </div>
           </div>
-        );
+        )
       case 'section2':
         return (
-          <div className="h-screen p-8 space-y-8 bg-background dark:bg-background-dark">
-            <div className="grid grid-cols-2 gap-8">
-              <div className="p-8 border shadow-xl rounded-xl">
+          <div className='h-screen p-8 space-y-8 bg-background dark:bg-background-dark'>
+            <div className='grid grid-cols-2 gap-8'>
+              <div className='p-8 border shadow-xl rounded-xl'>
                 <Line
                   data={{
                     labels: datasets[2].labels,
@@ -348,7 +347,7 @@ const Analitycs = () => {
                   options={generateOptions(datasets[2].title)}
                 />
               </div>
-              <div className="p-8 border shadow-xl rounded-xl">
+              <div className='p-8 border shadow-xl rounded-xl'>
                 <Line
                   data={{
                     labels: datasets[3].labels,
@@ -359,12 +358,12 @@ const Analitycs = () => {
               </div>
             </div>
           </div>
-        );
+        )
       case 'section3':
         return (
-          <div className="h-screen p-8 space-y-8 bg-background dark:bg-background-dark">
-            <div className="grid grid-cols-2 gap-8">
-              <div className="p-8 border shadow-xl rounded-xl">
+          <div className='h-screen p-8 space-y-8 bg-background dark:bg-background-dark'>
+            <div className='grid grid-cols-2 gap-8'>
+              <div className='p-8 border shadow-xl rounded-xl'>
                 <Line
                   data={{
                     labels: datasets[4].labels,
@@ -373,7 +372,7 @@ const Analitycs = () => {
                   options={generateOptions(datasets[4].title)}
                 />
               </div>
-              <div className="p-8 border shadow-xl rounded-xl">
+              <div className='p-8 border shadow-xl rounded-xl'>
                 <Line
                   data={{
                     labels: datasets[5].labels,
@@ -384,12 +383,12 @@ const Analitycs = () => {
               </div>
             </div>
           </div>
-        );
+        )
       case 'section4':
         return (
-          <div className="h-screen p-8 space-y-8 bg-background dark:bg-background-dark">
-            <div className="grid grid-cols-2 gap-8">
-              <div className="p-8 border shadow-xl rounded-xl">
+          <div className='h-screen p-8 space-y-8 bg-background dark:bg-background-dark'>
+            <div className='grid grid-cols-2 gap-8'>
+              <div className='p-8 border shadow-xl rounded-xl'>
                 <Line
                   data={{
                     labels: datasets[6].labels,
@@ -398,7 +397,7 @@ const Analitycs = () => {
                   options={generateOptions(datasets[6].title)}
                 />
               </div>
-              <div className="p-8 border shadow-xl rounded-xl">
+              <div className='p-8 border shadow-xl rounded-xl'>
                 <Line
                   data={{
                     labels: datasets[7].labels,
@@ -409,14 +408,14 @@ const Analitycs = () => {
               </div>
             </div>
           </div>
-        );
+        )
       default:
-        return null;
+        return null
     }
-  };
+  }
 
   return (
-    <div className="h-screen border-t-2 bg-background dark:bg-background-dark">
+    <div className='h-screen border-t-2 bg-background dark:bg-background-dark'>
       <div className='flex flex-col '>
         <nav className='flex items-center justify-between border-b-2 bg-background dark:bg-background-dark'>
           <h2 className='p-3 ml-4 text-xl font-bold'>Analitycs</h2>
@@ -443,12 +442,12 @@ const Analitycs = () => {
             </li>
           </ul>
         </nav>
-        <div className="flex-1">
+        <div className='flex-1'>
           {renderSection()}
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Analitycs;
+export default Analitycs
