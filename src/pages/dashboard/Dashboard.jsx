@@ -33,6 +33,7 @@ const Dashboard = () => {
   const handleLogout = () => {
     logOut()
     navigate('/')
+    window.location.reload()
   }
 
   const handleLabelClick = () => {

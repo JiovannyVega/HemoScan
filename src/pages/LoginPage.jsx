@@ -37,6 +37,7 @@ const LoginPage = () => {
   const handleGoogleLogin = async (credentialResponse) => {
     await handleGoogleLoginSuccess(credentialResponse)
     navigate('/dashboard') // Redirigir al usuario a /dashboard
+    window.location.reload()
   }
 
   return (

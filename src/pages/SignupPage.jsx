@@ -1,9 +1,14 @@
-import { Link } from 'react-router-dom'
+import { Link, } from 'react-router-dom'
 import { useState } from 'react'
 import { GoogleLogin } from '@react-oauth/google'
+import { useNavigate } from 'react-router-dom'
+import { useGoogleAuth } from '../auth/useGoogleAuth'
 import axios from 'axios'
 
 const SignupPage = () => {
+  const { handleGoogleLoginSuccess } = useGoogleAuth()
+  const navigate = useNavigate()
+
   const [formData, setFormData] = useState({
     nombre: '',
     apellido: '',
@@ -44,6 +49,12 @@ const SignupPage = () => {
     }
   }
 
+  const handleGoogleLogin = async (credentialResponse) => {
+    await handleGoogleLoginSuccess(credentialResponse)
+    navigate('/dashboard') // Redirigir al usuario a /dashboard
+    window.location.reload()
+  }
+
   return (
     <>
       <div className='flex flex-row h-auto bg-gradient-to-b from-primary to-secondary'>
@@ -64,7 +75,7 @@ const SignupPage = () => {
           <p className=''>
             Regístrate ahora y obtén acceso completo a nuestra aplicación.
           </p>
-          <form className='flex flex-col w-11/12 h-full p-7' onSubmit={handleSubmit}>
+          <form className='flex flex-col w-11/12 h-max p-7' onSubmit={handleSubmit}>
             <div className='flex flex-row justify-center w-auto'>
               <input required placeholder='Nombre(s)' type='text' name='nombre' value={formData.nombre} onChange={handleChange} className='w-1/2 p-3 mb-4 mr-1 border rounded-md bg-background dark:bg-background-dark' />
               <input required placeholder='Apellido' type='text' name='apellido' value={formData.apellido} onChange={handleChange} className='w-1/2 p-3 mb-4 border rounded-md bg-background dark:bg-background-dark' />
@@ -94,13 +105,11 @@ const SignupPage = () => {
                 className='w-full p-3 mb-4 border rounded-md bg-background dark:bg-background-dark'
               />
             </label>
-            <button className='p-3 mb-4 text-white border-2 rounded-md bg-primary' type='submit'>Ingresar</button>
+            <button className='p-3 mb-0 text-white border-2 rounded-md bg-primary' type='submit'>Ingresar</button>
           </form>
-          <p className='mb-5'>O</p>
+          <p className='mb-0'>O</p>
           <GoogleLogin
-            onSuccess={credentialResponse => {
-              console.log(credentialResponse)
-            }}
+            onSuccess={handleGoogleLogin}
             onError={() => {
               console.log('Login Failed')
             }}

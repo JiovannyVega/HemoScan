@@ -55,6 +55,7 @@ const ProfilePage = () => {
   const handleLogout = () => {
     logOut()
     navigate('/')
+    window.location.reload()
   }
 
   return (
