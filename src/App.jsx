@@ -9,8 +9,6 @@ import AboutPage from './pages/AboutPage'
 import Dashboard from './pages/dashboard/Dashboard'
 import SignupPage from './pages/SignupPage'
 import { useGoogleAuth } from './auth/useGoogleAuth'
-import ProfilePage from './pages/dashboard/ProfilePage'
-import ProfileEditPage from './pages/dashboard/ProfileEditPage'
 
 function App() {
   const { user } = useGoogleAuth()
@@ -24,8 +22,6 @@ function App() {
           <Route path='/login' element={<LoginPage />} />
           <Route path='/about' element={<AboutPage />} />
           <Route path='/hfaq' element={<HFAQPage />} />
-          <Route path='/profile' element={<ProfilePage />} />
-          <Route path='/profileedit' element={<ProfileEditPage />} />
           <Route path='/signup' element={<SignupPage />} />
           {user ? (
             <Route path='/dashboard' element={<Dashboard />} />
