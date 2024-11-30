@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import ProfilePage from './ProfilePage'
+import ProfilePage from './ProfileEditPage'
 import Analitycs from './Analitycs'
 import useGoogleAuth from '../../auth/useGoogleAuth'
 
