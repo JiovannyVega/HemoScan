@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
     return (
         <AuthContext.Provider value={{
             handleGoogleLogin: (googleToken) => handleGoogleLogin(googleToken, setError, navigate),
-            handleEmailLogin: (email, password) => handleEmailLogin(email, password, setError, navigate),
+            handleEmailLogin: (email, constrasena) => handleEmailLogin(email, constrasena, setError, navigate),
             handleLogout: () => handleLogout(navigate),
             handleSignup: (formData) => handleSignup(formData, setError, navigate),
             error,

@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+const API_URL = 'http://localhost:3000/api'
+
 // Incluir el token en las solicitudes
 const fetchWithAuth = async (url, options = {}) => {
     const token = localStorage.getItem('token')
@@ -20,7 +22,6 @@ const fetchWithAuth = async (url, options = {}) => {
     return response
 }
 
-const API_URL = 'http://localhost:3000/api'
 
 export const loginWithGoogle = async (googleToken) => {
     try {
@@ -31,9 +32,9 @@ export const loginWithGoogle = async (googleToken) => {
     }
 }
 
-export const loginWithEmail = async (email, password) => {
+export const loginWithEmail = async (email, contrasena) => {
     try {
-        const response = await axios.post(`${API_URL}/login`, { email, password })
+        const response = await axios.post(`${API_URL}/login`, { email, contrasena })
         return response.data
     } catch (error) {
         throw new Error(error.response.data.error || 'Error al iniciar sesión')

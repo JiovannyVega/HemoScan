@@ -24,10 +24,11 @@ export const handleGoogleLogin = async (googleToken, setError, navigate) => {
     }
 }
 
-export const handleEmailLogin = async (email, password, setError, navigate) => {
+export const handleEmailLogin = async (email, contrasena, setError, navigate) => {
     try {
-        const response = await loginWithEmail(email, password)
+        const response = await loginWithEmail(email, contrasena)
         localStorage.setItem('token', response.token)
+        localStorage.setItem('user', JSON.stringify(response.user))
         navigate('/dashboard')
     } catch (err) {
         if (err.message === 'Token expirado') {

@@ -1,34 +1,19 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-import axios from 'axios'
 import { GoogleLogin } from '@react-oauth/google'
+import { useAuth } from '../context/AuthProvider'
 
 const LoginPage = () => {
-
+  const { handleEmailLogin, handleGoogleLogin } = useAuth()
   const [formData, setFormData] = useState({ email: '', contrasena: '' })
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
-    try {
-      const response = await axios.post('http://localhost:3000/api/login', {
-        email: formData.email,
-        contrasena: formData.contrasena
-      })
-      const userData = {
-        email: formData.email,
-        nombre: response.data.user.nombre,
-        apellido: response.data.user.apellido
-      }
-      localStorage.setItem('user', JSON.stringify(userData))
-      alert('Inicio de sesión exitoso')
-      console.log('Datos del usuario:', response.data.user)
-    } catch (error) {
-      console.error('Error al iniciar sesión:', error)
-      alert('Error al iniciar sesión')
-    }
+    handleEmailLogin(formData.email, formData.contrasena)
   }
 
   return (
@@ -61,6 +46,9 @@ const LoginPage = () => {
               <p className='mb-4 text-center'>O</p>
             </form>
             <GoogleLogin
+              onSuccess={credentialResponse => {
+                handleGoogleLogin(credentialResponse.credential)
+              }}
               onError={() => {
                 console.log('Login Failed')
               }}
