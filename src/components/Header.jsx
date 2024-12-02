@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Switch from 'react-switch'
+import { useAuth } from '../context/AuthProvider'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -9,6 +10,8 @@ const Header = () => {
     const savedTheme = localStorage.getItem('isDarkMode')
     return savedTheme ? JSON.parse(savedTheme) : document.documentElement.classList.contains('dark')
   })
+
+  const { isLoggedIn } = useAuth()
 
   useEffect(() => {
     if (isDarkMode) {
@@ -30,11 +33,10 @@ const Header = () => {
   const navItems = [
     ['Home', '/'],
     ['About us', '/about'],
-    ['Login', '/Login'],
+    ...(!isLoggedIn() ? [['Login', '/login']] : []),
     ['HFAQ', '/hfaq'],
-    ['Dashboard', '/dashboard']
+    ...(isLoggedIn() ? [['Dashboard', '/dashboard']] : [])
   ]
-
 
   return (
     <header className='p-5 m-0 bg-gray-200 dark:bg-gray-800'>

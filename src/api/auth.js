@@ -13,6 +13,11 @@ const fetchWithAuth = (url, options = {}) => {
             ...options.headers,
             'Authorization': `Bearer ${token}`
         }
+    }).then(response => {
+        if (response.status === 401) {
+            throw new Error('Token expirado')
+        }
+        return response
     })
 }
 

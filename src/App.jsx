@@ -8,25 +8,35 @@ import HFAQPage from './pages/HFAQPage'
 import AboutPage from './pages/AboutPage'
 import Dashboard from './pages/dashboard/Dashboard'
 import SignupPage from './pages/SignupPage'
+import { AuthProvider, useAuth } from './context/AuthProvider'
 
 function App() {
-
   return (
     <Router>
-      <div className='grid grid-rows-[auto_1fr_auto] min-h-screen'>
-        <Header />
-        <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/login' element={<LoginPage />} />
-          <Route path='/about' element={<AboutPage />} />
-          <Route path='/hfaq' element={<HFAQPage />} />
-          <Route path='/signup' element={<SignupPage />} />
-          <Route path='/dashboard' element={<Dashboard />} />
-          <Route path='*' element={<ErrorPage />} />
-        </Routes>
-        <Footer />
-      </div>
+      <AuthProvider>
+        <AppContent />
+      </AuthProvider>
     </Router>
+  )
+}
+
+function AppContent() {
+  const { isLoggedIn } = useAuth()
+
+  return (
+    <div className='grid grid-rows-[auto_1fr_auto] min-h-screen'>
+      <Header />
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/login' element={<LoginPage />} />
+        <Route path='/about' element={<AboutPage />} />
+        <Route path='/hfaq' element={<HFAQPage />} />
+        <Route path='/signup' element={<SignupPage />} />
+        {isLoggedIn() && <Route path='/dashboard' element={<Dashboard />} />}
+        <Route path='*' element={<ErrorPage />} />
+      </Routes>
+      <Footer />
+    </div>
   )
 }
 
