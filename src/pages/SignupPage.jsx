@@ -1,13 +1,12 @@
-import { Link, } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { GoogleLogin } from '@react-oauth/google'
-import axios from 'axios'
+import { useAuth } from '../context/AuthProvider'
 
 const SignupPage = () => {
-
+  const { handleSignup } = useAuth()
   const [formData, setFormData] = useState({
-    nombre: '',
-    apellido: '',
+    nombre_usuario: '',
     email: '',
     contrasena: '',
     confirmaContrasena: ''
@@ -24,25 +23,11 @@ const SignupPage = () => {
       return
     }
     console.log('Datos del formulario:', formData)
-    try {
-      await axios.post('http://localhost:3000/api/usuarios', {
-        nombre: formData.nombre,
-        apellido: formData.apellido,
-        email: formData.email,
-        contrasena: formData.contrasena
-      })
-      const userData = {
-        nombre: formData.nombre,
-        apellido: formData.apellido,
-        email: formData.email
-      }
-      localStorage.setItem('user', JSON.stringify(userData))
-      alert('Usuario registrado con éxito')
-    } catch (error) {
-      console.error('Error al registrar usuario:', error)
-      console.error('Detalles del error:', error.response ? error.response.data : error.message)
-      alert('Error al registrar usuario')
-    }
+    handleSignup({
+      nombre_usuario: formData.nombre_usuario,
+      email: formData.email,
+      contrasena: formData.contrasena
+    })
   }
 
   return (
@@ -66,10 +51,9 @@ const SignupPage = () => {
             Regístrate ahora y obtén acceso completo a nuestra aplicación.
           </p>
           <form className='flex flex-col w-11/12 h-max p-7' onSubmit={handleSubmit}>
-            <div className='flex flex-row justify-center w-auto'>
-              <input required placeholder='Nombre(s)' type='text' name='nombre' value={formData.nombre} onChange={handleChange} className='w-1/2 p-3 mb-4 mr-1 border rounded-md bg-background dark:bg-background-dark' />
-              <input required placeholder='Apellido' type='text' name='apellido' value={formData.apellido} onChange={handleChange} className='w-1/2 p-3 mb-4 border rounded-md bg-background dark:bg-background-dark' />
-            </div>
+            <label>
+              <input required placeholder='Nombre de usuario' type='text' name='nombre_usuario' value={formData.nombre_usuario} onChange={handleChange} className='w-full p-3 mb-4 border rounded-md bg-background dark:bg-background-dark' />
+            </label>
             <label>
               <input required placeholder='Correo' type='text' name='email' value={formData.email} onChange={handleChange} className='w-full p-3 mb-4 border rounded-md bg-background dark:bg-background-dark' />
             </label>

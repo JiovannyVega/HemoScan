@@ -1,4 +1,4 @@
-import { loginWithGoogle, loginWithEmail, logout } from '../api/auth'
+import { loginWithGoogle, loginWithEmail, logout, signup } from '../api/auth'
 
 export const getToken = () => {
     return localStorage.getItem('token')
@@ -45,4 +45,14 @@ export const handleLogout = (navigate) => {
 
 export const isLoggedIn = () => {
     return !!getToken()
+}
+
+export const handleSignup = async (formData, setError, navigate) => {
+    try {
+        const response = await signup(formData)
+        localStorage.setItem('token', response.token)
+        navigate('/dashboard')
+    } catch (err) {
+        setError(err.message)
+    }
 }
