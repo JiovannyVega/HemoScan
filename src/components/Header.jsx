@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Switch from 'react-switch'
-import { useGoogleAuth } from '../auth/useGoogleAuth'
+import { useGoogleAuth } from '../hooks/useGoogleAuth'
 
 const Header = () => {
   const { user } = useGoogleAuth()

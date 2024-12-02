@@ -2,7 +2,7 @@ import { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import ProfilePage from './ProfilePage'
 import Analitycs from './Analitycs'
-import useGoogleAuth from '../../auth/useGoogleAuth'
+import useGoogleAuth from '../../hooks/useGoogleAuth'
 
 const Dashboard = () => {
   const { logOut } = useGoogleAuth()

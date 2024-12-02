@@ -8,7 +8,7 @@ import HFAQPage from './pages/HFAQPage'
 import AboutPage from './pages/AboutPage'
 import Dashboard from './pages/dashboard/Dashboard'
 import SignupPage from './pages/SignupPage'
-import { useGoogleAuth } from './auth/useGoogleAuth'
+import { useGoogleAuth } from './hooks/useGoogleAuth'
 
 function App() {
   const { user } = useGoogleAuth()

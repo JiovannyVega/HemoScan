@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { googleLogout } from '@react-oauth/google'
-import axios from 'axios'
+import { loginWithGoogle } from '../api/auth'
 
 const useGoogleAuth = () => {
   const [user, setUser] = useState(() => {
@@ -11,22 +11,19 @@ const useGoogleAuth = () => {
   const handleGoogleLoginSuccess = async (credentialResponse) => {
     try {
       console.log('Credenciales de Google:', credentialResponse)
-      const response = await axios.post('http://localhost:3000/api/login/google', {
-        token: credentialResponse.credential // Usa credential en lugar de clientId
-      })
-      //alert('Inicio de sesión con Google exitoso')
+      const response = await loginWithGoogle(credentialResponse.credential)
       const userData = {
-        nombre: response.data.user.nombre || '',
-        apellido: response.data.user.apellido || '',
-        email: response.data.user.email || '',
-        edad: response.data.user.edad || '',
-        sexo: response.data.user.sexo || '',
-        telefono: response.data.user.telefono || '',
-        picture: response.data.user.picture || '/assets/Perfil.jpg'
+        nombre: response.user.nombre || '',
+        apellido: response.user.apellido || '',
+        email: response.user.email || '',
+        edad: response.user.edad || '',
+        sexo: response.user.sexo || '',
+        telefono: response.user.telefono || '',
+        picture: response.user.picture || '/assets/Perfil.jpg'
       }
       localStorage.setItem('user', JSON.stringify(userData))
       setUser(userData)
-      console.log('Datos del usuario:', response.data.user)
+      console.log('Datos del usuario:', response.user)
     } catch (error) {
       console.error('Error al iniciar sesión con Google:', error)
       alert('Error al iniciar sesión con Google')

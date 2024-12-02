@@ -2,7 +2,7 @@ import { Link, } from 'react-router-dom'
 import { useState } from 'react'
 import { GoogleLogin } from '@react-oauth/google'
 import { useNavigate } from 'react-router-dom'
-import { useGoogleAuth } from '../auth/useGoogleAuth'
+import { useGoogleAuth } from '../hooks/useGoogleAuth'
 import axios from 'axios'
 
 const SignupPage = () => {

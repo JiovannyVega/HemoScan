@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
 import { GoogleLogin } from '@react-oauth/google'
-import useGoogleAuth from '../auth/useGoogleAuth'
+import useGoogleAuth from '../hooks/useGoogleAuth'
 
 const LoginPage = () => {
   const { handleGoogleLoginSuccess } = useGoogleAuth()

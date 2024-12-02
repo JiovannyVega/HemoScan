@@ -3,15 +3,15 @@ import axios from 'axios'
 
 const ProfilePage = () => {
 
-    const [isDisabled, setIsDisabled] = useState(true);
+    const [isDisabled, setIsDisabled] = useState(true)
 
     const handleEditClick = () => {
-        setIsDisabled(false);
-    };
+        setIsDisabled(false)
+    }
 
     const handleInputChange = (event) => {
-        setUser({ ...user, name: event.target.value });
-    };
+        setUser({ ...user, name: event.target.value })
+    }
 
     const [user, setUser] = useState({
         name: 'Kim Dahyun',
