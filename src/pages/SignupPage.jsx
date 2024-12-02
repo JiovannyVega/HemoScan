@@ -3,7 +3,7 @@ import { useAuth } from '../context/AuthProvider'
 import AuthForm from '../components/AuthForm'
 
 const SignupPage = () => {
-  const { handleSignup, handleGoogleLogin } = useAuth()
+  const { handleSignup, handleGoogleLogin, error, clearError } = useAuth()
   const [formData, setFormData] = useState({
     nombre_usuario: '',
     email: '',
@@ -21,7 +21,6 @@ const SignupPage = () => {
       alert('Las contraseñas no coinciden')
       return
     }
-    console.log('Datos del formulario:', formData)
     handleSignup({
       nombre_usuario: formData.nombre_usuario,
       email: formData.email,
@@ -37,6 +36,8 @@ const SignupPage = () => {
       handleSubmit={handleSubmit}
       googleLoginHandler={handleGoogleLogin}
       isSignup={true}
+      error={error}
+      clearError={clearError}
     />
   )
 }

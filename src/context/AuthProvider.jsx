@@ -9,6 +9,8 @@ export const AuthProvider = ({ children }) => {
     const [error, setError] = useState(null)
     const navigate = useNavigate()
 
+    const clearError = () => setError(null)
+
     return (
         <AuthContext.Provider value={{
             handleGoogleLogin: (googleToken) => handleGoogleLogin(googleToken, setError, navigate),
@@ -16,6 +18,7 @@ export const AuthProvider = ({ children }) => {
             handleLogout: () => handleLogout(navigate),
             handleSignup: (formData) => handleSignup(formData, setError, navigate),
             error,
+            clearError,
             getToken,
             isLoggedIn
         }}>

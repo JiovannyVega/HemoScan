@@ -1,8 +1,26 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { GoogleLogin } from '@react-oauth/google'
 import PropTypes from 'prop-types'
+import { useState, useEffect } from 'react'
 
-const AuthForm = ({ title, formData, handleChange, handleSubmit, googleLoginHandler, isSignup }) => {
+const AuthForm = ({ title, formData, handleChange, handleSubmit, googleLoginHandler, isSignup, error, clearError }) => {
+    const [showError, setShowError] = useState(true)
+    const location = useLocation()
+
+    useEffect(() => {
+        setShowError(true)
+    }, [error])
+
+    useEffect(() => {
+        setShowError(false)
+        clearError()
+    }, [location.pathname])
+
+    const handleCloseError = () => {
+        setShowError(false)
+        clearError()
+    }
+
     return (
         <div className='flex flex-row h-auto bg-gradient-to-b from-primary to-secondary'>
             <div className='items-center hidden w-1/2 sm:flex'>
@@ -22,6 +40,15 @@ const AuthForm = ({ title, formData, handleChange, handleSubmit, googleLoginHand
                 <p className=''>
                     {isSignup ? 'Regístrate ahora y obtén acceso completo a nuestra aplicación.' : 'Inicia sesión para continuar.'}
                 </p>
+                {error && showError && (
+                    <div className='flex items-center p-4 mb-4 text-sm text-red-700 bg-red-100 border border-red-400 rounded-lg' role='alert'>
+                        <div>{error}</div>
+                        <button type='button' className='ml-auto -mx-1.5 -my-1.5 bg-red-100 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex h-8 w-8 dark:bg-red-200 dark:text-red-600 dark:hover:bg-red-300' aria-label='Close' onClick={handleCloseError}>
+                            <span className='sr-only'>Dismiss</span>
+                            x
+                        </button>
+                    </div>
+                )}
                 <form className='flex flex-col w-11/12 h-max p-7' onSubmit={handleSubmit}>
                     {isSignup && (
                         <label>
@@ -77,7 +104,9 @@ AuthForm.propTypes = {
     handleChange: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     googleLoginHandler: PropTypes.func.isRequired,
-    isSignup: PropTypes.bool.isRequired
+    isSignup: PropTypes.bool.isRequired,
+    error: PropTypes.string,
+    clearError: PropTypes.func.isRequired
 }
 
 export default AuthForm

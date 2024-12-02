@@ -3,7 +3,7 @@ import { useAuth } from '../context/AuthProvider'
 import AuthForm from '../components/AuthForm'
 
 const LoginPage = () => {
-  const { handleEmailLogin, handleGoogleLogin } = useAuth()
+  const { handleEmailLogin, handleGoogleLogin, error, clearError } = useAuth()
   const [formData, setFormData] = useState({ email: '', contrasena: '' })
 
   const handleChange = (e) => {
@@ -16,14 +16,18 @@ const LoginPage = () => {
   }
 
   return (
-    <AuthForm
-      title='Iniciar sesión'
-      formData={formData}
-      handleChange={handleChange}
-      handleSubmit={handleSubmit}
-      googleLoginHandler={handleGoogleLogin}
-      isSignup={false}
-    />
+    <>
+      <AuthForm
+        title='Iniciar sesión'
+        formData={formData}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        googleLoginHandler={handleGoogleLogin}
+        isSignup={false}
+        error={error}
+        clearError={clearError}
+      />
+    </>
   )
 }
 

@@ -33,6 +33,10 @@ export const handleEmailLogin = async (email, contrasena, setError, navigate) =>
     } catch (err) {
         if (err.message === 'Token expirado') {
             handleTokenExpiration(setError, navigate)
+        } else if (err.message === 'Usuario no encontrado') {
+            setError('Usuario no encontrado')
+        } else if (err.message === 'Contraseña incorrecta') {
+            setError('Contraseña incorrecta')
         } else {
             setError(err.message)
         }
