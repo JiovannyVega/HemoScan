@@ -1,10 +1,10 @@
 import { useState, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
 import ProfilePage from './ProfilePage'
 import Analitycs from './Analitycs'
+import { useAuth } from '../../context/AuthProvider'
 
 const Dashboard = () => {
-  const navigate = useNavigate()
+  const { handleLogout } = useAuth()
 
   const [activeSection, setActiveSection] = useState('section1')
   const [preview, setPreview] = useState(null)
@@ -26,11 +26,6 @@ const Dashboard = () => {
       setPreview(null)
       setFileName('')
     }
-  }
-
-  const handleLogout = () => {
-    navigate('/')
-    window.location.reload()
   }
 
   const handleLabelClick = () => {
@@ -136,8 +131,8 @@ const Dashboard = () => {
             </button>
           </li>
           <li>
-            <button onClick={handleLogout} className='block w-full py-2 mx-8 text-left hover:bg-hover dark:hover:bg-hover-dark'>
-              <p>Logout</p>
+            <button onClick={handleLogout} className='block w-full py-2 text-left hover:bg-hover dark:hover:bg-hover-dark'>
+              <p className='mx-8'>Logout</p>
             </button>
           </li>
         </ul>
