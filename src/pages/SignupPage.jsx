@@ -4,7 +4,7 @@ import { GoogleLogin } from '@react-oauth/google'
 import { useAuth } from '../context/AuthProvider'
 
 const SignupPage = () => {
-  const { handleSignup } = useAuth()
+  const { handleSignup, handleGoogleLogin } = useAuth()
   const [formData, setFormData] = useState({
     nombre_usuario: '',
     email: '',
@@ -83,6 +83,9 @@ const SignupPage = () => {
           </form>
           <p className='mb-0'>O</p>
           <GoogleLogin
+            onSuccess={credentialResponse => {
+              handleGoogleLogin(credentialResponse.credential)
+            }}
             onError={() => {
               console.log('Login Failed')
             }}
