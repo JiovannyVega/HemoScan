@@ -2,10 +2,8 @@ import { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import ProfilePage from './ProfilePage'
 import Analitycs from './Analitycs'
-import useGoogleAuth from '../../hooks/useGoogleAuth'
 
 const Dashboard = () => {
-  const { logOut } = useGoogleAuth()
   const navigate = useNavigate()
 
   const [activeSection, setActiveSection] = useState('section1')
@@ -31,7 +29,6 @@ const Dashboard = () => {
   }
 
   const handleLogout = () => {
-    logOut()
     navigate('/')
     window.location.reload()
   }

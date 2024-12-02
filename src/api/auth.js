@@ -1,5 +1,21 @@
 import axios from 'axios'
 
+// Incluir el token en las solicitudes
+const fetchWithAuth = (url, options = {}) => {
+    const token = localStorage.getItem('token')
+    if (!token) {
+        throw new Error('No token found')
+    }
+
+    return fetch(url, {
+        ...options,
+        headers: {
+            ...options.headers,
+            'Authorization': `Bearer ${token}`
+        }
+    })
+}
+
 const API_URL = 'http://localhost:3000/api'
 
 export const loginWithGoogle = async (googleToken) => {
@@ -23,3 +39,5 @@ export const loginWithEmail = async (email, password) => {
 export const logout = () => {
     localStorage.removeItem('token')
 }
+
+export { fetchWithAuth }

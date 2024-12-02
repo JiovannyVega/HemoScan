@@ -2,10 +2,8 @@ import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Switch from 'react-switch'
-import { useGoogleAuth } from '../hooks/useGoogleAuth'
 
 const Header = () => {
-  const { user } = useGoogleAuth()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const savedTheme = localStorage.getItem('isDarkMode')
@@ -37,6 +35,7 @@ const Header = () => {
     ['Dashboard', '/dashboard']
   ]
 
+
   return (
     <header className='p-5 m-0 bg-gray-200 dark:bg-gray-800'>
       <div className='flex flex-row items-center justify-between max-w-6xl mx-auto shrink'>
@@ -47,11 +46,9 @@ const Header = () => {
 
         <nav className='hidden gap-4 shrink-1 sm:flex-row sm:flex'>
           {navItems.map(([title, url]) => (
-            (title !== 'Login' || !user) && (title !== 'Dashboard' || user) && (
-              <Link key={url} to={url} className='font-semibold text-gray-800 hover:text-blue-500 active:text-blue-500 dark:text-gray-200'>
-                {title}
-              </Link>
-            )
+            <Link key={url} to={url} className='font-semibold text-gray-800 hover:text-blue-500 active:text-blue-500 dark:text-gray-200'>
+              {title}
+            </Link>
           ))}
           <div className='relative inline-block w-10 align-middle transition duration-200 ease-in select-none'>
             <Switch
@@ -77,11 +74,9 @@ const Header = () => {
       {isMenuOpen && (
         <nav className='flex flex-col gap-4 mt-4 sm:hidden'>
           {navItems.map(([title, url]) => (
-            (title !== 'Login' || !user) && (title !== 'Dashboard' || user) && (
-              <Link key={url} to={url} className='font-semibold text-gray-800 hover:text-blue-500 active:text-blue-500 dark:text-gray-200'>
-                {title}
-              </Link>
-            )
+            <Link key={url} to={url} className='font-semibold text-gray-800 hover:text-blue-500 active:text-blue-500 dark:text-gray-200'>
+              {title}
+            </Link>
           ))}
           <div className='relative inline-block w-10 align-middle transition duration-200 ease-in select-none'>
             <Switch

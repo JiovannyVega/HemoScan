@@ -1,13 +1,9 @@
 import { Link, } from 'react-router-dom'
 import { useState } from 'react'
 import { GoogleLogin } from '@react-oauth/google'
-import { useNavigate } from 'react-router-dom'
-import { useGoogleAuth } from '../hooks/useGoogleAuth'
 import axios from 'axios'
 
 const SignupPage = () => {
-  const { handleGoogleLoginSuccess } = useGoogleAuth()
-  const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
     nombre: '',
@@ -47,12 +43,6 @@ const SignupPage = () => {
       console.error('Detalles del error:', error.response ? error.response.data : error.message)
       alert('Error al registrar usuario')
     }
-  }
-
-  const handleGoogleLogin = async (credentialResponse) => {
-    await handleGoogleLoginSuccess(credentialResponse)
-    navigate('/dashboard') // Redirigir al usuario a /dashboard
-    window.location.reload()
   }
 
   return (
@@ -109,7 +99,6 @@ const SignupPage = () => {
           </form>
           <p className='mb-0'>O</p>
           <GoogleLogin
-            onSuccess={handleGoogleLogin}
             onError={() => {
               console.log('Login Failed')
             }}

@@ -1,12 +1,9 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
 import { GoogleLogin } from '@react-oauth/google'
-import useGoogleAuth from '../hooks/useGoogleAuth'
 
 const LoginPage = () => {
-  const { handleGoogleLoginSuccess } = useGoogleAuth()
-  const navigate = useNavigate()
 
   const [formData, setFormData] = useState({ email: '', contrasena: '' })
 
@@ -32,12 +29,6 @@ const LoginPage = () => {
       console.error('Error al iniciar sesión:', error)
       alert('Error al iniciar sesión')
     }
-  }
-
-  const handleGoogleLogin = async (credentialResponse) => {
-    await handleGoogleLoginSuccess(credentialResponse)
-    navigate('/dashboard') // Redirigir al usuario a /dashboard
-    window.location.reload()
   }
 
   return (
@@ -70,7 +61,6 @@ const LoginPage = () => {
               <p className='mb-4 text-center'>O</p>
             </form>
             <GoogleLogin
-              onSuccess={handleGoogleLogin}
               onError={() => {
                 console.log('Login Failed')
               }}

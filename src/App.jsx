@@ -8,10 +8,8 @@ import HFAQPage from './pages/HFAQPage'
 import AboutPage from './pages/AboutPage'
 import Dashboard from './pages/dashboard/Dashboard'
 import SignupPage from './pages/SignupPage'
-import { useGoogleAuth } from './hooks/useGoogleAuth'
 
 function App() {
-  const { user } = useGoogleAuth()
 
   return (
     <Router>
@@ -23,11 +21,8 @@ function App() {
           <Route path='/about' element={<AboutPage />} />
           <Route path='/hfaq' element={<HFAQPage />} />
           <Route path='/signup' element={<SignupPage />} />
-          {user ? (
-            <Route path='/dashboard' element={<Dashboard />} />
-          ) : (
-            <Route path='*' element={<ErrorPage />} />
-          )}
+          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='*' element={<ErrorPage />} />
         </Routes>
         <Footer />
       </div>
