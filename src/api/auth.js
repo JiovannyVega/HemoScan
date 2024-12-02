@@ -2,21 +2,24 @@ import axios from 'axios'
 
 const API_URL = 'http://localhost:3000/api'
 
-export const loginWithGoogle = async (token) => {
+export const loginWithGoogle = async (googleToken) => {
     try {
-        const response = await axios.post(`${API_URL}/login/google`, { token })
+        const response = await axios.post(`${API_URL}/login/google`, { token: googleToken })
         return response.data
     } catch (error) {
-        console.error('Error al iniciar sesión con Google:', error)
-        throw error
+        throw new Error(error.response.data.error || 'Error al iniciar sesión con Google')
     }
 }
 
-export const logout = async () => {
+export const loginWithEmail = async (email, password) => {
     try {
-        await axios.post(`${API_URL}/logout`)
+        const response = await axios.post(`${API_URL}/login`, { email, password })
+        return response.data
     } catch (error) {
-        console.error('Error al cerrar sesión:', error)
-        throw error
+        throw new Error(error.response.data.error || 'Error al iniciar sesión')
     }
+}
+
+export const logout = () => {
+    localStorage.removeItem('token')
 }
