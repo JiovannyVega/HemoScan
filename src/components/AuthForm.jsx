@@ -14,6 +14,7 @@ const AuthForm = ({ title, formData, handleChange, handleSubmit, googleLoginHand
     useEffect(() => {
         setShowError(false)
         clearError()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location.pathname])
 
     const handleCloseError = () => {

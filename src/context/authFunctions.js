@@ -14,6 +14,7 @@ export const handleGoogleLogin = async (googleToken, setError, navigate) => {
     try {
         const response = await loginWithGoogle(googleToken)
         localStorage.setItem('token', response.token)
+        localStorage.setItem('user', JSON.stringify(response.user))
         navigate('/dashboard')
     } catch (err) {
         if (err.message === 'Token expirado') {
@@ -56,7 +57,7 @@ export const handleSignup = async (formData, setError, navigate) => {
     try {
         const response = await signup(formData)
         localStorage.setItem('token', response.token)
-        navigate('/dashboard')
+        navigate('/login')
     } catch (err) {
         setError(err.message)
     }
