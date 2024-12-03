@@ -50,6 +50,15 @@ export const signup = async (formData) => {
     }
 }
 
+export const updateUser = async (formData) => {
+    try {
+        const response = await axios.put(`${API_URL}/users`, formData)
+        return response.data
+    } catch (error) {
+        throw new Error(error.response.data.error || 'Error al actualizar usuario')
+    }
+}
+
 export const logout = () => {
     localStorage.removeItem('token')
 }

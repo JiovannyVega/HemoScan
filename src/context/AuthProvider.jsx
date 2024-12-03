@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
-import { getToken, handleGoogleLogin, handleEmailLogin, handleLogout, isLoggedIn, handleSignup, getUser } from './authFunctions'
+import { getToken, handleGoogleLogin, handleEmailLogin, handleLogout, isLoggedIn, handleSignup, getUser, handleUpdateUser } from './authFunctions'
 
 const AuthContext = createContext()
 
@@ -21,7 +21,8 @@ export const AuthProvider = ({ children }) => {
             clearError,
             getToken,
             isLoggedIn,
-            getUser
+            getUser,
+            handleUpdateUser
         }}>
             {children}
         </AuthContext.Provider>

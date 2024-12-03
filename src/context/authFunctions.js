@@ -1,4 +1,4 @@
-import { loginWithGoogle, loginWithEmail, logout, signup } from '../api/auth'
+import { loginWithGoogle, loginWithEmail, logout, signup, updateUser } from '../api/auth'
 
 export const getToken = () => {
     return localStorage.getItem('token')
@@ -61,6 +61,11 @@ export const handleSignup = async (formData, setError, navigate) => {
     } catch (err) {
         setError(err.message)
     }
+}
+
+export const handleUpdateUser = async (formData) => {
+    const response = await updateUser(formData)
+    console.log(response)
 }
 
 export const getUser = () => {
