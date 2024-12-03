@@ -23,7 +23,7 @@ const ProfilePage = () => {
 
     return (
         <>
-            <div className='flex flex-col items-center h-screen m-0 border-t-2 md:py-4 text-text dark:text-text-dark bg-background dark:bg-background-dark'>
+            <div className='flex flex-col items-center h-full m-0 border-t-2 md:py-4 text-text dark:text-text-dark bg-background dark:bg-background-dark'>
                 <div className='flex flex-col items-center w-full p-5 mb-0 overflow-scroll border rounded-lg shadow-xl no-scrollbar md:w-2/3 bg-background dark:bg-background-dark'>
                     <img
                         src={user.picture || '/assets/Perfil.jpg'}
