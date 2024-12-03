@@ -62,3 +62,8 @@ export const handleSignup = async (formData, setError, navigate) => {
         setError(err.message)
     }
 }
+
+export const getUser = () => {
+    const user = localStorage.getItem('user')
+    return user ? JSON.parse(user) : null
+}
