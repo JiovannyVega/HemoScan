@@ -9,3 +9,21 @@ export const getPersonas = async () => {
     }
     return response.json()
 }
+
+export const createPersona = async (persona) => {
+    try {
+        const response = await fetchWithAuth(`${API_URL}/persons`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(persona)
+        })
+        if (!response.ok) {
+            throw new Error('Error al crear la persona')
+        }
+        return response.json()
+    } catch (error) {
+        throw new Error(error.message || 'Error al crear la persona')
+    }
+}

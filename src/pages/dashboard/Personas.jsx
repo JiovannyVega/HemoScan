@@ -1,9 +1,16 @@
 import { useEffect, useState } from 'react'
-import { getPersonas } from '../../api/personas'
+import { getPersonas, createPersona } from '../../api/personas'
 
 const Personas = () => {
     const [personas, setPersonas] = useState([])
     const [error, setError] = useState(null)
+    const [showForm, setShowForm] = useState(false)
+    const [newPersona, setNewPersona] = useState({
+        nombre: '',
+        apellido: '',
+        fecha_nacimiento: '',
+        sexo: 'M'
+    })
 
     useEffect(() => {
         const fetchPersonas = async () => {
@@ -26,6 +33,23 @@ const Personas = () => {
             edad--
         }
         return edad
+    }
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target
+        setNewPersona({ ...newPersona, [name]: value })
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        try {
+            await createPersona(newPersona)
+            setShowForm(false)
+            const data = await getPersonas()
+            setPersonas(data)
+        } catch (err) {
+            setError(err.message)
+        }
     }
 
     return (
@@ -56,8 +80,27 @@ const Personas = () => {
                             ))}
                         </tbody>
                     </table>
+                    <button onClick={() => setShowForm(true)} className='px-4 py-2 mt-4 text-white bg-blue-500 rounded'>Agregar Persona</button>
+                    {showForm && (
+                        <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50'>
+                            <div className='p-4 bg-white rounded'>
+                                <h2 className='mb-4 text-xl'>Agregar Persona</h2>
+                                <form onSubmit={handleSubmit}>
+                                    <input type='text' name='nombre' placeholder='Nombre' value={newPersona.nombre} onChange={handleInputChange} className='w-full p-2 mb-2 border rounded' required />
+                                    <input type='text' name='apellido' placeholder='Apellido' value={newPersona.apellido} onChange={handleInputChange} className='w-full p-2 mb-2 border rounded' required />
+                                    <input type='date' name='fecha_nacimiento' value={newPersona.fecha_nacimiento} onChange={handleInputChange} className='w-full p-2 mb-2 border rounded' required />
+                                    <select name='sexo' value={newPersona.sexo} onChange={handleInputChange} className='w-full p-2 mb-2 border rounded'>
+                                        <option value='M'>Hombre</option>
+                                        <option value='F'>Mujer</option>
+                                    </select>
+                                    <button type='submit' className='px-4 py-2 text-white bg-green-500 rounded'>Guardar</button>
+                                    <button type='button' onClick={() => setShowForm(false)} className='px-4 py-2 ml-2 text-white bg-red-500 rounded'>Cancelar</button>
+                                </form>
+                            </div>
+                        </div>
+                    )}
                 </div>
-            </div>
+            </div >
         </>
     )
 }
