@@ -35,3 +35,21 @@ export const getAnalisis = async (personaId) => {
     }
     return response.json()
 }
+
+export const createAnalisis = async (personaId, analisis) => {
+    try {
+        const response = await fetchWithAuth(`${API_URL}/analyses`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ persona_id: personaId, ...analisis })
+        })
+        if (!response.ok) {
+            throw new Error('Error al crear el análisis')
+        }
+        return response.json()
+    } catch (error) {
+        throw new Error(error.message || 'Error al crear el análisis')
+    }
+}
