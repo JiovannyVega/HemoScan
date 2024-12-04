@@ -53,3 +53,11 @@ export const createAnalisis = async (personaId, analisis) => {
         throw new Error(error.message || 'Error al crear el análisis')
     }
 }
+
+export const getResultadosAnalisis = async (analisisId) => {
+    const response = await fetchWithAuth(`${API_URL}/analysis-results/analisis/${analisisId}`)
+    if (!response.ok) {
+        throw new Error('Error al obtener los resultados del análisis')
+    }
+    return response.json()
+}

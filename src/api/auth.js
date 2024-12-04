@@ -8,7 +8,6 @@ const fetchWithAuth = async (url, options = {}) => {
     if (!token) {
         throw new Error('No token found')
     }
-
     const response = await fetch(url, {
         ...options,
         headers: {
@@ -16,7 +15,8 @@ const fetchWithAuth = async (url, options = {}) => {
             'Authorization': `Bearer ${token}`
         }
     })
-    if (response.status === 401) {
+    if (response.status === 403) {
+        localStorage.removeItem('token')
         throw new Error('Token expirado')
     }
     return response
