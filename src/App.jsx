@@ -12,6 +12,7 @@ import { AuthProvider, useAuth } from './context/AuthProvider'
 import ProfilePage from './pages/dashboard/ProfilePage'
 import Analitycs from './pages/dashboard/Analitycs'
 import DashboardContent from './pages/dashboard/DashboardContent'
+import Personas from './pages/dashboard/Personas'
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function AppContent() {
             <Route index element={<DashboardContent />} />
             <Route path='analitica' element={<Analitycs />} />
             <Route path='perfil' element={<ProfilePage />} />
+            <Route path='personas' element={<Personas />} />
           </Route>
         )}
         <Route path='*' element={<ErrorPage />} />
