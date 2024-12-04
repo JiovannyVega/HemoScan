@@ -27,3 +27,11 @@ export const createPersona = async (persona) => {
         throw new Error(error.message || 'Error al crear la persona')
     }
 }
+
+export const getAnalisis = async (personaId) => {
+    const response = await fetchWithAuth(`${API_URL}/personas/${personaId}/analyses`)
+    if (!response.ok) {
+        throw new Error('Error al obtener los análisis')
+    }
+    return response.json()
+}

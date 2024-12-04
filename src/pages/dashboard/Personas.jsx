@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { getPersonas, createPersona } from '../../api/personas'
 
 const Personas = () => {
@@ -11,6 +12,8 @@ const Personas = () => {
         fecha_nacimiento: '',
         sexo: 'M'
     })
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         const fetchPersonas = async () => {
@@ -52,6 +55,10 @@ const Personas = () => {
         }
     }
 
+    const handlePersonaClick = (personaId) => {
+        navigate(`/dashboard/personas/${personaId}/analisis`)
+    }
+
     return (
         <>
             <div className='flex flex-col items-center h-full m-0 border-t-2 md:py-4 text-text dark:text-text-dark bg-background dark:bg-background-dark'>
@@ -73,7 +80,7 @@ const Personas = () => {
                             </thead>
                             <tbody>
                                 {personas.map(persona => (
-                                    <tr key={persona.id} className='odd:bg-white even:bg-gray-100 dark:odd:bg-gray-800 dark:even:bg-gray-900'>
+                                    <tr key={persona.id} className='odd:bg-white even:bg-gray-100 dark:odd:bg-gray-800 dark:even:bg-gray-900 cursor-pointer' onClick={() => handlePersonaClick(persona.id)}>
                                         <td className='px-4 py-2 border'>{persona.nombre}</td>
                                         <td className='px-4 py-2 border'>{persona.apellido}</td>
                                         <td className='px-4 py-2 border'>{new Date(persona.fecha_nacimiento).toLocaleDateString()}</td>
