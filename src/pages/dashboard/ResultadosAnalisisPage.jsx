@@ -9,6 +9,36 @@ const ResultadosAnalisisPage = () => {
     const [valoresReferencia, setValoresReferencia] = useState([])
     const [parametros, setParametros] = useState([])
     const [error, setError] = useState(null)
+    const [persona, setPersona] = useState(null)
+
+    const calcularEdad = (fechaNacimiento) => {
+        const hoy = new Date()
+        const nacimiento = new Date(fechaNacimiento)
+        let edad = hoy.getFullYear() - nacimiento.getFullYear()
+        const mes = hoy.getMonth() - nacimiento.getMonth()
+        if (mes < 0 || (mes === 0 && hoy.getDate() < nacimiento.getDate())) {
+            edad--
+        }
+        return edad
+    }
+
+    const obtenerGrupoEdadId = (edad, sexo) => {
+        if (edad <= 1) return 1
+        if (edad <= 2) return 2
+        if (edad <= 12) return 3
+        if (edad <= 18) return 4
+        if (edad <= 59) return sexo === 'M' ? 5 : 6
+        return 7
+    }
+
+    const obtenerGrupoEdad = (edad) => {
+        if (edad <= 1) return 'Recién nacido'
+        if (edad <= 2) return 'Niño (1-2 años)'
+        if (edad <= 12) return 'Niño (2-12 años)'
+        if (edad <= 18) return 'Adolescente (13-18 años)'
+        if (edad <= 59) return 'Adulto'
+        return 'Adulto mayor'
+    }
 
     useEffect(() => {
         const fetchResultados = async () => {
@@ -38,29 +68,10 @@ const ResultadosAnalisisPage = () => {
             }
         }
 
-        const calcularEdad = (fechaNacimiento) => {
-            const hoy = new Date()
-            const nacimiento = new Date(fechaNacimiento)
-            let edad = hoy.getFullYear() - nacimiento.getFullYear()
-            const mes = hoy.getMonth() - nacimiento.getMonth()
-            if (mes < 0 || (mes === 0 && hoy.getDate() < nacimiento.getDate())) {
-                edad--
-            }
-            return edad
-        }
-
-        const obtenerGrupoEdadId = (edad, sexo) => {
-            if (edad <= 1) return 1
-            if (edad <= 2) return 2
-            if (edad <= 12) return 3
-            if (edad <= 18) return 4
-            if (edad <= 59) return sexo === 'M' ? 5 : 6
-            return 7
-        }
-
         const fetchAllData = async () => {
             await fetchResultados()
             const personaData = await getPersona(personaId)
+            setPersona(personaData)
             const edad = calcularEdad(personaData.fecha_nacimiento)
             const grupoEdadId = obtenerGrupoEdadId(edad, personaData.sexo)
             await fetchValoresReferencia(grupoEdadId)
@@ -89,6 +100,16 @@ const ResultadosAnalisisPage = () => {
                 </nav>
                 <h2 className='text-2xl font-bold'>Resultados del Análisis</h2>
                 {error && <p className='mt-4 text-center text-red-500'>{error}</p>}
+                {persona && (
+                    <div className='mb-4'>
+                        <p><strong>Nombre:</strong> {persona.nombre}</p>
+                        <p><strong>Apellido:</strong> {persona.apellido}</p>
+                        <p><strong>Fecha de Nacimiento:</strong> {new Date(persona.fecha_nacimiento).toLocaleDateString()}</p>
+                        <p><strong>Sexo:</strong> {persona.sexo === 'M' ? 'Hombre' : 'Mujer'}</p>
+                        <p><strong>Edad:</strong> {calcularEdad(persona.fecha_nacimiento)} años</p>
+                        <p><strong>Grupo de Edad:</strong> {obtenerGrupoEdad(calcularEdad(persona.fecha_nacimiento), persona.sexo)}</p>
+                    </div>
+                )}
                 {resultados.length === 0 ? (
                     <p className='mt-4 text-center'>No se encontraron resultados.</p>
                 ) : (
