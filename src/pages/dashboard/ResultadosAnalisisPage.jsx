@@ -243,7 +243,7 @@ const ResultadosAnalisisPage = () => {
                 )}
                 {showPopup && (
                     <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50'>
-                        <div className='p-4 bg-white rounded'>
+                        <div className='w-1/2 p-4 bg-white rounded dark:bg-gray-800'>
                             <h3 className='text-xl font-bold'>{selectedParametro}</h3>
                             <p><strong>Valor:</strong> {selectedValor}</p>
                             <p>{selectedExplicacion}</p>
@@ -254,7 +254,7 @@ const ResultadosAnalisisPage = () => {
                 <button onClick={() => setShowForm(true)} className='px-4 py-2 mt-4 text-white bg-blue-500 rounded'>Agregar Valores de Referencia</button>
                 {showForm && (
                     <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50'>
-                        <div className='h-full p-4 overflow-scroll bg-white rounded'>
+                        <div className='h-full p-4 overflow-scroll bg-white rounded dark:bg-gray-800'>
                             <h2 className='mb-4 text-xl'>Agregar Valores de Referencia</h2>
                             <form onSubmit={handleSubmit} className='grid grid-cols-1 gap-4 md:grid-cols-2'>
                                 {parametros.map(parametro => {
@@ -267,7 +267,7 @@ const ResultadosAnalisisPage = () => {
                                                 step='any'
                                                 value={newValores[parametro.id] || obtenerValorExistente(parametro.id)}
                                                 onChange={(e) => handleInputChange(e, parametro.id)}
-                                                className='w-full p-2 border rounded'
+                                                className='w-full p-2 border rounded dark:bg-gray-700 dark:text-white'
                                             />
                                         </div>
                                     )

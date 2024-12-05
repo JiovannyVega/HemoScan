@@ -98,13 +98,13 @@ const Personas = () => {
                     <button onClick={() => setShowForm(true)} className='px-4 py-2 mt-4 text-white bg-blue-500 rounded'>Agregar Persona</button>
                     {showForm && (
                         <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50'>
-                            <div className='p-4 bg-white rounded'>
+                            <div className='p-4 bg-white rounded dark:bg-gray-800'>
                                 <h2 className='mb-4 text-xl'>Agregar Persona</h2>
                                 <form onSubmit={handleSubmit}>
-                                    <input type='text' name='nombre' placeholder='Nombre' value={newPersona.nombre} onChange={handleInputChange} className='w-full p-2 mb-2 border rounded' required />
-                                    <input type='text' name='apellido' placeholder='Apellido' value={newPersona.apellido} onChange={handleInputChange} className='w-full p-2 mb-2 border rounded' required />
-                                    <input type='date' name='fecha_nacimiento' value={newPersona.fecha_nacimiento} onChange={handleInputChange} className='w-full p-2 mb-2 border rounded' required />
-                                    <select name='sexo' value={newPersona.sexo} onChange={handleInputChange} className='w-full p-2 mb-2 border rounded'>
+                                    <input type='text' name='nombre' placeholder='Nombre' value={newPersona.nombre} onChange={handleInputChange} className='w-full p-2 mb-2 border rounded dark:bg-gray-700 dark:text-white' required />
+                                    <input type='text' name='apellido' placeholder='Apellido' value={newPersona.apellido} onChange={handleInputChange} className='w-full p-2 mb-2 border rounded dark:bg-gray-700 dark:text-white' required />
+                                    <input type='date' name='fecha_nacimiento' value={newPersona.fecha_nacimiento} onChange={handleInputChange} className='w-full p-2 mb-2 border rounded dark:bg-gray-700 dark:text-white' required />
+                                    <select name='sexo' value={newPersona.sexo} onChange={handleInputChange} className='w-full p-2 mb-2 border rounded dark:bg-gray-700 dark:text-white'>
                                         <option value='M'>Hombre</option>
                                         <option value='F'>Mujer</option>
                                     </select>

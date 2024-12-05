@@ -116,12 +116,12 @@ const AnalisisPage = () => {
                 <button onClick={() => setShowForm(true)} className='px-4 py-2 mt-4 text-white bg-blue-500 rounded'>Agregar Análisis</button>
                 {showForm && (
                     <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50'>
-                        <div className='p-4 bg-white rounded'>
+                        <div className='p-4 bg-white rounded dark:bg-gray-800'>
                             <h2 className='mb-4 text-xl'>Agregar Análisis</h2>
                             <form onSubmit={handleSubmit}>
                                 <label className='block'>Fecha del analisis (no la fecha actual)</label>
-                                <input type='date' name='fecha' value={newAnalisis.fecha} onChange={handleInputChange} className='w-full p-2 mb-2 border rounded' required />
-                                <textarea name='descripcion' placeholder='Descripción' value={newAnalisis.descripcion} onChange={handleInputChange} className='w-full p-2 mb-2 border rounded' required />
+                                <input type='date' name='fecha' value={newAnalisis.fecha} onChange={handleInputChange} className='w-full p-2 mb-2 border rounded dark:bg-gray-700 dark:text-white' required />
+                                <textarea name='descripcion' placeholder='Descripción' value={newAnalisis.descripcion} onChange={handleInputChange} className='w-full p-2 mb-2 border rounded dark:bg-gray-700 dark:text-white' required />
                                 <button type='submit' className='px-4 py-2 text-white bg-green-500 rounded'>Guardar</button>
                                 <button type='button' onClick={() => setShowForm(false)} className='px-4 py-2 ml-2 text-white bg-red-500 rounded'>Cancelar</button>
                             </form>
