@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { getResultadosAnalisis, getPersona, createResultadoAnalisis, updateResultadoAnalisis } from '../../api/personas'
 import { getValoresReferencia, getParametros, getFormulas } from '../../api/valores-referencia'
+import parametrosExplicacion from '../../data/parametrosExplicacion'
 
 const ResultadosAnalisisPage = () => {
     const { personaId, analisisId } = useParams()
@@ -13,6 +14,10 @@ const ResultadosAnalisisPage = () => {
     const [persona, setPersona] = useState(null)
     const [showForm, setShowForm] = useState(false)
     const [newValores, setNewValores] = useState({})
+    const [selectedParametro, setSelectedParametro] = useState(null)
+    const [selectedValor, setSelectedValor] = useState(null)
+    const [selectedExplicacion, setSelectedExplicacion] = useState(null)
+    const [showPopup, setShowPopup] = useState(false)
 
     const calcularEdad = (fechaNacimiento) => {
         const hoy = new Date()
@@ -157,6 +162,21 @@ const ResultadosAnalisisPage = () => {
         return valor < rangoMinimo || valor > rangoMaximo
     }
 
+    const handleValorClick = (parametroId, valor, rangoMinimo, rangoMaximo) => {
+        const parametro = parametros.find(param => param.id === parametroId)
+        const explicacion = parametrosExplicacion[parametro.nombre]
+        if (explicacion) {
+            const fueraDeRango = esValorFueraDeRango(valor, rangoMinimo, rangoMaximo)
+            if (fueraDeRango) {
+                const explicacionTexto = valor < rangoMinimo ? explicacion.bajo : explicacion.alto
+                setSelectedParametro(parametro.nombre)
+                setSelectedValor(valor)
+                setSelectedExplicacion(`${explicacionTexto} (Rango de referencia: ${rangoMinimo} - ${rangoMaximo})`)
+                setShowPopup(true)
+            }
+        }
+    }
+
     return (
         <div className='flex flex-col items-center h-full m-0 border-t-2 md:py-4 text-text dark:text-text-dark bg-background dark:bg-background-dark'>
             <div className='flex flex-col items-center w-full p-5 mb-0 overflow-scroll border rounded-lg shadow-xl no-scrollbar md:w-2/3 bg-background dark:bg-background-dark'>
@@ -204,7 +224,12 @@ const ResultadosAnalisisPage = () => {
                                         return (
                                             <tr key={resultado.id} className='odd:bg-white even:bg-gray-100 dark:odd:bg-gray-800 dark:even:bg-gray-900'>
                                                 <td className='px-4 py-2 border'>{obtenerNombreParametro(valorReferencia?.parametro_id)}</td>
-                                                <td className={`px-4 py-2 border ${fueraDeRango ? 'text-red-500 font-bold' : ''}`}>{resultado.valor}</td>
+                                                <td
+                                                    className={`px-4 py-2 border ${fueraDeRango ? 'cursor-pointer text-red-500 font-bold' : ''}`}
+                                                    onClick={() => fueraDeRango && handleValorClick(valorReferencia?.parametro_id, resultado.valor, parseFloat(valorReferencia?.rango_minimo), parseFloat(valorReferencia?.rango_maximo))}
+                                                >
+                                                    {resultado.valor}
+                                                </td>
                                                 <td className='px-4 py-2 border'>{valorReferencia?.rango_minimo}</td>
                                                 <td className='px-4 py-2 border'>{valorReferencia?.rango_maximo}</td>
                                                 <td className='px-4 py-2 border'>{valorReferencia?.unidad}</td>
@@ -215,6 +240,16 @@ const ResultadosAnalisisPage = () => {
                             </table>
                         </div>
                     ))
+                )}
+                {showPopup && (
+                    <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50'>
+                        <div className='p-4 bg-white rounded'>
+                            <h3 className='text-xl font-bold'>{selectedParametro}</h3>
+                            <p><strong>Valor:</strong> {selectedValor}</p>
+                            <p>{selectedExplicacion}</p>
+                            <button onClick={() => setShowPopup(false)} className='px-4 py-2 mt-4 text-white bg-blue-500 rounded'>Cerrar</button>
+                        </div>
+                    </div>
                 )}
                 <button onClick={() => setShowForm(true)} className='px-4 py-2 mt-4 text-white bg-blue-500 rounded'>Agregar Valores de Referencia</button>
                 {showForm && (
