@@ -7,7 +7,7 @@ export const getAgeGroups = async () => {
     if (!response.ok) {
         throw new Error('Error al obtener los grupos de edad')
     }
-    return response.json()
+    return response.data
 }
 
 export const getFormulas = async () => {
@@ -15,7 +15,7 @@ export const getFormulas = async () => {
     if (!response.ok) {
         throw new Error('Error al obtener las formulas')
     }
-    return response.json()
+    return response.data
 }
 
 export const parametros = async () => {
@@ -23,5 +23,5 @@ export const parametros = async () => {
     if (!response.ok) {
         throw new Error('Error al obtener los parametros')
     }
-    return response.json()
+    return response.data
 }

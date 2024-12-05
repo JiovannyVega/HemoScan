@@ -28,6 +28,14 @@ export const createPersona = async (persona) => {
     }
 }
 
+export const getPersona = async (personaId) => {
+    const response = await fetchWithAuth(`${API_URL}/persons/${personaId}`)
+    if (!response.ok) {
+        throw new Error('Error al obtener los datos de la persona')
+    }
+    return response.json()
+}
+
 export const getAnalisis = async (personaId) => {
     const response = await fetchWithAuth(`${API_URL}/personas/${personaId}/analyses`)
     if (!response.ok) {
