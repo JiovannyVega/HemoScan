@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { getResultadosAnalisis, getPersona } from '../../api/personas'
-import { getValoresReferencia, getParametros } from '../../api/valores-referencia'
+import { getValoresReferencia, getParametros, getFormulas } from '../../api/valores-referencia'
 
 const ResultadosAnalisisPage = () => {
     const { personaId, analisisId } = useParams()
     const [resultados, setResultados] = useState([])
     const [valoresReferencia, setValoresReferencia] = useState([])
     const [parametros, setParametros] = useState([])
+    const [formulas, setFormulas] = useState([])
     const [error, setError] = useState(null)
     const [persona, setPersona] = useState(null)
 
@@ -68,6 +69,15 @@ const ResultadosAnalisisPage = () => {
             }
         }
 
+        const fetchFormulas = async () => {
+            try {
+                const data = await getFormulas()
+                setFormulas(data)
+            } catch (err) {
+                setError(err.message)
+            }
+        }
+
         const fetchAllData = async () => {
             await fetchResultados()
             const personaData = await getPersona(personaId)
@@ -76,6 +86,7 @@ const ResultadosAnalisisPage = () => {
             const grupoEdadId = obtenerGrupoEdadId(edad, personaData.sexo)
             await fetchValoresReferencia(grupoEdadId)
             await fetchParametros()
+            await fetchFormulas()
         }
 
         fetchAllData()
@@ -88,6 +99,11 @@ const ResultadosAnalisisPage = () => {
     const obtenerNombreParametro = (parametroId) => {
         const parametro = parametros.find(param => param.id === parametroId)
         return parametro ? parametro.nombre : 'Desconocido'
+    }
+
+    const obtenerNombreFormula = (formulaId) => {
+        const formula = formulas.find(form => form.id === formulaId)
+        return formula ? formula.nombre : 'Desconocida'
     }
 
     return (
@@ -113,31 +129,40 @@ const ResultadosAnalisisPage = () => {
                 {resultados.length === 0 ? (
                     <p className='mt-4 text-center'>No se encontraron resultados.</p>
                 ) : (
-                    <table className='w-full mt-4 text-center border-collapse table-auto'>
-                        <thead>
-                            <tr className='bg-gray-200 dark:bg-gray-700'>
-                                <th className='px-4 py-2 border'>Parámetro</th>
-                                <th className='px-4 py-2 border'>Valor</th>
-                                <th className='px-4 py-2 border'>Rango Mínimo</th>
-                                <th className='px-4 py-2 border'>Rango Máximo</th>
-                                <th className='px-4 py-2 border'>Unidad</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {resultados.map(resultado => {
-                                const valorReferencia = obtenerValorReferencia(resultado.valor_referencia_id)
-                                return (
-                                    <tr key={resultado.id} className='odd:bg-white even:bg-gray-100 dark:odd:bg-gray-800 dark:even:bg-gray-900'>
-                                        <td className='px-4 py-2 border'>{obtenerNombreParametro(valorReferencia?.parametro_id)}</td>
-                                        <td className='px-4 py-2 border'>{resultado.valor}</td>
-                                        <td className='px-4 py-2 border'>{valorReferencia?.rango_minimo}</td>
-                                        <td className='px-4 py-2 border'>{valorReferencia?.rango_maximo}</td>
-                                        <td className='px-4 py-2 border'>{valorReferencia?.unidad}</td>
+                    formulas.map(formula => (
+                        <div key={formula.id} className='w-full mt-4'>
+                            <h3 className='text-xl font-bold'>{obtenerNombreFormula(formula.id)}</h3>
+                            <table className='w-full mt-2 text-center border-collapse table-auto'>
+                                <thead>
+                                    <tr className='bg-gray-200 dark:bg-gray-700'>
+                                        <th className='px-4 py-2 border'>Parámetro</th>
+                                        <th className='px-4 py-2 border'>Valor</th>
+                                        <th className='px-4 py-2 border'>Rango Mínimo</th>
+                                        <th className='px-4 py-2 border'>Rango Máximo</th>
+                                        <th className='px-4 py-2 border'>Unidad</th>
                                     </tr>
-                                )
-                            })}
-                        </tbody>
-                    </table>
+                                </thead>
+                                <tbody>
+                                    {resultados.filter(resultado => {
+                                        const valorReferencia = obtenerValorReferencia(resultado.valor_referencia_id)
+                                        const parametro = parametros.find(param => param.id === valorReferencia?.parametro_id)
+                                        return parametro?.formula_id === formula.id
+                                    }).map(resultado => {
+                                        const valorReferencia = obtenerValorReferencia(resultado.valor_referencia_id)
+                                        return (
+                                            <tr key={resultado.id} className='odd:bg-white even:bg-gray-100 dark:odd:bg-gray-800 dark:even:bg-gray-900'>
+                                                <td className='px-4 py-2 border'>{obtenerNombreParametro(valorReferencia?.parametro_id)}</td>
+                                                <td className='px-4 py-2 border'>{resultado.valor}</td>
+                                                <td className='px-4 py-2 border'>{valorReferencia?.rango_minimo}</td>
+                                                <td className='px-4 py-2 border'>{valorReferencia?.rango_maximo}</td>
+                                                <td className='px-4 py-2 border'>{valorReferencia?.unidad}</td>
+                                            </tr>
+                                        )
+                                    })}
+                                </tbody>
+                            </table>
+                        </div>
+                    ))
                 )}
             </div>
         </div >
