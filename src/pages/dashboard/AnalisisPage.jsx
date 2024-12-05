@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import { getAnalisis, createAnalisis, getPersona } from '../../api/personas'
 
 const AnalisisPage = () => {
@@ -77,6 +77,10 @@ const AnalisisPage = () => {
     return (
         <div className='flex flex-col items-center h-full m-0 border-t-2 md:py-4 text-text dark:text-text-dark bg-background dark:bg-background-dark'>
             <div className='flex flex-col items-center w-full p-5 mb-0 overflow-scroll border rounded-lg shadow-xl no-scrollbar md:w-2/3 bg-background dark:bg-background-dark'>
+                <nav className='w-full mb-4'>
+                    <Link to='/dashboard/personas' className='text-blue-500 hover:underline'>Personas</Link> &gt;
+                    <Link to={`/dashboard/personas/${personaId}/analisis`} className='text-blue-500 hover:underline'> Análisis</Link>
+                </nav>
                 <h2 className='text-2xl font-bold'>Análisis de: {persona?.nombre} {persona?.apellido}</h2>
                 {error && <p className='mt-4 text-center text-red-500'>{error}</p>}
                 {persona && (

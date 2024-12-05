@@ -1,10 +1,9 @@
-
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { getResultadosAnalisis } from '../../api/personas'
 
 const ResultadosAnalisisPage = () => {
-    const { analisisId } = useParams()
+    const { personaId, analisisId } = useParams()
     const [resultados, setResultados] = useState([])
     const [error, setError] = useState(null)
 
@@ -23,6 +22,11 @@ const ResultadosAnalisisPage = () => {
     return (
         <div className='flex flex-col items-center h-full m-0 border-t-2 md:py-4 text-text dark:text-text-dark bg-background dark:bg-background-dark'>
             <div className='flex flex-col items-center w-full p-5 mb-0 overflow-scroll border rounded-lg shadow-xl no-scrollbar md:w-2/3 bg-background dark:bg-background-dark'>
+                <nav className='w-full mb-4'>
+                    <Link to='/dashboard/personas' className='text-blue-500 hover:underline'>Personas</Link> &gt;
+                    <Link to={`/dashboard/personas/${personaId}/analisis`} className='text-blue-500 hover:underline'> Análisis</Link> &gt;
+                    <Link to={`/dashboard/personas/${personaId}/analisis/${analisisId}/resultados`} className='text-blue-500 hover:underline'> Resultados</Link>
+                </nav>
                 <h2 className='text-2xl font-bold'>Resultados del Análisis</h2>
                 {error && <p className='mt-4 text-center text-red-500'>{error}</p>}
                 {resultados.length === 0 ? (

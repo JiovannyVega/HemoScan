@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { getPersonas, createPersona } from '../../api/personas'
 
 const Personas = () => {
@@ -63,6 +63,10 @@ const Personas = () => {
         <>
             <div className='flex flex-col items-center h-full m-0 border-t-2 md:py-4 text-text dark:text-text-dark bg-background dark:bg-background-dark'>
                 <div className='flex flex-col items-center w-full p-5 mb-0 overflow-scroll border rounded-lg shadow-xl no-scrollbar md:w-2/3 bg-background dark:bg-background-dark'>
+                    <nav className='w-full mb-4'>
+                        <Link to='/dashboard' className='text-blue-500 hover:underline'>Dashboard</Link> &gt;
+                        <Link to='/dashboard/personas' className='text-blue-500 hover:underline'> Personas</Link>
+                    </nav>
                     <h2 className='text-2xl font-bold'>Personas</h2>
                     {error && <p className='mt-4 text-center text-red-500'>{error}</p>}
                     {personas.length === 0 ? (
@@ -80,7 +84,7 @@ const Personas = () => {
                             </thead>
                             <tbody>
                                 {personas.map(persona => (
-                                    <tr key={persona.id} className='odd:bg-white even:bg-gray-100 dark:odd:bg-gray-800 dark:even:bg-gray-900 cursor-pointer' onClick={() => handlePersonaClick(persona.id)}>
+                                    <tr key={persona.id} className='cursor-pointer odd:bg-white even:bg-gray-100 dark:odd:bg-gray-800 dark:even:bg-gray-900' onClick={() => handlePersonaClick(persona.id)}>
                                         <td className='px-4 py-2 border'>{persona.nombre}</td>
                                         <td className='px-4 py-2 border'>{persona.apellido}</td>
                                         <td className='px-4 py-2 border'>{new Date(persona.fecha_nacimiento).toLocaleDateString()}</td>
