@@ -1,181 +1,34 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { getResultadosAnalisis, getPersona, createResultadoAnalisis, updateResultadoAnalisis } from '../../api/personas'
-import { getValoresReferencia, getParametros, getFormulas } from '../../api/valores-referencia'
-import parametrosExplicacion from '../../data/parametrosExplicacion'
+import useResultadosAnalisis from '../../hooks/useResultadosAnalisis'
 
 const ResultadosAnalisisPage = () => {
     const { personaId, analisisId } = useParams()
-    const [resultados, setResultados] = useState([])
-    const [valoresReferencia, setValoresReferencia] = useState([])
-    const [parametros, setParametros] = useState([])
-    const [formulas, setFormulas] = useState([])
-    const [error, setError] = useState(null)
-    const [persona, setPersona] = useState(null)
+    const {
+        resultados,
+        valoresReferencia,
+        parametros,
+        formulas,
+        error,
+        persona,
+        calcularEdad,
+        obtenerGrupoEdad,
+        obtenerValorReferencia,
+        obtenerNombreParametro,
+        obtenerNombreFormula,
+        obtenerValorExistente,
+        handleInputChange,
+        handleSubmit,
+        esValorFueraDeRango,
+        handleValorClick,
+        newValores,
+    } = useResultadosAnalisis(personaId, analisisId)
+
     const [showForm, setShowForm] = useState(false)
-    const [newValores, setNewValores] = useState({})
     const [selectedParametro, setSelectedParametro] = useState(null)
     const [selectedValor, setSelectedValor] = useState(null)
     const [selectedExplicacion, setSelectedExplicacion] = useState(null)
     const [showPopup, setShowPopup] = useState(false)
-
-    const calcularEdad = (fechaNacimiento) => {
-        const hoy = new Date()
-        const nacimiento = new Date(fechaNacimiento)
-        let edad = hoy.getFullYear() - nacimiento.getFullYear()
-        const mes = hoy.getMonth() - nacimiento.getMonth()
-        if (mes < 0 || (mes === 0 && hoy.getDate() < nacimiento.getDate())) {
-            edad--
-        }
-        return edad
-    }
-
-    const obtenerGrupoEdadId = (edad, sexo) => {
-        if (edad <= 1) return 1
-        if (edad <= 2) return 2
-        if (edad <= 12) return 3
-        if (edad <= 18) return 4
-        if (edad <= 59) return sexo === 'M' ? 5 : 6
-        return 7
-    }
-
-    const obtenerGrupoEdad = (edad) => {
-        if (edad <= 1) return 'Recién nacido'
-        if (edad <= 2) return 'Niño (1-2 años)'
-        if (edad <= 12) return 'Niño (2-12 años)'
-        if (edad <= 18) return 'Adolescente (13-18 años)'
-        if (edad <= 59) return 'Adulto'
-        return 'Adulto mayor'
-    }
-
-    const fetchResultados = async () => {
-        try {
-            const data = await getResultadosAnalisis(analisisId)
-            setResultados(data)
-        } catch (err) {
-            setError(err.message)
-        }
-    }
-
-    const fetchValoresReferencia = async (ageGroupId) => {
-        try {
-            const data = await getValoresReferencia(ageGroupId)
-            setValoresReferencia(data)
-        } catch (err) {
-            setError(err.message)
-        }
-    }
-
-    const fetchParametros = async () => {
-        try {
-            const data = await getParametros()
-            setParametros(data)
-        } catch (err) {
-            setError(err.message)
-        }
-    }
-
-    const fetchFormulas = async () => {
-        try {
-            const data = await getFormulas()
-            setFormulas(data)
-        } catch (err) {
-            setError(err.message)
-        }
-    }
-
-    const fetchAllData = async () => {
-        await fetchResultados()
-        const personaData = await getPersona(personaId)
-        setPersona(personaData)
-        const edad = calcularEdad(personaData.fecha_nacimiento)
-        const grupoEdadId = obtenerGrupoEdadId(edad, personaData.sexo)
-        await fetchValoresReferencia(grupoEdadId)
-        await fetchParametros()
-        await fetchFormulas()
-    }
-
-    useEffect(() => {
-        fetchAllData()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [personaId, analisisId])
-
-    const obtenerValorReferencia = (valor_referencia_id) => {
-        return valoresReferencia.find(valor => valor.id === valor_referencia_id)
-    }
-
-    const obtenerNombreParametro = (parametroId) => {
-        const parametro = parametros.find(param => param.id === parametroId)
-        return parametro ? parametro.nombre : 'Desconocido'
-    }
-
-    const obtenerNombreFormula = (formulaId) => {
-        const formula = formulas.find(form => form.id === formulaId)
-        return formula ? formula.nombre : 'Desconocida'
-    }
-
-    const obtenerValorExistente = (parametroId) => {
-        const resultado = resultados.find(res => {
-            const valorReferencia = obtenerValorReferencia(res.valor_referencia_id)
-            return valorReferencia?.parametro_id === parametroId
-        })
-        return resultado ? resultado.valor : ''
-    }
-
-    const handleInputChange = (e, parametroId) => {
-        const { value } = e.target
-        setNewValores({ ...newValores, [parametroId]: value })
-    }
-
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        try {
-            for (const parametroId in newValores) {
-                const valor = parseFloat(newValores[parametroId])
-                const valorReferencia = valoresReferencia.find(vr => vr.parametro_id === parseInt(parametroId))
-                if (valorReferencia && !isNaN(valor)) {
-                    const resultadoExistente = resultados.find(res => {
-                        const vr = obtenerValorReferencia(res.valor_referencia_id)
-                        return vr?.parametro_id === parseInt(parametroId)
-                    })
-                    if (resultadoExistente) {
-                        await updateResultadoAnalisis(resultadoExistente.id, {
-                            valor_referencia_id: valorReferencia.id,
-                            valor: valor
-                        })
-                    } else {
-                        await createResultadoAnalisis(analisisId, {
-                            valor_referencia_id: valorReferencia.id,
-                            valor: valor
-                        })
-                    }
-                }
-            }
-            setShowForm(false)
-            await fetchAllData()
-        } catch (err) {
-            setError(err.message)
-        }
-    }
-
-    const esValorFueraDeRango = (valor, rangoMinimo, rangoMaximo) => {
-        return valor < rangoMinimo || valor > rangoMaximo
-    }
-
-    const handleValorClick = (parametroId, valor, rangoMinimo, rangoMaximo) => {
-        const parametro = parametros.find(param => param.id === parametroId)
-        const explicacion = parametrosExplicacion[parametro.nombre]
-        if (explicacion) {
-            const fueraDeRango = esValorFueraDeRango(valor, rangoMinimo, rangoMaximo)
-            if (fueraDeRango) {
-                const explicacionTexto = valor < rangoMinimo ? explicacion.bajo : explicacion.alto
-                setSelectedParametro(parametro.nombre)
-                setSelectedValor(valor)
-                setSelectedExplicacion(`${explicacionTexto} (Rango de referencia: ${rangoMinimo} - ${rangoMaximo})`)
-                setShowPopup(true)
-            }
-        }
-    }
 
     return (
         <div className='flex flex-col items-center h-full m-0 border-t-2 md:py-4 text-text dark:text-text-dark bg-background dark:bg-background-dark'>
@@ -226,7 +79,7 @@ const ResultadosAnalisisPage = () => {
                                                 <td className='px-4 py-2 border'>{obtenerNombreParametro(valorReferencia?.parametro_id)}</td>
                                                 <td
                                                     className={`px-4 py-2 border ${fueraDeRango ? 'cursor-pointer text-red-500 font-bold' : ''}`}
-                                                    onClick={() => fueraDeRango && handleValorClick(valorReferencia?.parametro_id, resultado.valor, parseFloat(valorReferencia?.rango_minimo), parseFloat(valorReferencia?.rango_maximo))}
+                                                    onClick={() => fueraDeRango && handleValorClick(valorReferencia?.parametro_id, resultado.valor, parseFloat(valorReferencia?.rango_minimo), parseFloat(valorReferencia?.rango_maximo), setSelectedParametro, setSelectedValor, setSelectedExplicacion, setShowPopup)}
                                                 >
                                                     {resultado.valor}
                                                 </td>
@@ -256,7 +109,7 @@ const ResultadosAnalisisPage = () => {
                     <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50'>
                         <div className='h-full p-4 overflow-scroll bg-white rounded dark:bg-gray-800'>
                             <h2 className='mb-4 text-xl'>Agregar Valores de Referencia</h2>
-                            <form onSubmit={handleSubmit} className='grid grid-cols-1 gap-4 md:grid-cols-2'>
+                            <form onSubmit={(e) => handleSubmit(e, setShowForm)} className='grid grid-cols-1 gap-4 md:grid-cols-2'>
                                 {parametros.map(parametro => {
                                     const valorReferencia = valoresReferencia.find(vr => vr.parametro_id === parametro.id)
                                     return (
