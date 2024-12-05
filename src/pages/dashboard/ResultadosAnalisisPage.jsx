@@ -194,7 +194,7 @@ const ResultadosAnalisisPage = () => {
                         <p><strong>Fecha de Nacimiento:</strong> {new Date(persona.fecha_nacimiento).toLocaleDateString()}</p>
                         <p><strong>Sexo:</strong> {persona.sexo === 'M' ? 'Hombre' : 'Mujer'}</p>
                         <p><strong>Edad:</strong> {calcularEdad(persona.fecha_nacimiento)} años</p>
-                        <p><strong>Grupo de Edad:</strong> {obtenerGrupoEdad(calcularEdad(persona.fecha_nacimiento), persona.sexo)}</p>
+                        <p><strong>Grupo de Edad:</strong> {obtenerGrupoEdad(calcularEdad(persona.fecha_nacimiento))}</p>
                     </div>
                 )}
                 {resultados.length === 0 ? (
@@ -222,7 +222,7 @@ const ResultadosAnalisisPage = () => {
                                         const valorReferencia = obtenerValorReferencia(resultado.valor_referencia_id)
                                         const fueraDeRango = esValorFueraDeRango(resultado.valor, parseFloat(valorReferencia?.rango_minimo), parseFloat(valorReferencia?.rango_maximo))
                                         return (
-                                            <tr key={resultado.id} className='odd:bg-white even:bg-gray-100 dark:odd:bg-gray-800 dark:even:bg-gray-900'>
+                                            <tr key={resultado.id} className='odd:bg-white even:bg-gray-100 dark:odd:bg-gray-800 dark:even:bg-gray-900 hover:bg-gray-300 dark:hover:bg-gray-700'>
                                                 <td className='px-4 py-2 border'>{obtenerNombreParametro(valorReferencia?.parametro_id)}</td>
                                                 <td
                                                     className={`px-4 py-2 border ${fueraDeRango ? 'cursor-pointer text-red-500 font-bold' : ''}`}

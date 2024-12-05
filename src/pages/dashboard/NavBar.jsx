@@ -19,7 +19,7 @@ const Dashboard = () => {
           {navItems.map(([title, url]) => (
             <li key={url}>
               <Link to={url} className='block w-full py-2 text-left group/nav hover:bg-hover dark:hover:bg-hover-dark'>
-                <p className='mx-8 group-hover/nav:mx-14 '>{title}</p>
+                <p className='mx-8 transition-all duration-300 group-hover/nav:mx-14'>{title}</p>
               </Link>
             </li>
           ))}
