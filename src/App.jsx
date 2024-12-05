@@ -14,6 +14,7 @@ import Analitycs from './pages/dashboard/Analitycs'
 import DashboardContent from './pages/dashboard/DashboardContent'
 import Personas from './pages/dashboard/Personas'
 import AnalisisPage from './pages/dashboard/AnalisisPage'
+import ResultadosAnalisisPage from './pages/dashboard/ResultadosAnalisisPage'
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function AppContent() {
             <Route path='perfil' element={<ProfilePage />} />
             <Route path='personas' element={<Personas />} />
             <Route path='personas/:personaId/analisis' element={<AnalisisPage />} />
+            <Route path='personas/:personaId/analisis/:analisisId/resultados' element={<ResultadosAnalisisPage />} />
           </Route>
         )}
         <Route path='*' element={<ErrorPage />} />

@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { getAnalisis, createAnalisis } from '../../api/personas'
 
 const AnalisisPage = () => {
     const { personaId } = useParams()
+    const navigate = useNavigate()
     const [analisis, setAnalisis] = useState([])
     const [error, setError] = useState(null)
     const [showForm, setShowForm] = useState(false)
@@ -58,7 +59,7 @@ const AnalisisPage = () => {
                         </thead>
                         <tbody>
                             {analisis.map(analisis => (
-                                <tr key={analisis.id} className='odd:bg-white even:bg-gray-100 dark:odd:bg-gray-800 dark:even:bg-gray-900'>
+                                <tr key={analisis.id} className='odd:bg-white even:bg-gray-100 dark:odd:bg-gray-800 dark:even:bg-gray-900 cursor-pointer' onClick={() => navigate(`/dashboard/personas/${personaId}/analisis/${analisis.id}/resultados`)}>
                                     <td className='px-4 py-2 border'>{analisis.descripcion}</td>
                                     <td className='px-4 py-2 border'>{new Date(analisis.fecha).toLocaleDateString()}</td>
                                 </tr>
