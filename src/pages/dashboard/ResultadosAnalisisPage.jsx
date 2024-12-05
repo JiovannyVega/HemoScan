@@ -107,8 +107,8 @@ const ResultadosAnalisisPage = () => {
                 <button onClick={() => setShowForm(true)} className='px-4 py-2 mt-4 text-white bg-blue-500 rounded'>Agregar Valores de Referencia</button>
                 {showForm && (
                     <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50'>
-                        <div className='h-full p-4 overflow-scroll bg-white rounded dark:bg-gray-800'>
-                            <h2 className='mb-4 text-xl'>Agregar Valores de Referencia</h2>
+                        <div className='p-4 overflow-y-scroll bg-white rounded h-4/5 dark:bg-gray-800'>
+                            <h2 className='mb-4 text-xl'><strong>Agregar Valores de Referencia</strong></h2>
                             <form onSubmit={(e) => handleSubmit(e, setShowForm)} className='grid grid-cols-1 gap-4 md:grid-cols-2'>
                                 {parametros.map(parametro => {
                                     const valorReferencia = valoresReferencia.find(vr => vr.parametro_id === parametro.id)
