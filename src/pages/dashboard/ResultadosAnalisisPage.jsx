@@ -153,6 +153,10 @@ const ResultadosAnalisisPage = () => {
         }
     }
 
+    const esValorFueraDeRango = (valor, rangoMinimo, rangoMaximo) => {
+        return valor < rangoMinimo || valor > rangoMaximo
+    }
+
     return (
         <div className='flex flex-col items-center h-full m-0 border-t-2 md:py-4 text-text dark:text-text-dark bg-background dark:bg-background-dark'>
             <div className='flex flex-col items-center w-full p-5 mb-0 overflow-scroll border rounded-lg shadow-xl no-scrollbar md:w-2/3 bg-background dark:bg-background-dark'>
@@ -196,10 +200,11 @@ const ResultadosAnalisisPage = () => {
                                         return parametro?.formula_id === formula.id
                                     }).map(resultado => {
                                         const valorReferencia = obtenerValorReferencia(resultado.valor_referencia_id)
+                                        const fueraDeRango = esValorFueraDeRango(resultado.valor, parseFloat(valorReferencia?.rango_minimo), parseFloat(valorReferencia?.rango_maximo))
                                         return (
                                             <tr key={resultado.id} className='odd:bg-white even:bg-gray-100 dark:odd:bg-gray-800 dark:even:bg-gray-900'>
                                                 <td className='px-4 py-2 border'>{obtenerNombreParametro(valorReferencia?.parametro_id)}</td>
-                                                <td className='px-4 py-2 border'>{resultado.valor}</td>
+                                                <td className={`px-4 py-2 border ${fueraDeRango ? 'text-red-500 font-bold' : ''}`}>{resultado.valor}</td>
                                                 <td className='px-4 py-2 border'>{valorReferencia?.rango_minimo}</td>
                                                 <td className='px-4 py-2 border'>{valorReferencia?.rango_maximo}</td>
                                                 <td className='px-4 py-2 border'>{valorReferencia?.unidad}</td>
