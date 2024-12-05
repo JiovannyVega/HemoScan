@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { getResultadosAnalisis, getPersona, createResultadoAnalisis } from '../../api/personas'
+import { getResultadosAnalisis, getPersona, createResultadoAnalisis, updateResultadoAnalisis } from '../../api/personas'
 import { getValoresReferencia, getParametros, getFormulas } from '../../api/valores-referencia'
 
 const ResultadosAnalisisPage = () => {
@@ -129,10 +129,21 @@ const ResultadosAnalisisPage = () => {
                 const valor = parseFloat(newValores[parametroId])
                 const valorReferencia = valoresReferencia.find(vr => vr.parametro_id === parseInt(parametroId))
                 if (valorReferencia && !isNaN(valor)) {
-                    await createResultadoAnalisis(analisisId, {
-                        valor_referencia_id: valorReferencia.id,
-                        valor: valor
+                    const resultadoExistente = resultados.find(res => {
+                        const vr = obtenerValorReferencia(res.valor_referencia_id)
+                        return vr?.parametro_id === parseInt(parametroId)
                     })
+                    if (resultadoExistente) {
+                        await updateResultadoAnalisis(resultadoExistente.id, {
+                            valor_referencia_id: valorReferencia.id,
+                            valor: valor
+                        })
+                    } else {
+                        await createResultadoAnalisis(analisisId, {
+                            valor_referencia_id: valorReferencia.id,
+                            valor: valor
+                        })
+                    }
                 }
             }
             setShowForm(false)

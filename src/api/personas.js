@@ -87,3 +87,21 @@ export const createResultadoAnalisis = async (analisisId, resultado) => {
         throw new Error(error.message || 'Error al crear el resultado del análisis')
     }
 }
+
+export const updateResultadoAnalisis = async (resultadoId, resultado) => {
+    try {
+        const response = await fetchWithAuth(`${API_URL}/analysis-results/${resultadoId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(resultado)
+        })
+        if (!response.ok) {
+            throw new Error('Error al actualizar el resultado del análisis')
+        }
+        return response.json()
+    } catch (error) {
+        throw new Error(error.message || 'Error al actualizar el resultado del análisis')
+    }
+}
